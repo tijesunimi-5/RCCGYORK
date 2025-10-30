@@ -19,7 +19,7 @@ export default function Home() {
 
   return (
     <section className="bg-gray-400 overflow-x-hidden">
-      {loading && <Boot />}
+      {/* {loading && <Boot />} */}
 
       <Hero />
       <ServiceTimes />
