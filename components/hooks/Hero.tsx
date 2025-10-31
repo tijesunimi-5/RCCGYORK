@@ -50,9 +50,9 @@ export function Hero() {
             </div>
           </div>
           <h1 className="text-5xl md:text-7xl lg:text-8xl mb-6 leading-tight">
-            Champions'<br />
+            RCCG<br />
             <span className="bg-linear-to-r from-red-300 via-red-200 to-white bg-clip-text text-transparent">
-              Chapel
+              Living Spring
             </span>
           </h1>
         </div>

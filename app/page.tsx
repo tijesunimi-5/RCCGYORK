@@ -7,6 +7,8 @@ import { Hero } from "@/components/hooks/Hero";
 import { useEffect, useState } from "react";
 import { FaArrowRight } from "react-icons/fa";
 import { ServiceTimes } from "@/components/hooks/ServiceTime";
+import About from "@/components/hooks/About";
+import Contact from "@/components/hooks/Contact";
 
 export default function Home() {
   const [loading, setLoading] = useState<boolean>(true)
@@ -23,6 +25,8 @@ export default function Home() {
 
       <Hero />
       <ServiceTimes />
+      <About />
+      <Contact />
     </section>
   );
 }
