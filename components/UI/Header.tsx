@@ -54,7 +54,7 @@ const Header = () => {
               <span className="text-xl bg-linear-to-r from-red-700 to-red-900 bg-clip-text text-transparent">
                 RCCG York
               </span>
-              <span className="text-xs text-gray-600">Champions' Chapel</span>
+              <span className="text-xs text-gray-600">Living Spring</span>
             </div>
           </a>
 
