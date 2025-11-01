@@ -99,19 +99,22 @@ const About = () => {
               </h3>
               <div className="space-y-4 text-gray-600 leading-relaxed">
                 <p>
-                  As a parish of the Redeemed Christian Church of God (RCCG), one of the fastest-growing
-                  Pentecostal churches worldwide, we are part of a global movement committed to making
-                  disciples of all nations.
+                  This church was started in March 2009 as a church planted by Living Spring Harrisburg. <br />
+                  We had our first worship service at the Comfort Inn & Suites, York and held subsequent services at the nearby Homewood Suites.
                 </p>
                 <p>
-                  At Living Spring in York, we believe that every believer is called to be a champion.
-                  Through powerful worship, biblical teaching, fervent prayer, and the manifestation of
-                  the Holy Spirit, we are equipping believers to fulfill their divine purpose.
+                  By September 2009, Pastor Sam Anyanwu took over as the first pastor. Before he left, the lord used him to take the church from meeting in the hotel to a more comfortable location at 2346B Carnegie Road at East York. <br />
+                  Pastor Victor Johnsons pastored the church from January 2012 through February 2013. He left to pastor RCCG Lancaster which had been planted by our Harrisburg parish in September 2012.
                 </p>
                 <p>
-                  Our vision is clear: to raise a generation of champions who will impact USA,
-                  and the nations with the gospel of Jesus Christ. We invite you to join this movement
-                  and discover your place in God's kingdom agenda.
+                  This transitionary period was a very difficult time for our church, due to the fluid nature of things. Membership declined significantly and morale was very low. But the Rock of Ages who never changes kept a remnant unto Himself. By the grace of God, this church rose from the ashes and blossomed and thrived to where it is today. 'Not by might nor by power, but by My Spirit,' says the LORD of hosts. (Zechariah 4:6).
+                </p>
+                <p>
+                  We aim to be a family-friendly church where love is not just an idea but a principle that undergird all that we do. We want our meetings to be opportunities to meet with God and for God to meet with His people. <br />
+                  Our church aims to be a place where to be a place where members are baptized in the Holy Spirit and learn to walk in the Spirit all the days of their lives. 
+                </p>
+                <p>
+                  We aim to be a church where freshly baked spiritual bread is distributed weekly to feed the sheep. This church is a refuge for sinners, hospital for the sick, miracle center for the needy and a haven of rest for the weary. We aim to develop a people who are Christ-centered and eternity-focused, faithful in ensuring that His will is done on earth as it is in heaven.
                 </p>
               </div>
             </div>

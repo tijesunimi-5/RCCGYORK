@@ -47,8 +47,8 @@ const Contact = () => {
     {
       icon: CgMail,
       title: 'Email',
-      content: 'info@rccgyork.net',
-      link: 'mailto:info@rccgyork.net',
+      content: 'livingspringyork@gmail.com',
+      link: 'mailto:livingspringyork@gmail.com',
     },
     {
       icon: FaClock,
