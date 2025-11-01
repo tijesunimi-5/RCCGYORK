@@ -109,7 +109,7 @@ const About = () => {
                   the Holy Spirit, we are equipping believers to fulfill their divine purpose.
                 </p>
                 <p>
-                  Our vision is clear: to raise a generation of champions who will impact York, the UK,
+                  Our vision is clear: to raise a generation of champions who will impact USA,
                   and the nations with the gospel of Jesus Christ. We invite you to join this movement
                   and discover your place in God's kingdom agenda.
                 </p>

@@ -9,6 +9,7 @@ import { FaArrowRight } from "react-icons/fa";
 import { ServiceTimes } from "@/components/hooks/ServiceTime";
 import About from "@/components/hooks/About";
 import Contact from "@/components/hooks/Contact";
+import Ministers from "@/components/hooks/Ministers";
 
 export default function Home() {
   const [loading, setLoading] = useState<boolean>(true)
@@ -20,12 +21,13 @@ export default function Home() {
   })
 
   return (
-    <section className="bg-gray-400 overflow-x-hidden">
+    <section className=" overflow-x-hidden">
       {/* {loading && <Boot />} */}
 
       <Hero />
       <ServiceTimes />
       <About />
+      <Ministers />
       <Contact />
     </section>
   );

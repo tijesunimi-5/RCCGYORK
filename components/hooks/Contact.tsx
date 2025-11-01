@@ -36,7 +36,7 @@ const Contact = () => {
       icon: FaMapPin,
       title: 'Address',
       content: '1550 Eleventh Ave, York, PA 17402',
-      link: 'https://maps.google.com',
+      link: 'https://maps.google.com/maps/dir/?api=1&destination=1550+Eleventh+Ave,+York+PA+17402',
     },
     {
       icon: FaPhone,
@@ -60,7 +60,7 @@ const Contact = () => {
   const socialLinks = [
     { icon: FaFacebook, href: 'https://facebook.com/share/19MTnpMvoe', label: 'Facebook' },
     { icon: FaInstagram, href: 'https://instagram.com', label: 'Instagram' },
-    { icon: FaYoutube, href: 'https://youtube.com', label: 'YouTube' },
+    { icon: FaYoutube, href: 'https://youtube.com/@rccglivingspringyork9998?si=0Dgjg1NPHD5i49fa', label: 'YouTube' },
     // { icon: FaTwitter, href: 'https://twitter.com', label: 'Twitter' },
   ];
 
@@ -211,7 +211,7 @@ const Contact = () => {
                   <Button
                     variant="outline"
                     className="mt-4 border-red-700 text-red-700 hover:bg-red-700 hover:text-white"
-                    onClick={() => window.open('https://maps.google.com', '_blank')}
+                    onClick={() => window.open('https://maps.google.com/maps/dir/?api=1&destination=1550+Eleventh+Ave,+York+PA+17402', '_blank')}
                   >
                     Get Directions
                   </Button>

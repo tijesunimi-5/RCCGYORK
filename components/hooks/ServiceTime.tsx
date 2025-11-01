@@ -21,7 +21,7 @@ export function ServiceTimes() {
       day: "Every Sunday",
       time: "9:30 AM",
       description: 'Deep dive into God\'s Word with practical application for daily living.',
-      location: "Main Sanctuary ",
+      location: "Fellowship Room ",
       live: false,
       // featured: true
     },
@@ -46,7 +46,7 @@ export function ServiceTimes() {
       title: 'Morning Cry',
       day: 'Every Monday - Saturday',
       time: '6:00 AM - 6:15 AM',
-      location: 'Fellowship Hall',
+      location: 'Phone - (717-251-1272)',
       description: 'Deep dive into God\'s Word with practical application for daily living.',
       live: false,
     },
@@ -59,7 +59,7 @@ export function ServiceTimes() {
       live: true,
     },
     {
-      title: 'Commanding The Last Day Of The Month',
+      title: 'Command The Month',
       day: 'Every Last Day Of The Month',
       time: '11:30 PM - 12:30 AM',
       location: 'Dial 717-251-1272',

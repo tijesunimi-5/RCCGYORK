@@ -22,7 +22,7 @@ const Header = () => {
     // { name: 'Ministries', href: '#ministries' },
     // { name: 'Events', href: '#events' },
     // { name: 'Give', href: '#give' },
-    // { name: 'Contact', href: '#contact' },
+    { name: 'Contact', href: '#contact' },
   ];
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {

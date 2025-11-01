@@ -112,7 +112,7 @@ export function Hero() {
               </div>
             </div>
             <p className="text-sm uppercase tracking-wide mb-2 text-red-200">Location</p>
-            <p className="text-2xl">York, UK</p>
+            <p className="text-2xl">1550 Eleventh Avenue York, PA 17402</p>
             <p className="text-sm text-gray-300 mt-2">See full address</p>
           </div>
         </div>
