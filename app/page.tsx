@@ -10,6 +10,7 @@ import { ServiceTimes } from "@/components/hooks/ServiceTime";
 import About from "@/components/hooks/About";
 import Contact from "@/components/hooks/Contact";
 import Ministers from "@/components/hooks/Ministers";
+import { PastorMessage } from "@/components/hooks/PastorMessage";
 
 export default function Home() {
   const [loading, setLoading] = useState<boolean>(true)
@@ -27,6 +28,7 @@ export default function Home() {
       <Hero />
       <ServiceTimes />
       <About />
+      <PastorMessage />
       <Ministers />
       <Contact />
     </section>
