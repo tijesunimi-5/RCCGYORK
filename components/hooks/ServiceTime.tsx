@@ -17,13 +17,20 @@ export function ServiceTimes() {
       featured: true,
     },
     {
-      title: "Sunday School/Youth Three Sixteen Sunday School",
+      title: "Sunday School",
       day: "Every Sunday",
-      time: "9:30 AM",
+      time: "9:50 AM",
       description: 'Deep dive into God\'s Word with practical application for daily living.',
-      location: "Fellowship Room ",
+      location: "Main Sanctuary ",
       live: false,
       // featured: true
+    },
+    {
+      title: "Youth Three Sixteen Sunday School",
+      day: "Every Sunday",
+      time: "9:30 AM",
+      description: "Engaging lessons and activities tailored for our youth to grow in faith.",
+      location: "Fellowship Hall",
     },
     {
       title: 'Tuesday Bible Study',
