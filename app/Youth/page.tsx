@@ -9,6 +9,12 @@ const page = () => {
     { name: "Arinola Ogunneye", post: "Teacher", image: "/youth/ogunneye.jpg" }
   ]
 
+  const medias = [
+    { id: 1, image: "/youth/yimg.jpg" },
+    { id: 2, image: "/youth/yimg2.jpg" },
+    { id: 3, image: "/youth/yimg3.jpg" },
+  ]
+
   return (
     <div className='relative min-h-screen flex flex-col items-center justify-center pt-20'>
       <div className=' h-[40vh] overflow-hidden relative w-screen'>
@@ -24,8 +30,9 @@ const page = () => {
         <h1 className='text-4xl md:text-6xl mb-6 bg-linear-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent text-center mt-10'>
           Welcome to Youth Three Sixteen
         </h1>
-        <p className='text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed'>
-          Youth department (from Age 13 - 18) this class is staffed with trained friendly, and well-qualified
+        <p className=' text-gray-700 max-w-3xl mx-auto leading-relaxed'>
+          Welcome to the Youth Church: Three Sixteen (3:16) Army! <br /> <br />
+          Aligned with RCCG's vision, we empower teens to live as bold, godly leaders. Through Scripture-based teachings, testimonies, and small groups, we tackle real-life challenges - peer pressure, identity, purpose - and discover biblical solutions. Our focus on prayer, accountability, and Mark 10:27 ("All things are possible with God") builds resilience and unwavering faith.
         </p>
 
 
@@ -52,7 +59,20 @@ const page = () => {
 
             ))}
           </div>
+        </div>
 
+        <div className="text-center mt-9">
+          <h2 className="text-3xl md:text-6xl mb-6 bg-linear-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">
+            Medias
+          </h2>
+
+          <div className='grid md:grid-cols-2 lg:grid-cols-4 gap-6 px-6'>
+            {medias.map((media) => (
+              <div key={media.id} className='bg-card text-card-foreground flex flex-col gap-6 rounded-xl overflow-hidden bg-gray-100 shadow-lg hover:shadow-2xl hover-translate-y-2 transition-all border-0'>
+                <img src={media.image}  />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>

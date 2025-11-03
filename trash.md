@@ -1,0 +1,2 @@
+Welcome to YASM! <br />
+          The Young Adults Single Ministry at Living Spring, York is a place where professionals, and university students unite to iginite their faith and shine as beacons of light in a generation hungry for Jesus Christ's glory! We are a vibrant, Christ-centered community passionate about making God's kingdom a reality in our lives and our world. Whether you're seeling fellowship, purpose, or meaningful connections, Solution empowers you to live boldly for Christ while building lifelong friendships with like-minded believers.
