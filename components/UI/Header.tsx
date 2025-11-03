@@ -19,7 +19,8 @@ const Header = () => {
     { name: 'Home', href: '#home' },
     { name: 'Services', href: '#service-times' },
     { name: 'About', href: '#about' },
-    // { name: 'Ministries', href: '#ministries' },
+    // {name: "Ministers", href: "#ministers"},
+    { name: 'Ministries', href: '#ministers' },
     // { name: 'Events', href: '#events' },
     // { name: 'Give', href: '#give' },
     { name: 'Contact', href: '#contact' },
@@ -47,8 +48,8 @@ const Header = () => {
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
           <a href="#home" onClick={(e) => handleNavClick(e, '#home')} className="flex items-center gap-3 group">
-            <div className="p-2 bg-linear-to-br from-red-600 to-red-800 rounded-xl shadow-lg group-hover:scale-110 transition-transform">
-              <FaChurch className="h-7 w-7 text-white" />
+            <div className="p-2 bg-linear-to-br  rounded-xl shadow-lg group-hover:scale-110 transition-transform">
+              <img src="/logo.png" className='w-10 h-10' />
             </div>
             <div className="flex flex-col">
               <span className="text-xl bg-linear-to-r from-red-700 to-red-900 bg-clip-text text-transparent">

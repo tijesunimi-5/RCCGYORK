@@ -2,10 +2,12 @@
 
 import { FaBaby, FaBookOpen, FaGlobe, FaMusic, FaUser, FaUserCheck } from "react-icons/fa";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../UI/Card";
-import { FaHeart } from "react-icons/fa6";
+import { FaArrowUpRightFromSquare, FaHeart } from "react-icons/fa6";
 import { GiSparkles } from "react-icons/gi";
+import { useRouter } from "next/navigation";
 
 export function Ministries() {
+  const router = useRouter()
   const ministries = [
     {
       icon: FaUser,
@@ -13,6 +15,7 @@ export function Ministries() {
       description: 'Small groups, discipleship programs, and Bible studies for spiritual growth and maturity.',
       color: 'from-blue-100 to-blue-200',
       iconColor: 'text-blue-700',
+      // href: "/church"
     },
     {
       icon: GiSparkles,
@@ -20,6 +23,7 @@ export function Ministries() {
       description: 'Dynamic programs for young people to grow in faith and discover their purpose.',
       color: 'from-purple-100 to-purple-200',
       iconColor: 'text-purple-700',
+      href: "/Youth"
     },
     {
       icon: FaBaby,
@@ -27,6 +31,7 @@ export function Ministries() {
       description: 'Age-appropriate teaching and activities that make learning about Jesus fun and engaging.',
       color: 'from-pink-100 to-pink-200',
       iconColor: 'text-pink-700',
+      href: "/children-unit"
     },
     {
       icon: FaMusic,
@@ -34,6 +39,7 @@ export function Ministries() {
       description: 'Join our choir, band, or media team to serve through worship and the arts.',
       color: 'from-red-100 to-red-200',
       iconColor: 'text-red-700',
+      // href: "/worship"
     },
     {
       icon: FaUserCheck,
@@ -41,6 +47,7 @@ export function Ministries() {
       description: 'First impressions team welcoming guests and ensuring orderly services.',
       color: 'from-green-100 to-green-200',
       iconColor: 'text-green-700',
+      href: "/ushering-unit"
     },
     {
       icon: FaBookOpen,
@@ -49,19 +56,21 @@ export function Ministries() {
       color: 'from-indigo-100 to-indigo-200',
       iconColor: 'text-indigo-700',
     },
-    {
-      icon: FaHeart,
-      title: 'Welfare & Support',
-      description: 'Practical help and support for members and the community in need.',
-      color: 'from-rose-100 to-rose-200',
-      iconColor: 'text-rose-700',
-    },
+    // {
+    //   icon: FaHeart,
+    //   title: 'Welfare & Support',
+    //   description: 'Practical help and support for members and the community in need.',
+    //   color: 'from-rose-100 to-rose-200',
+    //   iconColor: 'text-rose-700',
+    //   href: "/welfare"
+    // },
     {
       icon: FaGlobe,
       title: 'Missions & Outreach',
       description: 'Taking the gospel beyond our walls through evangelism and community service.',
       color: 'from-teal-100 to-teal-200',
       iconColor: 'text-teal-700',
+      href: "/outreach"
     },
   ];
 
@@ -84,6 +93,7 @@ export function Ministries() {
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
             Find your place to grow, serve, and make an impact in the kingdom of God
+
           </p>
         </div>
 
@@ -93,12 +103,17 @@ export function Ministries() {
             return (
               <Card
                 key={ministry.title}
-                className="group overflow-hidden border-0 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 bg-white"
+                className="group overflow-hidden border-0 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 bg-white relative"
               >
                 <CardHeader className="pb-4">
                   <div className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-linear-to-br ${ministry.color} mb-4 shadow-lg group-hover:scale-110 transition-transform`}>
                     <Icon className={`h-8 w-8 ${ministry.iconColor}`} />
                   </div>
+                  {
+                    ministry.href && (
+                      <FaArrowUpRightFromSquare className="absolute right-8 top-5 cursor-pointer" onClick={() => router.push(ministry.href)} />
+                    )
+                  }
                   <CardTitle className="text-xl group-hover:text-red-700 transition-colors">
                     {ministry.title}
                   </CardTitle>

@@ -12,6 +12,7 @@ import Contact from "@/components/hooks/Contact";
 import Ministers from "@/components/hooks/Ministers";
 import { PastorMessage } from "@/components/hooks/PastorMessage";
 import { Ministries } from "@/components/hooks/Minisitries";
+import { Footer } from "@/components/hooks/Footer";
 
 export default function Home() {
   const [loading, setLoading] = useState<boolean>(true)
@@ -33,6 +34,7 @@ export default function Home() {
       <Ministers />
       <Ministries />
       <Contact />
+      <Footer />
     </section>
   );
 }

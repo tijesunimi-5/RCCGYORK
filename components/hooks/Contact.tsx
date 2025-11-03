@@ -59,7 +59,7 @@ const Contact = () => {
 
   const socialLinks = [
     { icon: FaFacebook, href: 'https://facebook.com/share/19MTnpMvoe', label: 'Facebook' },
-    { icon: FaInstagram, href: 'https://instagram.com', label: 'Instagram' },
+    // { icon: FaInstagram, href: 'https://instagram.com', label: 'Instagram' },
     { icon: FaYoutube, href: 'https://youtube.com/@rccglivingspringyork9998?si=0Dgjg1NPHD5i49fa', label: 'YouTube' },
     // { icon: FaTwitter, href: 'https://twitter.com', label: 'Twitter' },
   ];

@@ -9,12 +9,13 @@ const Ministers = () => {
       name: "Pst. Olusola Osundeko & Pst. Teniola Osundeko",
       image: "/senior.jpg",
       post: "Senior Pastors"
-    }, {
-      id: 2,
-      name: "Dr. Innocent Ononiwu",
-      image: "/drinnocent.jpg",
-      post: "Head of KidZone Children's Department"
-    },
+    }, 
+    // {
+    //   id: 2,
+    //   name: "Dr. Innocent Ononiwu",
+    //   image: "/drinnocent.jpg",
+    //   post: "Head of KidZone Children's Department"
+    // },
     {
       id: 3,
       name: "Mrs. Modupeola Adeniji",
