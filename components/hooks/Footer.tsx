@@ -62,12 +62,12 @@ export function Footer() {
           {/* Brand Section */}
           <div className="lg:col-span-2">
             <div className="flex items-center gap-3 mb-6">
-              <div className="p-3 bg-linear-to-br from-red-600 to-red-800 rounded-xl shadow-lg">
-                <FaChurch className="h-8 w-8 text-white" />
+              <div className="p-1 bg-linear-to-br from-white to-gray-500 rounded-xl shadow-lg">
+                <img src="/logo.png" className='w-10 h-10' />
               </div>
               <div className="flex flex-col">
                 <span className="text-2xl text-white">RCCG York</span>
-                <span className="text-sm text-red-400">Champions' Chapel</span>
+                <span className="text-sm text-red-400">Living Spring</span>
               </div>
             </div>
             <p className="text-gray-400 mb-6 max-w-md leading-relaxed">
@@ -89,7 +89,7 @@ export function Footer() {
                 </div>
                 <span>717-919-3033</span>
               </a>
-              <a href="https://maps.google.com" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-gray-400 hover:text-red-400 transition-colors group">
+              <a href="https://maps.google.com/maps/dir/?api=1&destination=1550+Eleventh+Ave,+York+PA+17402" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-gray-400 hover:text-red-400 transition-colors group">
                 <div className="p-2 bg-gray-800 rounded-lg group-hover:bg-red-900/30 transition-colors">
                   <FaMapPin className="h-4 w-4" />
                 </div>

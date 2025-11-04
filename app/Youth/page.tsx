@@ -3,7 +3,8 @@ import React from 'react'
 
 const page = () => {
   const teachers = [
-    { name: "Simisola Adebayo", post: "Head of Department", image: "/youth/simi.jpg" },
+    {name: "Pastor Jumoke Obadofin-Thomas", post: "Youth Pastor", image: "/pJum.jpg"},
+    { name: "Simisola Adebayo", post: "Youth Coordinator", image: "/youth/simi.jpg" },
     { name: "Ivie Edebiri", post: "Teacher", image: "/youth/ivie.jpg" },
     { name: "Olive Gray", post: "Teacher", image: "/youth/olive.jpg" },
     { name: "Arinola Ogunneye", post: "Teacher", image: "/youth/ogunneye.jpg" }
@@ -32,7 +33,7 @@ const page = () => {
         </h1>
         <p className=' text-gray-700 max-w-3xl mx-auto leading-relaxed'>
           Welcome to the Youth Church: Three Sixteen (3:16) Army! <br /> <br />
-          Aligned with RCCG's vision, we empower teens to live as bold, godly leaders. Through Scripture-based teachings, testimonies, and small groups, we tackle real-life challenges - peer pressure, identity, purpose - and discover biblical solutions. Our focus on prayer, accountability, and Mark 10:27 ("All things are possible with God") builds resilience and unwavering faith.
+          Aligned with RCCG's vision, we empower teens to live as bold, godly leaders. Through Scripture-based teachings, testimonies, and small groups, we tackle real-life challenges - peer pressure, identity, purpose - and discover biblical solutions. Our focus on prayer, accountability, and John 3:16 ("All things are possible with God") builds resilience and unwavering faith and love.
         </p>
 
 

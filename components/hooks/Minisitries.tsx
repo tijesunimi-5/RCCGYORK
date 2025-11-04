@@ -15,7 +15,7 @@ export function Ministries() {
       description: 'Small groups, discipleship programs, and Bible studies for spiritual growth and maturity.',
       color: 'from-blue-100 to-blue-200',
       iconColor: 'text-blue-700',
-      // href: "/church"
+      href: "/church"
     },
     {
       icon: GiSparkles,
