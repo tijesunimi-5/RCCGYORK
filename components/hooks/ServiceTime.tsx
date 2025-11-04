@@ -3,8 +3,11 @@ import { FaArrowRight, FaCalendar, FaClock, FaMapPin, FaVideo } from "react-icon
 import { Button } from "../UI/Button";
 import { Card, CardContent, CardHeader } from "../UI/Card";
 import { Badge } from "../UI/Badge";
+import { useRouter } from "next/navigation";
 
 export function ServiceTimes() {
+  const router = useRouter()
+
   const services = [
     
     {
@@ -182,6 +185,7 @@ export function ServiceTimes() {
               <Button
                 size="lg"
                 className="bg-white text-red-700 hover:bg-gray-100 shadow-xl hover:shadow-2xl transition-all hover:scale-105 group"
+                onClick={() => router.push("https://youtube.com/@rccglivingspringyork9998?si=0Dgjg1NPHD5i49fa")}
               >
                 Watch on YouTube
                 <FaArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
@@ -190,6 +194,7 @@ export function ServiceTimes() {
                 size="lg"
                 variant="outline"
                 className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-red-700 shadow-xl hover:shadow-2xl transition-all hover:scale-105 group"
+                onClick={() => router.push('https://facebook.com/share/19MTnpMvoe')}
               >
                 Watch on Facebook
                 <FaArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />

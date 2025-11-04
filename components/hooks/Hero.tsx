@@ -74,7 +74,7 @@ export function Hero() {
             size="lg"
             variant="outline"
             className="bg-white/10 backdrop-blur-md border-2 border-white text-white hover:bg-white hover:text-red-700 shadow-2xl transition-all hover:scale-105 group text-lg px-8 py-6"
-            onClick={() => window.open('https://youtube.com', '_blank')}
+            onClick={() => window.open('https://youtube.com/@rccglivingspringyork9998?si=0Dgjg1NPHD5i49fa', '_blank')}
           >
             <FaVideo className="mr-2 h-5 w-5" />
             Watch Live

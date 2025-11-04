@@ -1,23 +1,51 @@
 'use client'
-import React from 'react'
+import React, { useState } from 'react'
+import ImagePreview from '../../components/hooks/ImagePreview'
 
-const page = () => {
-  const teachers = [
-    {name: "Pastor Jumoke Obadofin-Thomas", post: "Youth Pastor", image: "/pJum.jpg"},
+interface Teacher {
+  name: string;
+  post: string;
+  image: string;
+}
+
+interface Media {
+  id: number;
+  image: string;
+}
+
+const Page: React.FC = () => {
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+
+  const teachers: Teacher[] = [
+    { name: "Pastor Jumoke Obadofin-Thomas", post: "Youth Pastor", image: "/pJum.jpg" },
     { name: "Simisola Adebayo", post: "Youth Coordinator", image: "/youth/simi.jpg" },
     { name: "Ivie Edebiri", post: "Teacher", image: "/youth/ivie.jpg" },
     { name: "Olive Gray", post: "Teacher", image: "/youth/olive.jpg" },
     { name: "Arinola Ogunneye", post: "Teacher", image: "/youth/ogunneye.jpg" }
   ]
 
-  const medias = [
+  const medias: Media[] = [
     { id: 1, image: "/youth/yimg.jpg" },
     { id: 2, image: "/youth/yimg2.jpg" },
     { id: 3, image: "/youth/yimg3.jpg" },
   ]
 
+  const handleImageClick = (imageUrl: string) => {
+    setSelectedImage(imageUrl);
+  };
+
+  const handleClosePreview = () => {
+    setSelectedImage(null);
+  };
+
   return (
     <div className='relative min-h-screen flex flex-col items-center justify-center pt-20'>
+
+      <ImagePreview
+        imageUrl={selectedImage}
+        onClose={handleClosePreview}
+      />
+
       <div className=' h-[40vh] overflow-hidden relative w-screen'>
         <img src="/youth/youth-bg.jpg" alt="youth" className=' top-0 w-full bg-cover h-[35vh] z-20' />
       </div>
@@ -45,8 +73,11 @@ const page = () => {
           <div className='grid md:grid-cols-2 lg:grid-cols-4 gap-6 px-6'>
             {teachers.map((teacher) => (
               <div key={teacher.name} className='bg-card text-card-foreground flex flex-col gap-6 rounded-xl overflow-hidden bg-gray-100 shadow-lg hover:shadow-2xl hover-translate-y-2 transition-all border-0'>
-                <div className="w-full">
-                  <img src={teacher.image} alt={teacher.name} className='h-[300px] w-full' />
+                <div
+                  className="w-full cursor-pointer" 
+                  onClick={() => handleImageClick(teacher.image)} 
+                >
+                  <img src={teacher.image} alt={teacher.name} className='h-[300px] w-full object-cover' />
                 </div>
 
                 <div className="content px-2 pb-1 text-start">
@@ -57,7 +88,6 @@ const page = () => {
                   </p>
                 </div>
               </div>
-
             ))}
           </div>
         </div>
@@ -70,7 +100,11 @@ const page = () => {
           <div className='grid md:grid-cols-2 lg:grid-cols-4 gap-6 px-6'>
             {medias.map((media) => (
               <div key={media.id} className='bg-card text-card-foreground flex flex-col gap-6 rounded-xl overflow-hidden bg-gray-100 shadow-lg hover:shadow-2xl hover-translate-y-2 transition-all border-0'>
-                <img src={media.image}  />
+                <img
+                  src={media.image}
+                  className='w-full h-full object-cover cursor-pointer' 
+                  onClick={() => handleImageClick(media.image)} 
+                />
               </div>
             ))}
           </div>
@@ -80,4 +114,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page
