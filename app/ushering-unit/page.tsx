@@ -10,6 +10,7 @@ const page = () => {
     { name: "Mrs. Belinda Nebedum", post: "Usher", image: "/ushers/usher2.jpg" },
     { name: "Mrs. Kehinde Kalejaiye", post: "Usher", image: "/ushers/usher3.jpg" },
     { name: "Mr. Idahosa Prince", post: "Usher", image: "/ushers/usher4.jpg" },
+    { name: "Mrs. Tomiwa Adewunmi", post: "Usher", image: "/ushers/usher5.jpg" },
   ]
 
   const handleImageClick = (imageUrl: string) => {
@@ -21,7 +22,7 @@ const page = () => {
   };
 
   return (
-    <div>
+    <div className='mb-20'>
       <ImagePreview
         imageUrl={selectedImage}
         onClose={handleClosePreview}

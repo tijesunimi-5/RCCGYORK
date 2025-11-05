@@ -16,18 +16,18 @@ const Ministers = () => {
     //   image: "/drinnocent.jpg",
     //   post: "Head of KidZone Children's Department"
     // },
-    {
-      id: 3,
-      name: "Mrs. Modupeola Adeniji",
-      image: "/wpres.jpg",
-      post: "Women of Virtue President"
-    },
-    {
-      id: 4,
-      name: "Mrs. Helen Esohe Ugo-Onyeulo",
-      image: "/wvpres.jpg",
-      post: "Women of Virtue Vice President"
-    },
+    // {
+    //   id: 3,
+    //   name: "Mrs. Modupeola Adeniji",
+    //   image: "/wpres.jpg",
+    //   post: "Women of Virtue President"
+    // },
+    // {
+    //   id: 4,
+    //   name: "Mrs. Helen Esohe Ugo-Onyeulo",
+    //   image: "/wvpres.jpg",
+    //   post: "Women of Virtue Vice President"
+    // },
     {
       id: 5,
       name: "Elder Quemilin Bull",
@@ -45,12 +45,12 @@ const Ministers = () => {
       name: "Pastor Jumoke Obadofin-Thomas",
       image: "/pJum.jpg"
     },
-    {
-      id: 8,
-      name: "Charles Kennedy",
-      image: "/mCharles.jpg",
-      post: "President of YASM (Young Adult and Single Ministry)"
-    }
+    // {
+    //   id: 8,
+    //   name: "Charles Kennedy",
+    //   image: "/mCharles.jpg",
+    //   post: "President of YASM (Young Adult and Single Ministry)"
+    // }
   ]
   return (
     <div id='ministers' className='py-2 bg-linear-to-b from-white via-gray-50 to-white relative overflow-hidden'>

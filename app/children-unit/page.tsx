@@ -45,14 +45,14 @@ const Page: React.FC = () => {
         onClose={handleClosePreview}
       />
 
-      <div className=' h-[40vh] overflow-hidden relative w-screen'>
-        <img src="/youth/yasm.jpg" alt="youth" className=' top-0 w-full bg-cover h-[35vh] z-20' />
+      <div className='pt-20 h-[40vh] overflow-hidden relative w-screen'>
+        <img src="/children/child.jpg" alt="youth" className=' top-0 w-full bg-cover h-[35vh] z-20' />
       </div>
 
 
       <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative'>
         <h1 className='text-4xl md:text-6xl mb-6 bg-linear-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent text-center mt-10'>
-          Welcome to Children
+          Welcome to KidZone
         </h1>
 
         <p className=' text-gray-700 max-w-3xl mx-auto leading-relaxed'>

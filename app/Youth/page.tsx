@@ -17,7 +17,7 @@ const Page: React.FC = () => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   const teachers: Teacher[] = [
-    { name: "Pastor Jumoke Obadofin-Thomas", post: "Youth Pastor", image: "/pJum.jpg" },
+    // { name: "Pastor Jumoke Obadofin-Thomas", post: "Youth Pastor", image: "/pJum.jpg" },
     { name: "Simisola Adebayo", post: "Youth Coordinator", image: "/youth/simi.jpg" },
     { name: "Ivie Edebiri", post: "Teacher", image: "/youth/ivie.jpg" },
     { name: "Olive Gray", post: "Teacher", image: "/youth/olive.jpg" },
@@ -27,7 +27,7 @@ const Page: React.FC = () => {
   const medias: Media[] = [
     { id: 1, image: "/youth/yimg.jpg" },
     { id: 2, image: "/youth/yimg2.jpg" },
-    { id: 3, image: "/youth/yimg3.jpg" },
+    { id: 3, image: "/youth/nyimg3.jpg" },
   ]
 
   const handleImageClick = (imageUrl: string) => {
@@ -60,8 +60,26 @@ const Page: React.FC = () => {
           Welcome to Youth Three Sixteen
         </h1>
         <p className=' text-gray-700 max-w-3xl mx-auto leading-relaxed'>
-          Welcome to the Youth Church: Three Sixteen (3:16) Army! <br /> <br />
-          Aligned with RCCG's vision, we empower teens to live as bold, godly leaders. Through Scripture-based teachings, testimonies, and small groups, we tackle real-life challenges - peer pressure, identity, purpose - and discover biblical solutions. Our focus on prayer, accountability, and John 3:16 ("All things are possible with God") builds resilience and unwavering faith and love.
+          Welcome to the Youth Church: Three Sixteen (3:16) Army!           
+        </p>
+
+        <div className='flex justify-center items-center flex-col my-5 px-4'>
+          <h2 className='text-3xl text-gray-600 max-w-3xl mx-auto leading-relaxed'>Our President</h2>
+          <div className='bg-card text-card-foreground flex flex-col gap-6 rounded-xl overflow-hidden bg-gray-100 shadow-lg hover:shadow-2xl hover-translate-y-2 transition-all border-0'>
+            <div className='h-[300px]'>
+              <img src="/youth/ypas.jpg" alt="Charles Kennedy" />
+            </div>
+            <div className="content px-2 pb-1 bg-white bg-opacity-50 inset-0">
+              <h1 className='font-semibold text-xl'>Pastor Jumoke Obadofin-Thomas</h1>
+              <p className="mt-3"><b>Post: </b>Youth Pastor</p>
+            </div>
+          </div>
+        </div>
+
+
+        <p className=' text-gray-700 max-w-3xl mx-auto leading-relaxed'>
+          Aligned with RCCG's vision, we empower teens to live as bold, godly leaders.
+          Through Scripture-based teachings, testimonies, and small groups, we tackle real-life challenges - peer pressure, identity, purpose - and discover biblical solutions. Our focus on prayer, accountability, and John 3:16 ("For God so love the world, that he gave his only begotten Son, that whosoever believeth in him should not perish, but have everlasting life.") builds resilience and unwavering faith and love.
         </p>
 
 
