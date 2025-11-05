@@ -41,7 +41,7 @@ const Contact = () => {
     {
       icon: FaPhone,
       title: 'Phone',
-      content: '717-251-1272',
+      content: '717-525-4148',
       link: 'tel:+44XXXXXXXXXX',
     },
     {

@@ -27,9 +27,9 @@ const page = () => {
         onClose={handleClosePreview}
       />
 
-      <div className="text-center pt-20">
+      <div className="text-center pt-26">
         <h2 className="text-3xl md:text-6xl mb-6 bg-linear-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">
-          Our Teachers
+          Our Ushers
         </h2>
 
         <div className='grid md:grid-cols-2 lg:grid-cols-4 gap-6 px-6'>
