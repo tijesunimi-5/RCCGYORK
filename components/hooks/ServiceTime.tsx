@@ -38,8 +38,8 @@ export function ServiceTimes() {
     {
       title: 'Tuesday Bible Study',
       day: 'Every Tuesday',
-      time: '7:00 PM - 8:30 PM',
-      location: 'Fellowship Hall',
+      time: '8:30 PM - 9:30 PM',
+      location: 'Mobile (717-251-1272)',
       description: 'Deep dive into God\'s Word with practical application for daily living.',
       live: true,
     },

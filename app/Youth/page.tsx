@@ -1,5 +1,7 @@
+// page.tsx
 'use client'
 import React, { useState } from 'react'
+import Image from 'next/image' // Import Next.js Image Component
 import ImagePreview from '../../components/hooks/ImagePreview'
 
 interface Teacher {
@@ -17,7 +19,6 @@ const Page: React.FC = () => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   const teachers: Teacher[] = [
-    // { name: "Pastor Jumoke Obadofin-Thomas", post: "Youth Pastor", image: "/pJum.jpg" },
     { name: "Simisola Adebayo", post: "Youth Coordinator", image: "/youth/simi.jpg" },
     { name: "Ivie Edebiri", post: "Teacher", image: "/youth/ivie.jpg" },
     { name: "Olive Gray", post: "Teacher", image: "/youth/olive.jpg" },
@@ -30,6 +31,12 @@ const Page: React.FC = () => {
     { id: 3, image: "/youth/nyimg3.jpg" },
   ]
 
+  const youthPastor = {
+    name: "Pastor Jumoke Obadofin-Thomas",
+    post: "Youth Pastor",
+    image: "/youth/ypas.jpg"
+  }
+
   const handleImageClick = (imageUrl: string) => {
     setSelectedImage(imageUrl);
   };
@@ -39,66 +46,88 @@ const Page: React.FC = () => {
   };
 
   return (
-    <div className='relative min-h-screen flex flex-col items-center justify-center pt-20'>
+    <div className='w-full flex flex-col items-center justify-center pt-20'>
 
       <ImagePreview
         imageUrl={selectedImage}
         onClose={handleClosePreview}
       />
 
-      <div className=' h-[40vh] overflow-hidden relative w-screen'>
-        <img src="/youth/youth-bg.jpg" alt="youth" className=' top-0 w-full bg-cover h-[35vh] z-20' />
+      {/* Header Image Section */}
+      <div className=' h-[75vh] overflow-hidden relative w-screen'>
+        {/* Use Image component for optimization and fill for banner */}
+        <Image
+          src="/youth/youth-bg.jpg"
+          alt="Youth Banner"
+          fill
+          className=' top-0 w-full h-full object-cover z-20'
+        />
       </div>
 
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-red-100 rounded-full opacity-20 blur-3xl" />
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-100 rounded-full opacity-20 blur-3xl" />
-      </div>
-
-      <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative'>
+      <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative w-full'>
         <h1 className='text-4xl md:text-6xl mb-6 bg-linear-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent text-center mt-10'>
           Welcome to Youth Three Sixteen
         </h1>
-        <p className=' text-gray-700 max-w-3xl mx-auto leading-relaxed'>
-          Welcome to the Youth Church: Three Sixteen (3:16) Army!           
+        <p className=' text-gray-700 max-w-3xl mx-auto leading-relaxed text-center'>
+          Welcome to the Youth Church: Three Sixteen (3:16) Army!
         </p>
 
+        {/* Youth Pastor/President Card Section */}
         <div className='flex justify-center items-center flex-col my-5 px-4'>
-          <h2 className='text-3xl text-gray-600 max-w-3xl mx-auto leading-relaxed'>Our President</h2>
-          <div className='bg-card text-card-foreground flex flex-col gap-6 rounded-xl overflow-hidden bg-gray-100 shadow-lg hover:shadow-2xl hover-translate-y-2 transition-all border-0'>
-            <div className='h-[300px]'>
-              <img src="/youth/ypas.jpg" alt="Charles Kennedy" />
+          <h2 className='text-3xl text-gray-600 max-w-3xl mx-auto leading-relaxed mb-6'>Our Pastor</h2>
+          {/* Card responsiveness similar to President card: max-w-xs to max-w-md */}
+          <div className='bg-card text-card-foreground flex flex-col rounded-xl overflow-hidden bg-gray-100 shadow-lg hover:shadow-2xl hover:translate-y-2 transition-all border-0 w-full max-w-xs sm:max-w-sm md:max-w-md'>
+            <div
+              className='w-full h-[500px] relative cursor-pointer' // Relative container, fixed height
+              onClick={() => handleImageClick(youthPastor.image)}
+            >
+              {/* Image with fill and object-cover */}
+              <Image
+                src={youthPastor.image}
+                alt={youthPastor.name}
+                fill
+                className='object-cover'
+              />
             </div>
-            <div className="content px-2 pb-1 bg-white bg-opacity-50 inset-0">
-              <h1 className='font-semibold text-xl'>Pastor Jumoke Obadofin-Thomas</h1>
-              <p className="mt-3"><b>Post: </b>Youth Pastor</p>
+            <div className="content px-4 pb-4 bg-white bg-opacity-50 text-start">
+              <h1 className='font-semibold text-xl'>{youthPastor.name}</h1>
+              <p className="mt-3"><b>Post: </b>{youthPastor.post}</p>
             </div>
           </div>
         </div>
 
 
-        <p className=' text-gray-700 max-w-3xl mx-auto leading-relaxed'>
+        <p className=' text-gray-700 max-w-3xl mx-auto leading-relaxed text-center'>
           Aligned with RCCG's vision, we empower teens to live as bold, godly leaders.
           Through Scripture-based teachings, testimonies, and small groups, we tackle real-life challenges - peer pressure, identity, purpose - and discover biblical solutions. Our focus on prayer, accountability, and John 3:16 ("For God so love the world, that he gave his only begotten Son, that whosoever believeth in him should not perish, but have everlasting life.") builds resilience and unwavering faith and love.
         </p>
 
 
-        <div className="text-center mt-9">
+        {/* Teachers Section */}
+        <div className="text-center mt-9 w-full">
           <h2 className="text-3xl md:text-6xl mb-6 bg-linear-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">
             Our Teachers
           </h2>
 
-          <div className='grid md:grid-cols-2 lg:grid-cols-4 gap-6 px-6'>
+          {/* Responsive Grid Setup */}
+          <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto'>
             {teachers.map((teacher) => (
-              <div key={teacher.name} className='bg-card text-card-foreground flex flex-col gap-6 rounded-xl overflow-hidden bg-gray-100 shadow-lg hover:shadow-2xl hover-translate-y-2 transition-all border-0'>
+              <div key={teacher.name} className='bg-card text-card-foreground flex flex-col gap-6 rounded-xl overflow-hidden bg-gray-100 shadow-lg hover:shadow-2xl hover:translate-y-2 transition-all border-0'>
                 <div
-                  className="w-full cursor-pointer" 
-                  onClick={() => handleImageClick(teacher.image)} 
+                  className="w-full h-[300px] cursor-pointer relative" // Fixed height, relative
+                  onClick={() => handleImageClick(teacher.image)}
                 >
-                  <img src={teacher.image} alt={teacher.name} className='h-[300px] w-full object-cover' />
+                  {/* Image with fill and object-cover */}
+                  <Image
+                    src={teacher.image}
+                    alt={teacher.name}
+                    fill
+                    className='object-cover'
+                    sizes="(max-width: 768px) 50vw, 25vw"
+                  />
                 </div>
 
-                <div className="content px-2 pb-1 text-start">
+                <div className="content px-4 pb-4 text-start">
                   <h2 className='font-semibold text-xl'>{teacher.name}</h2>
                   <p className="mt-3">
                     <b>Post: </b>
@@ -110,18 +139,27 @@ const Page: React.FC = () => {
           </div>
         </div>
 
-        <div className="text-center mt-9">
+        {/* Medias Section */}
+        <div className="text-center mt-9 mb-10 w-full">
           <h2 className="text-3xl md:text-6xl mb-6 bg-linear-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">
             Medias
           </h2>
 
-          <div className='grid md:grid-cols-2 lg:grid-cols-4 gap-6 px-6'>
+          {/* Responsive Grid Setup */}
+          <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto'>
             {medias.map((media) => (
-              <div key={media.id} className='bg-card text-card-foreground flex flex-col gap-6 rounded-xl overflow-hidden bg-gray-100 shadow-lg hover:shadow-2xl hover-translate-y-2 transition-all border-0'>
-                <img
+              <div
+                key={media.id}
+                className='bg-card text-card-foreground flex flex-col rounded-xl overflow-hidden bg-gray-100 shadow-lg hover:shadow-2xl hover:translate-y-2 transition-all border-0 aspect-square relative' // aspect-square, relative
+                onClick={() => handleImageClick(media.image)}
+              >
+                {/* Image with fill and object-cover */}
+                <Image
                   src={media.image}
-                  className='w-full h-full object-cover cursor-pointer' 
-                  onClick={() => handleImageClick(media.image)} 
+                  alt={`Media ${media.id}`}
+                  fill
+                  className='object-cover cursor-pointer'
+                  sizes="(max-width: 768px) 50vw, 25vw"
                 />
               </div>
             ))}

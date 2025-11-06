@@ -1,8 +1,9 @@
-// components/ImagePreview.tsx
+// components/hooks/ImagePreview.tsx
 'use client'
 import React, { useEffect } from 'react';
+import Image from 'next/image'; // IMPORT NEXT.JS IMAGE
 
-// 1. Define the component's props interface
+// Define the component's props interface
 interface ImagePreviewProps {
   /** The URL of the image to display. Null hides the modal. */
   imageUrl: string | null;
@@ -11,7 +12,7 @@ interface ImagePreviewProps {
 }
 
 const ImagePreview: React.FC<ImagePreviewProps> = ({ imageUrl, onClose }) => {
-  // Add keyboard support (closing with the Esc key)
+  // ... (useEffect for Esc key remains the same) ...
   useEffect(() => {
     const handleKeydown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
@@ -26,38 +27,39 @@ const ImagePreview: React.FC<ImagePreviewProps> = ({ imageUrl, onClose }) => {
     return () => {
       document.removeEventListener('keydown', handleKeydown);
     };
-  }, [imageUrl, onClose]); // Re-run effect when imageUrl or onClose changes
+  }, [imageUrl, onClose]);
 
   if (!imageUrl) {
     return null;
   }
 
   return (
-    // Backdrop: Fixed, full-screen, semi-transparent black.
     <div
       className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-90 backdrop-blur-sm transition-opacity duration-300"
-      onClick={onClose} // Close on backdrop click
+      onClick={onClose}
     >
-      {/* Modal Content container: Stop propagation so clicking the content doesn't close it */}
+      {/* Modal Content container: must be relative and define size for Image fill */}
       <div
         className="relative max-w-[90vw] max-h-[90vh] p-4"
+        style={{ width: '90vw', height: '90vh' }} // Explicitly define size
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Close Button */}
+        {/* Close Button remains the same */}
         <button
           className="absolute top-4 right-4 text-white hover:text-gray-300 transition-colors z-50 p-2 rounded-full bg-black bg-opacity-50"
           onClick={onClose}
           aria-label="Close image preview"
         >
-          {/* Simple X icon */}
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 6 6 18" /><path d="m6 6 12 12" /></svg>
         </button>
 
-        {/* Image Display */}
-        <img
+        {/* Swapped <img> for Next.js Image with fill prop */}
+        <Image
           src={imageUrl}
           alt="Preview"
-          className="max-w-full max-h-full object-contain shadow-2xl rounded-lg"
+          fill // Fills the defined 90vw/90vh parent container
+          className="object-contain shadow-2xl rounded-lg" // object-contain is crucial for preview
+          sizes="90vw" // Helps Next.js optimize the preview image size
         />
       </div>
     </div>
