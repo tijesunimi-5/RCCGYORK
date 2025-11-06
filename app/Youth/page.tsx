@@ -57,7 +57,7 @@ const Page: React.FC = () => {
       <div className=' h-[75vh] overflow-hidden relative w-screen'>
         {/* Use Image component for optimization and fill for banner */}
         <Image
-          src="/youth/youth-bg.jpg"
+          src="/youth/youth-bg.png"
           alt="Youth Banner"
           fill
           className=' top-0 w-full h-full object-cover z-20'

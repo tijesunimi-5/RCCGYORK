@@ -17,11 +17,17 @@ const Ministers: React.FC = () => {
     {
       id: 1,
       name: "Pst. Olusola Osundeko & Pst. Teniola Osundeko",
-      image: "/nsnrp.jpg",
+      image: "/nsnr.jpg",
       post: "Senior Pastors"
     },
     {
       id: 2,
+      name: "Pastor Kayode Adewunmi",
+      image: "/pkayode.jpg",
+      post: "Senior Assistant Pastor"
+    },
+    {
+      id: 3,
       name: "Pastor Olalekan Aderibigbe",
       image: "/plekan.jpg",
       post: "Assistant Pastor"
@@ -71,7 +77,7 @@ const Ministers: React.FC = () => {
             className='bg-card text-card-foreground flex flex-col gap-6 rounded-xl overflow-hidden bg-gray-100 shadow-lg hover:shadow-2xl hover-translate-y-2 transition-all border-0'
           >
             {/* 2. Parent Container Setup: Must be relative and have dimensions */}
-            <div className='w-full h-[300px] relative'>
+            <div className='w-full h-[400px] relative'>
               {/* 3. Replace <img> with Image component, using fill and object-cover */}
               <Image
                 src={minister.image}

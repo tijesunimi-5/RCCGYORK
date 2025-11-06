@@ -53,7 +53,7 @@ const Page: React.FC = () => {
       <div className='pt-20 h-[80vh] overflow-hidden relative w-screen'>
         {/* object-cover is fine here as it's a banner and cropping is expected/desired */}
         <Image
-          src="/children/child.jpg"
+          src="/children/child.png"
           alt="Children Church"
           fill
           className='top-0 w-full h-full object-cover z-20'

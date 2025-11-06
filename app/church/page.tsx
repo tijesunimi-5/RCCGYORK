@@ -46,7 +46,7 @@ const Page: React.FC = () => {
       <div className='pt-20 h-[80vh] overflow-hidden relative w-screen'>
         {/* Swapped <img> for Next.js Image with fill prop */}
         <Image
-          src="/youth/yasm.jpg"
+          src="/youth/yasm.png"
           alt="Youth Adults & Single Ministry"
           fill
           className='top-0 w-full h-full object-cover z-20'
