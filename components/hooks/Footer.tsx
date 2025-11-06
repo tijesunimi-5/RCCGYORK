@@ -83,7 +83,7 @@ export function Footer() {
                 </div>
                 <span>livingspringyork@gmail.com</span>
               </a>
-              <a href="tel:717-919-3033" className="flex items-center gap-3 text-gray-400 hover:text-red-400 transition-colors group">
+              <a href="tel:717-525-4148" className="flex items-center gap-3 text-gray-400 hover:text-red-400 transition-colors group">
                 <div className="p-2 bg-gray-800 rounded-lg group-hover:bg-red-900/30 transition-colors">
                   <FaPhone className="h-4 w-4" />
                 </div>

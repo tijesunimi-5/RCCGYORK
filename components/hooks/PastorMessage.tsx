@@ -63,7 +63,7 @@ export function PastorMessage() {
                 </p>
                 <div>
                   <p className="text-3xl bg-linear-to-r from-red-700 to-red-900 bg-clip-text text-transparent">
-                    Pastor Olusola Osundeko & Pst. Teniola Osundeko
+                    Pastor Olusola Osundeko & Pastor Teniola Osundeko
                   </p>
                   <p className="text-gray-600 mt-1">
                     Parish Pastors, RCCG Living Spring
@@ -86,7 +86,7 @@ export function PastorMessage() {
               <div className="relative transform -rotate-2 group-hover:rotate-0 transition-transform duration-500">
                 <div className="overflow-hidden rounded-3xl shadow-2xl ring-4 ring-white">
                   <img
-                    src="/senior.jpg"
+                    src="/nsnrp.jpg"
                     alt="Pastor"
                     className="w-full h-auto object-cover aspect-4/5 group-hover:scale-105 transition-transform duration-700"
                   />
