@@ -48,7 +48,7 @@ export function ServiceTimes() {
       day: "Every Second Thursday of the Month",
       time: "9:00 PM - 10:00 PM",
       description: 'Deep dive into God\'s Word with practical application for daily living.',
-      location: "On Phone (Dial 717-251-1271)",
+      location: "On Phone (Dial 717-251-1272)",
       live: true,
       // featured: true
     },
@@ -64,7 +64,7 @@ export function ServiceTimes() {
       title: 'Solution Hour Prayers',
       day: 'Every Saturday',
       time: '12:30 PM - 2:00 PM',
-      location: 'Main Sanctuary (Dial 717-919-3033)',
+      location: 'Main Sanctuary (Dial 717-251-1272)',
       description: 'An evening of fervent prayer, praise, and prophetic ministry.',
       live: true,
     },
@@ -73,7 +73,7 @@ export function ServiceTimes() {
       day: 'Every Last Day Of The Month',
       time: '11:30 PM - 12:30 AM',
       location: 'Dial 717-251-1272',
-      description: 'All-night vigil for intercession, breakthrough, and miracles.',
+      description: 'Ushering in the new month with communion with God and speaking positivity into our expectations.',
       live: false,
     },
     {
@@ -81,7 +81,7 @@ export function ServiceTimes() {
       day: 'Every Friday',
       time: '3:00 PM - 7:00 PM',
       location: 'Main Sanctuary',
-      description: 'Providing spiritual counseling and advice to every souls that needs it.',
+      description: 'Providing spiritual counseling and advice to every soul that needs it.',
       live: false,
     },
   ];

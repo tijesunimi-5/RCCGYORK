@@ -22,7 +22,7 @@ const Page: React.FC = () => {
 
   const president = {
     name: "Mr Charles Kennedy",
-    post: "Youth President",
+    post: "YASM President",
     image: "/mCharles.jpg"
   }
 
@@ -63,10 +63,10 @@ const Page: React.FC = () => {
       <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative w-full'>
         {/* ... (Text content remains the same) ... */}
         <h1 className='text-4xl md:text-6xl mb-6 bg-linear-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent text-center mt-10'>
-          Welcome to Young Adults & Single Ministry
+          Welcome to Young Adults & Singles Ministry
         </h1>
         <p className='text-gray-700 max-w-3xl mx-auto leading-relaxed text-balance text-center'>
-          The Young Adults and Single Ministry at Living Spring, York is a place where young adults (ages 19 to 40), professionals, and university students unite to ignite their faith and shine as beacons of light in a generation hungry for Jesus Christ's glory! We are a vibrant, Christ-centered community passionate about making God's kingdom a reality in our lives and our world.
+          The Young Adults and Singles Ministry at Living Spring, York is a place where young adults (ages 19 to 40), professionals, and university students unite to ignite their faith and shine as beacons of light in a generation hungry for Jesus Christ's glory! We are a vibrant, Christ-centered community passionate about making God's kingdom a reality in our lives and our world.
         </p>
       </div>
 

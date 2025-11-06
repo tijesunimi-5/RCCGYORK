@@ -22,9 +22,9 @@ const Ministers: React.FC = () => {
     },
     {
       id: 2,
-      name: "Pastor Kayode Adewunmi",
+      name: "Pastor Kayode Adewumi",
       image: "/pkayode.jpg",
-      post: "Senior Assistant Pastor"
+      post: "Resident Pastor"
     },
     {
       id: 3,
@@ -34,20 +34,21 @@ const Ministers: React.FC = () => {
     },
     {
       id: 5,
-      name: "Elder Quemilin Bull",
+      name: "Elder Quemiline Bull",
       image: "/elderque.jpg",
-      post: ""
+      post: "Elder"
     },
     {
       id: 6,
       name: "Deaconness Amma Nsiah",
       image: "/Deaconess.jpg",
-      post: ""
+      post: "Deaconess"
     },
     {
       id: 7,
       name: "Pastor Jumoke Obadofin-Thomas",
-      image: "/pJum.jpg"
+      image: "/pJum.jpg",
+      post: "Assistant Pastor"
     },
   ]
 

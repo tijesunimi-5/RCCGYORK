@@ -48,7 +48,7 @@ export function PastorMessage() {
                   a community of believers who are equipped to fulfill their divine purpose.
                 </p>
                 <p className="text-lg">
-                  I invite you to join us as we pursue God's presence, grow in faith, and
+                  We invite you to join us as we pursue God's presence, grow in faith, and
                   make a lasting impact in York and beyond. Together, we will take heaven
                   and as many people as possible with us.
                 </p>
