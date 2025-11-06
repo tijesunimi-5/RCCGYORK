@@ -146,7 +146,7 @@ const Page: React.FC = () => {
           </h2>
 
           {/* Responsive Grid Setup */}
-          <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto'>
+          <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto'>
             {medias.map((media) => (
               <div
                 key={media.id}
