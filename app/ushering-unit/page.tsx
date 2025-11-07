@@ -79,9 +79,9 @@ const Page: React.FC = () => {
         </div>
 
         <div className="media ">
-          <h2 className="text-3xl md:text-6xl mb-6 bg-linear-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent mt-10">
+          {/* <h2 className="text-3xl md:text-6xl mb-6 bg-linear-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent mt-10">
             Media Team
-          </h2>
+          </h2> */}
 
           <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6'>
             {medias.map((media) => (
