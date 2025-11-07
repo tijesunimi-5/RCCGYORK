@@ -83,7 +83,7 @@ const About = () => {
           <div className="grid md:grid-cols-2">
             <div className="relative h-full min-h-[400px]">
               <img
-                src="https://images.unsplash.com/photo-1638866413606-e070e7defe21?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjaHVyY2glMjBjb21tdW5pdHklMjBkaXZlcnNlfGVufDF8fHx8MTc2MTgxODU1MXww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+                src="/church-pic.jpg"
                 alt="Community gathering"
                 className="w-full h-full object-cover"
               />

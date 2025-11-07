@@ -87,7 +87,7 @@ export function Footer() {
                 <div className="p-2 bg-gray-800 rounded-lg group-hover:bg-red-900/30 transition-colors">
                   <FaPhone className="h-4 w-4" />
                 </div>
-                <span>717-919-3033</span>
+                <span>717-525-4148</span>
               </a>
               <a href="https://maps.google.com/maps/dir/?api=1&destination=1550+Eleventh+Ave,+York+PA+17402" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-gray-400 hover:text-red-400 transition-colors group">
                 <div className="p-2 bg-gray-800 rounded-lg group-hover:bg-red-900/30 transition-colors">

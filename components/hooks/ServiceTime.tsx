@@ -9,7 +9,7 @@ export function ServiceTimes() {
   const router = useRouter()
 
   const services = [
-    
+
     {
       title: 'Sunday Worship Service',
       day: 'Every Sunday',
@@ -114,7 +114,7 @@ export function ServiceTimes() {
               key={index}
               className={`group hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 border-0 overflow-hidden ${service.featured
                 ? 'ring-2 ring-red-700 shadow-xl bg-linear-to-br from-white to-red-50'
-                  : 'bg-white shadow-lg'
+                : 'bg-white shadow-lg'
                 }`}
             >
               {service.featured && (
