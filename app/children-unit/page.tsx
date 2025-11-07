@@ -23,6 +23,7 @@ const Page: React.FC = () => {
     { name: "Dr. Innocent Ononiwu", post: "Head of KidZone children's department", image: "/drinnocent.jpg" },
     { name: "Mrs. Helen Ugo-Onyeulo", post: "Age 3 - 5 teacher", image: "/children/helen.jpg" },
     { name: "Mrs. Bernarde Munoz", post: "Age 0 - 3 teacher", image: "/children/bern.jpg" },
+    { name: "Mrs. Fosua Amoah-Mensah", post: "Age 0 - 3 teacher", image: "/children/fosua.jpg" },
     { name: "Mrs. Judith Arimi-Musembi", post: "Age 7 - 8 teacher", image: "/children/mjud.jpg" },
   ]
 

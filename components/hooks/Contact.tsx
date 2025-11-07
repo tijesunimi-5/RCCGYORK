@@ -207,7 +207,7 @@ const Contact = () => {
                 <div className="text-center text-red-700 z-10">
                   <FaMapPin className="h-16 w-16 mx-auto mb-4" />
                   <p className="text-lg">RCCG York</p>
-                  <p className="text-sm">Champions' Chapel</p>
+                  <p className="text-sm">Living Spring</p>
                   <Button
                     variant="outline"
                     className="mt-4 border-red-700 text-red-700 hover:bg-red-700 hover:text-white"
