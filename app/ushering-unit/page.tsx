@@ -22,6 +22,7 @@ const Page: React.FC = () => {
     { name: "Mrs. Kehinde Kalejaiye", post: "Usher", image: "/ushers/usher3.jpg" },
     { name: "Mr. Idahosa Prince", post: "Usher", image: "/ushers/usher4.jpg" },
     { name: "Mrs. Oluwatomiwa Adewumi", post: "Usher", image: "/ushers/utom.jpg" },
+    { name: "Mr. Jean Dol", post: "Usher", image: "/ushers/dol.jpg" },
   ]
 
   const medias = [

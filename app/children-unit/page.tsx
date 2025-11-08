@@ -25,6 +25,7 @@ const Page: React.FC = () => {
     { name: "Mrs. Bernarde Munoz", post: "Age 0 - 3 teacher", image: "/children/bern.jpg" },
     { name: "Mrs. Fosua Amoah-Mensah", post: "Age 0 - 3 teacher", image: "/children/fosua.jpg" },
     { name: "Mrs. Judith Arimi-Musembi", post: "Age 7 - 8 teacher", image: "/children/mjud.jpg" },
+    { name: "Mrs. Lara Adebanjo", post: "Age 7 - 8 teacher", image: "/children/lara.jpg" },
   ]
 
   const medias: Media[] = [
