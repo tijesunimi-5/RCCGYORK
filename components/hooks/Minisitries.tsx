@@ -40,7 +40,7 @@ export function Ministries() {
       icon: FaPeopleGroup,
       title: "Women of Virtue",
       description:
-        "Join our choir, band, or media team to serve through worship and the arts.",
+        "The Women's Ministry at RCCG Living Spring York is a place where women of all ages and walks of life unite to glorify God through prayer, worship, and transformative Scripture study",
       color: "from-red-100 to-red-200",
       iconColor: "text-red-700",
       href: "/women-of-virtue"
