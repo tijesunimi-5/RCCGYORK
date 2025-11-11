@@ -45,7 +45,7 @@ const Page: React.FC = () => {
   };
 
   return (
-    <div className='w-full flex flex-col items-center justify-center '>
+    <div className='w-full flex flex-col items-center justify-center'>
       <ImagePreview
         imageUrl={selectedImage}
         onClose={handleClosePreview}
@@ -53,7 +53,7 @@ const Page: React.FC = () => {
 
       {/* Header Image Section - Using Image for clarity */}
       <div className='pt-20 h-[80vh] overflow-hidden relative w-screen'>
-        {/* object-cover is fine here as it's a banner and cropping is expected/desired */}
+       
         <Image
           src="/children/child.png"
           alt="Children Church"
@@ -91,15 +91,14 @@ const Page: React.FC = () => {
           {teachers.map((teacher) => (
             <div key={teacher.name} className='bg-card text-card-foreground flex flex-col gap-6 rounded-xl overflow-hidden bg-gray-100 shadow-lg hover:shadow-2xl hover:translate-y-2 transition-all border-0'>
               <div
-                className="w-full h-[450px] cursor-pointer relative" // Added relative
+                className="w-full h-[450px] cursor-pointer relative" 
                 onClick={() => handleImageClick(teacher.image)}
               >
-                {/* 2. Changed object-cover to object-contain, using Next.js Image */}
                 <Image
                   src={teacher.image}
                   alt={teacher.name}
                   fill
-                  className='object-cover' // Ensures the WHOLE image is visible
+                  className='object-cover'
                   sizes="(max-width: 768px) 50vw, 25vw"
                 />
               </div>

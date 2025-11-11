@@ -35,7 +35,7 @@ export function Ministries() {
     },
     {
       icon: FaMusic,
-      title: 'Worship Ministry',
+      title: 'Women of Virtue',
       description: 'Join our choir, band, or media team to serve through worship and the arts.',
       color: 'from-red-100 to-red-200',
       iconColor: 'text-red-700',
