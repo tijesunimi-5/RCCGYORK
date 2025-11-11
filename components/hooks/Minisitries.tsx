@@ -2,7 +2,7 @@
 
 import { FaBaby, FaBookOpen, FaGlobe, FaMusic, FaUser, FaUserCheck } from "react-icons/fa";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../UI/Card";
-import { FaArrowUpRightFromSquare, FaHeart } from "react-icons/fa6";
+import { FaArrowUpRightFromSquare, FaHeart, FaPeopleGroup } from "react-icons/fa6";
 import { GiSparkles } from "react-icons/gi";
 import { useRouter } from "next/navigation";
 
@@ -11,50 +11,57 @@ export function Ministries() {
   const ministries = [
     {
       icon: FaUser,
-      title: 'Adult Ministry',
-      description: 'Small groups, discipleship programs, and Bible studies for spiritual growth and maturity.',
-      color: 'from-blue-100 to-blue-200',
-      iconColor: 'text-blue-700',
-      href: "/church"
+      title: "Adult Ministry",
+      description:
+        "Small groups, discipleship programs, and Bible studies for spiritual growth and maturity.",
+      color: "from-blue-100 to-blue-200",
+      iconColor: "text-blue-700",
+      href: "/church",
     },
     {
       icon: GiSparkles,
-      title: 'Youth & Teens',
-      description: 'Dynamic programs for young people to grow in faith and discover their purpose.',
-      color: 'from-purple-100 to-purple-200',
-      iconColor: 'text-purple-700',
-      href: "/Youth"
+      title: "Youth & Teens",
+      description:
+        "Dynamic programs for young people to grow in faith and discover their purpose.",
+      color: "from-purple-100 to-purple-200",
+      iconColor: "text-purple-700",
+      href: "/Youth",
     },
     {
       icon: FaBaby,
       title: "Children's Church",
-      description: 'Age-appropriate teaching and activities that make learning about Jesus fun and engaging.',
-      color: 'from-pink-100 to-pink-200',
-      iconColor: 'text-pink-700',
-      href: "/children-unit"
+      description:
+        "Age-appropriate teaching and activities that make learning about Jesus fun and engaging.",
+      color: "from-pink-100 to-pink-200",
+      iconColor: "text-pink-700",
+      href: "/children-unit",
     },
     {
-      icon: FaMusic,
-      title: 'Women of Virtue',
-      description: 'Join our choir, band, or media team to serve through worship and the arts.',
-      color: 'from-red-100 to-red-200',
-      iconColor: 'text-red-700',
-      // href: "/worship"
+      icon: FaPeopleGroup,
+      title: "Women of Virtue",
+      description:
+        "Join our choir, band, or media team to serve through worship and the arts.",
+      color: "from-red-100 to-red-200",
+      iconColor: "text-red-700",
+      href: "/women-of-virtue"
     },
     {
       icon: FaUserCheck,
-      title: 'Ushering & Protocol',
-      description: 'First impressions team welcoming guests and ensuring orderly services.',
-      color: 'from-green-100 to-green-200',
-      iconColor: 'text-green-700',
-      href: "/ushering-unit"
+      title: "Ushering & Protocol",
+      description:
+        "First impressions team welcoming guests and ensuring orderly services.",
+      color: "from-green-100 to-green-200",
+      iconColor: "text-green-700",
+      href: "/ushering-unit",
     },
     {
       icon: FaBookOpen,
-      title: 'Prayer & Intercession',
-      description: 'Prayer warriors standing in the gap and seeking God for breakthroughs.',
-      color: 'from-indigo-100 to-indigo-200',
-      iconColor: 'text-indigo-700',
+      title: "Men of Valor",
+      description:
+        "Men of Valor is a place where men and young men unite to grow in faith, leadership, and service.",
+      color: "from-indigo-100 to-indigo-200",
+      iconColor: "text-indigo-700",
+      href: "/men-of-valor",
     },
     // {
     //   icon: FaHeart,
@@ -66,11 +73,12 @@ export function Ministries() {
     // },
     {
       icon: FaGlobe,
-      title: 'Missions & Outreach',
-      description: 'Taking the gospel beyond our walls through evangelism and community service.',
-      color: 'from-teal-100 to-teal-200',
-      iconColor: 'text-teal-700',
-      href: "/outreach"
+      title: "Missions & Outreach",
+      description:
+        "Taking the gospel beyond our walls through evangelism and community service.",
+      color: "from-teal-100 to-teal-200",
+      iconColor: "text-teal-700",
+      href: "/outreach",
     },
   ];
 

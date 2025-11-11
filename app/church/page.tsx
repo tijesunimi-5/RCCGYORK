@@ -41,10 +41,8 @@ const Page: React.FC = () => {
         onClose={handleClosePreview}
       />
 
-      {/* Header Image Section */}
-      {/* Container must be relative and have dimensions */}
+     
       <div className='pt-20 h-[80vh] overflow-hidden relative w-screen'>
-        {/* Swapped <img> for Next.js Image with fill prop */}
         <Image
           src="/youth/yasm.png"
           alt="Youth Adults & Single Ministry"
@@ -53,7 +51,6 @@ const Page: React.FC = () => {
         />
       </div>
 
-      {/* Background Blurs (Kept original positioning) */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-0 right-0 w-96 h-96 bg-red-100 rounded-full opacity-20 blur-3xl" />
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-100 rounded-full opacity-20 blur-3xl" />
