@@ -12,6 +12,7 @@ if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);
 }
 
+
 export function Ministries() {
   const router = useRouter()
   const ministries = [
@@ -69,6 +70,7 @@ export function Ministries() {
       iconColor: "text-indigo-700",
       href: "/men-of-valor",
     },
+
     {
       icon: FaGlobe,
       title: "Missions & Outreach",
@@ -128,6 +130,7 @@ export function Ministries() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         {/* === Header - Added class: js-ministry-header === */}
         <div className="text-center mb-16 js-ministry-header">
+
           <h2 className="text-5xl md:text-6xl mb-6 bg-linear-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">
             Our Ministries
           </h2>
@@ -145,6 +148,7 @@ export function Ministries() {
               <Card
                 key={ministry.title}
                 className="js-ministry-card group overflow-hidden border-0 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 bg-white relative"
+
               >
                 <CardHeader className="pb-4">
                   <div className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-linear-to-br ${ministry.color} mb-4 shadow-lg group-hover:scale-110 transition-transform`}>
@@ -172,3 +176,4 @@ export function Ministries() {
     </section>
   );
 }
+

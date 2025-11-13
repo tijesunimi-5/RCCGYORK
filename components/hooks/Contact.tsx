@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { CgMail } from 'react-icons/cg';
 import { FaClock, FaFacebook, FaMapPin, FaPhone, FaYoutube } from 'react-icons/fa';
+
 import { Card, CardContent, CardHeader, CardTitle } from '../UI/Card';
 import { Input } from '../UI/Input';
 import { Textarea } from '../UI/Textarea';
@@ -120,6 +121,7 @@ const Contact = () => {
 
   }, []);
 
+
   return (
     <section id="contact" className="py-24 bg-linear-to-br from-red-50 via-white to-gray-50 relative overflow-hidden">
       {/* Decorative Background */}
@@ -131,6 +133,7 @@ const Contact = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         {/* === Header - Added class: js-contact-header === */}
         <div className="text-center mb-16 js-contact-header">
+
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-linear-to-r from-red-100 to-red-50 text-red-700 rounded-full mb-6">
             <CgMail className="w-4 h-4" />
             <span>Connect With Us</span>
@@ -146,6 +149,7 @@ const Contact = () => {
         <div className="grid lg:grid-cols-2 gap-12">
           {/* Contact Form - Added class: js-contact-form */}
           <div className='relative z-10 js-contact-form'>
+
             <Card className="border-0 shadow-2xl bg-white z-10">
               <CardHeader>
                 <CardTitle className="text-3xl">Send Us a Message</CardTitle>
@@ -218,6 +222,7 @@ const Contact = () => {
           {/* Contact Information (Right Column) */}
           {/* === Wrapper for Stagger - Added class: js-contact-info-grid === */}
           <div className="space-y-6 js-contact-info-grid">
+
             <div className="grid sm:grid-cols-2 gap-6">
               {contactInfo.map((info) => {
                 const Icon = info.icon;
@@ -226,6 +231,7 @@ const Contact = () => {
                   <Card
                     key={info.title}
                     className="js-contact-info-card border-0 shadow-lg hover:shadow-xl transition-all hover:-translate-y-1 bg-white"
+
                   >
                     <CardContent className="pt-6">
                       <div className="flex items-start gap-4">
@@ -256,6 +262,7 @@ const Contact = () => {
 
             {/* Map Card - Added class: js-contact-info-card */}
             <Card className="js-contact-info-card border-0 shadow-xl overflow-hidden bg-white">
+
               <div className="h-64 bg-linear-to-br from-red-100 to-red-200 flex items-center justify-center relative overflow-hidden">
                 <div className="absolute inset-0 opacity-20">
                   <div className="absolute inset-0" style={{
@@ -280,6 +287,7 @@ const Contact = () => {
 
             {/* Social Media Card - Added class: js-contact-info-card */}
             <Card className="js-contact-info-card bg-linear-to-br from-red-700 via-red-800 to-red-900 text-white border-0 shadow-2xl overflow-hidden">
+
               <div className="absolute inset-0 opacity-10">
                 <div className="absolute inset-0" style={{
                   backgroundImage: `radial-gradient(circle at 2px 2px, white 1px, transparent 0)`,
@@ -318,3 +326,4 @@ const Contact = () => {
 }
 
 export default Contact
+

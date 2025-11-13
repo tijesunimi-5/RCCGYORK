@@ -21,6 +21,7 @@ const page = () => {
       <div className="pt-20 h-[80vh] overflow-hidden relative w-screen">
         <Image
           src="/men/mmain.jpg"
+
           alt="Children Church"
           fill
           className="top-0 w-full h-full object-cover z-20"

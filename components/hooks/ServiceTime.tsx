@@ -1,5 +1,6 @@
 "use client"
 import React, { useEffect } from 'react';
+
 import { FaArrowRight, FaCalendar, FaClock, FaMapPin, FaVideo } from "react-icons/fa";
 import { Button } from "../UI/Button";
 import { Card, CardContent, CardHeader } from "../UI/Card";
@@ -13,11 +14,13 @@ if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);
 }
 
+
 export function ServiceTimes() {
   const router = useRouter()
 
   const services = [
     // ... (services data remains the same)
+
     {
       title: 'Sunday Worship Service',
       day: 'Every Sunday',
@@ -34,6 +37,7 @@ export function ServiceTimes() {
       description: 'Deep dive into God\'s Word with practical application for daily living.',
       location: "Main Sanctuary ",
       live: false,
+
     },
     {
       title: "Youth Three Sixteen Sunday School",
@@ -57,6 +61,7 @@ export function ServiceTimes() {
       description: 'Deep dive into God\'s Word with practical application for daily living.',
       location: "On Phone (Dial 717-251-1272)",
       live: true,
+
     },
     {
       title: 'Morning Cry',
@@ -134,6 +139,7 @@ export function ServiceTimes() {
 
   }, []);
 
+
   return (
     <section id="service-times" className="py-24 bg-linear-to-b from-white via-gray-50 to-white relative overflow-hidden">
       {/* Decorative Background Elements */}
@@ -145,6 +151,7 @@ export function ServiceTimes() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         {/* === Header - class service-header for separate timing === */}
         <div className="text-center mb-16 service-header">
+
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-linear-to-r from-red-100 to-red-50 text-red-700 rounded-full mb-6">
             <FaCalendar className="w-4 h-4" />
             <span>Join Us</span>
@@ -217,6 +224,7 @@ export function ServiceTimes() {
 
         {/* === CTA Block - Added class: js-st-animate === */}
         <div className="js-st-animate relative bg-linear-to-br from-red-700 via-red-800 to-red-900 rounded-3xl p-8 md:p-12 text-white overflow-hidden shadow-2xl">
+
           {/* Decorative pattern */}
           <div className="absolute inset-0 opacity-10">
             <div className="absolute inset-0" style={{

@@ -141,6 +141,7 @@ export function PastorMessage() {
 
           {/* Pastor Image - Added class: js-pastor-image-block */}
           <div className="order-1 lg:order-2 js-pastor-image-block">
+
             <div className="relative group">
               {/* Decorative Background */}
               <div className="absolute inset-0 bg-linear-to-br from-red-600 to-red-800 rounded-3xl transform rotate-3 group-hover:rotate-6 transition-transform duration-500 shadow-2xl" />
@@ -164,6 +165,7 @@ export function PastorMessage() {
 
               {/* Floating Badge - Added class: js-pastor-badge */}
               <div className="absolute -bottom-6 -left-6 bg-white rounded-2xl shadow-2xl p-6 transform hover:scale-110 transition-transform js-pastor-badge">
+
                 <div className="flex items-center gap-3">
                   <div className="w-12 h-12 bg-linear-to-br from-red-100 to-red-200 rounded-full flex items-center justify-center">
                     <GiSparkles className="w-6 h-6 text-red-700" />

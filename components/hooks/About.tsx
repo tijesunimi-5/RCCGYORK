@@ -11,6 +11,7 @@ if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);
 }
 
+
 const About = () => {
   const values = [
     {
@@ -130,8 +131,8 @@ const About = () => {
               // === Values Card - Added class: js-about-animate ===
               <div
                 key={value.title}
-                className="js-about-animate group text-center p-8 rounded-2xl bg-linear-to-br from-white to-gray-50 hover:from-red-50 hover:to-white border border-gray-100 hover:border-red-200 transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
-              >
+                className="js-about-animate group text-center p-8 rounded-2xl bg-linear-to-br from-white to-gray-50 hover:from-red-50 hover:to-white border border-gray-100 hover:border-red-200 transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+
                 <div className="inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-linear-to-br from-red-100 to-red-200 group-hover:from-red-600 group-hover:to-red-700 transition-all duration-300 mb-6 shadow-lg group-hover:scale-110">
                   <Icon className="h-10 w-10 text-red-700 group-hover:text-white transition-colors" />
                 </div>
@@ -147,6 +148,7 @@ const About = () => {
           <div className="grid md:grid-cols-2">
             {/* === Story Image - Added class: js-story-image === */}
             <div className="relative h-full min-h-[400px] js-story-image">
+
               <img
                 src="/church-pic.jpg"
                 alt="Community gathering"
@@ -156,6 +158,7 @@ const About = () => {
             </div>
             {/* === Story Content - Added class: js-story-content === */}
             <div className="p-8 md:p-12 flex flex-col justify-center js-story-content">
+
               <div className="inline-flex items-center gap-2 px-4 py-2 bg-red-100 text-red-700 rounded-full mb-6 w-fit">
                 <FaBookOpen className="w-4 h-4" />
                 <span>Our Story</span>
@@ -178,6 +181,7 @@ const About = () => {
                 <p>
                   We aim to be a family-friendly church where love is not just an idea but a principle that undergird all that we do. We want our meetings to be opportunities to meet with God and for God to meet with His people. <br />
                   Our church aims to be a place where to be a place where members are baptized in the Holy Spirit and learn to walk in the Spirit all the days of their lives.
+
                 </p>
                 <p>
                   We aim to be a church where freshly baked spiritual bread is distributed weekly to feed the sheep. This church is a refuge for sinners, hospital for the sick, miracle center for the needy and a haven of rest for the weary. We aim to develop a people who are Christ-centered and eternity-focused, faithful in ensuring that His will is done on earth as it is in heaven.

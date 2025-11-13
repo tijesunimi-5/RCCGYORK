@@ -9,7 +9,6 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);
 }
-
 // Define the interface for Minister data
 interface Minister {
   id: number;
@@ -103,6 +102,7 @@ const Ministers: React.FC = () => {
 
   return (
     <div id='ministers' className='py-24 bg-linear-to-b from-white via-gray-50 to-white relative overflow-hidden'> {/* Adjusted padding to py-24 */}
+
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute -top-24 -right-24 w-96 h-96 bg-red-100 rounded-full opacity-20 blur-3xl" />
         <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-blue-100 rounded-full opacity-20 blur-3xl" />
@@ -111,6 +111,7 @@ const Ministers: React.FC = () => {
       <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative'>
         {/* === Header - Added class: js-ministers-header === */}
         <div className='text-center mb-16 js-ministers-header'>
+
           <h2 className="text-5xl md:text-6xl mb-6 bg-linear-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">
             Our Ministers
           </h2>
@@ -127,6 +128,7 @@ const Ministers: React.FC = () => {
           <div
             key={minister.id}
             className='js-minister-card bg-card text-card-foreground flex flex-col gap-6 rounded-xl overflow-hidden bg-gray-100 shadow-lg hover:shadow-2xl hover-translate-y-2 transition-all border-0'
+
           >
             {/* 2. Parent Container Setup: Must be relative and have dimensions */}
             <div className='w-full h-[400px] relative'>
