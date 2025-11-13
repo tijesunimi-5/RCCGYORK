@@ -2,17 +2,18 @@
 import React, { useEffect } from 'react';
 import { FaArrowRight, FaCalendar, FaClock, FaMapPin, FaVideo } from "react-icons/fa";
 import { Button } from "../UI/Button";
-// GSAP Imports
+// GSAP Imports - ScrollTrigger is still imported but not used in the logic
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 if (typeof window !== 'undefined') {
+  // We keep this check just in case, but ScrollTrigger logic is removed below
   gsap.registerPlugin(ScrollTrigger);
 }
 
 export function Hero() {
   const handleNavClick = (href: string) => {
-    // ... (Navigation function remains the same)
+    // Scroll handling function remains the same
     const element = document.querySelector(href);
     if (element) {
       const offset = 80;
@@ -30,6 +31,7 @@ export function Hero() {
     const tl = gsap.timeline({ defaults: { duration: 1, ease: "power3.out" } });
 
     // Ensure initial state is set
+    // We target the main content and the cards for the entrance
     gsap.set('.hero-content, .hero-card', { opacity: 0, y: 30 });
 
     tl.to('.hero-content', {
@@ -49,33 +51,13 @@ export function Hero() {
         y: 0,
         stagger: 0.15,
         duration: 0.8,
+        // Ensure this animation finalizes the state
+        clearProps: "all"
       }, "-=0.6");
 
 
-    // 2. Scroll Animation (Parallax and Fade Out) - UPDATED IMPLEMENTATION
-
-    // Create a timeline for the scroll-linked effect
-    const scrollTl = gsap.timeline({
-      scrollTrigger: {
-        trigger: '#home',
-        start: 'top top',
-        end: 'bottom top', // The animation should complete when the bottom of the hero hits the top of the viewport
-        scrub: true, // Smoothly link to scroll
-      }
-    });
-
-    // Animate the background and content on scroll
-    scrollTl
-      .to('.hero-bg-parallax', { // Background parallax/zoom effect
-        scale: 1.05, // Subtle zoom
-        y: 50, // Slight upward shift
-        ease: "none",
-      }, 0) // Start at time 0
-      .to('.hero-content', { // Content fade out
-        opacity: 0,
-        y: -50, // Slide up as it fades out
-        ease: "power1.in",
-      }, 0); // Start at time 0
+    // 2. Scroll Animation (Removed)
+    // All ScrollTrigger logic for parallax/fade has been removed.
 
   }, []);
 
@@ -83,24 +65,18 @@ export function Hero() {
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center pt-20">
       {/* Background Image with Deep Navy Blue Overlay */}
+      {/* We revert this back to the original fixed background setup since parallax is removed */}
       <div
-        className="absolute inset-0 z-0 overflow-hidden"
+        className="absolute inset-0 z-0"
         style={{
-          backgroundAttachment: 'fixed',
+          backgroundImage: 'url("/hero-bg.jpg")',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundAttachment: 'fixed', // Back to the original fixed attachment
         }}
       >
-        {/* Parallax Layer - NEW */}
-        <div
-          className="hero-bg-parallax absolute inset-0"
-          style={{
-            backgroundImage: 'url("/hero-bg.jpg")',
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-          }}
-        >
-          {/* UPDATED: Deep Navy Blue (Indigo-950) gradient for a rich, deep blue look */}
-          <div className="absolute inset-0 bg-linear-to-br from-indigo-950/90 via-indigo-900/80 to-black/80 hero-background-overlay" />
-        </div>
+        {/* UPDATED: Deep Navy Blue (Indigo-950) gradient for a rich, deep blue look */}
+        <div className="absolute inset-0 bg-linear-to-br from-indigo-950/90 via-indigo-900/80 to-black/80 hero-background-overlay" />
       </div>
 
       {/* Animated Gradient Overlay */}
@@ -108,7 +84,6 @@ export function Hero() {
 
       {/* Content */}
       <div className="relative z-10 text-center text-white px-4 max-w-5xl mx-auto py-20 hero-content">
-        {/* ... (Rest of the Hero content remains the same) ... */}
         {/* Main Heading */}
         <div className="mb-8">
           <div className="inline-block mb-4">

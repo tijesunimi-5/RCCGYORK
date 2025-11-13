@@ -1,12 +1,19 @@
 'use client'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react';
 import { CgMail } from 'react-icons/cg';
-import { FaClock, FaFacebook, FaInstagram, FaMapPin, FaPhone, FaTwitter, FaYoutube } from 'react-icons/fa';
+import { FaClock, FaFacebook, FaMapPin, FaPhone, FaYoutube } from 'react-icons/fa';
 import { Card, CardContent, CardHeader, CardTitle } from '../UI/Card';
 import { Input } from '../UI/Input';
 import { Textarea } from '../UI/Textarea';
 import { Button } from '../UI/Button';
 import { BiSend } from 'react-icons/bi';
+// GSAP Imports
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+if (typeof window !== 'undefined') {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -59,10 +66,59 @@ const Contact = () => {
 
   const socialLinks = [
     { icon: FaFacebook, href: 'https://facebook.com/share/19MTnpMvoe', label: 'Facebook' },
-    // { icon: FaInstagram, href: 'https://instagram.com', label: 'Instagram' },
     { icon: FaYoutube, href: 'https://youtube.com/@rccglivingspringyork9998?si=0Dgjg1NPHD5i49fa', label: 'YouTube' },
-    // { icon: FaTwitter, href: 'https://twitter.com', label: 'Twitter' },
   ];
+
+  useEffect(() => {
+    // 1. Animate Header (smooth slide up scrub)
+    const headerTarget: gsap.DOMTarget = '.js-contact-header';
+    gsap.set(headerTarget, { opacity: 0, y: 30 });
+    gsap.to(headerTarget, {
+      opacity: 1,
+      y: 0,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: headerTarget,
+        start: 'top 90%',
+        end: 'center 70%',
+        scrub: 1,
+      }
+    });
+
+    // 2. Animate Form (Smooth Slide from Left Scrub)
+    const formTarget: gsap.DOMTarget = '.js-contact-form';
+    gsap.set(formTarget, { opacity: 0, x: -50 }); // Smaller horizontal shift
+    gsap.to(formTarget, {
+      opacity: 1,
+      x: 0,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: formTarget,
+        start: 'top 85%',
+        end: 'center 60%',
+        scrub: 1.5,
+      }
+    });
+
+    // 3. Animate Right Side Cards (Individual Slide Up Scrub)
+    const cardTargets: gsap.DOMTarget[] = gsap.utils.toArray('.js-contact-info-card');
+
+    cardTargets.forEach((card) => {
+      gsap.set(card, { opacity: 0, y: 50 }); // Slide up from less distance
+      gsap.to(card, {
+        opacity: 1,
+        y: 0,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: card,
+          start: 'top 95%',
+          end: 'center 80%',
+          scrub: 1,
+        }
+      });
+    });
+
+  }, []);
 
   return (
     <section id="contact" className="py-24 bg-linear-to-br from-red-50 via-white to-gray-50 relative overflow-hidden">
@@ -73,7 +129,8 @@ const Contact = () => {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-        <div className="text-center mb-16">
+        {/* === Header - Added class: js-contact-header === */}
+        <div className="text-center mb-16 js-contact-header">
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-linear-to-r from-red-100 to-red-50 text-red-700 rounded-full mb-6">
             <CgMail className="w-4 h-4" />
             <span>Connect With Us</span>
@@ -87,8 +144,8 @@ const Contact = () => {
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12">
-          {/* Contact Form */}
-          <div className='relative z-10'>
+          {/* Contact Form - Added class: js-contact-form */}
+          <div className='relative z-10 js-contact-form'>
             <Card className="border-0 shadow-2xl bg-white z-10">
               <CardHeader>
                 <CardTitle className="text-3xl">Send Us a Message</CardTitle>
@@ -158,15 +215,17 @@ const Contact = () => {
             </Card>
           </div>
 
-          {/* Contact Information */}
-          <div className="space-y-6">
+          {/* Contact Information (Right Column) */}
+          {/* === Wrapper for Stagger - Added class: js-contact-info-grid === */}
+          <div className="space-y-6 js-contact-info-grid">
             <div className="grid sm:grid-cols-2 gap-6">
               {contactInfo.map((info) => {
                 const Icon = info.icon;
                 return (
+                  // === Info Cards - Added class: js-contact-info-card ===
                   <Card
                     key={info.title}
-                    className="border-0 shadow-lg hover:shadow-xl transition-all hover:-translate-y-1 bg-white"
+                    className="js-contact-info-card border-0 shadow-lg hover:shadow-xl transition-all hover:-translate-y-1 bg-white"
                   >
                     <CardContent className="pt-6">
                       <div className="flex items-start gap-4">
@@ -195,8 +254,8 @@ const Contact = () => {
               })}
             </div>
 
-            {/* Map Card */}
-            <Card className="border-0 shadow-xl overflow-hidden bg-white">
+            {/* Map Card - Added class: js-contact-info-card */}
+            <Card className="js-contact-info-card border-0 shadow-xl overflow-hidden bg-white">
               <div className="h-64 bg-linear-to-br from-red-100 to-red-200 flex items-center justify-center relative overflow-hidden">
                 <div className="absolute inset-0 opacity-20">
                   <div className="absolute inset-0" style={{
@@ -219,8 +278,8 @@ const Contact = () => {
               </div>
             </Card>
 
-            {/* Social Media Card */}
-            <Card className="bg-linear-to-br from-red-700 via-red-800 to-red-900 text-white border-0 shadow-2xl overflow-hidden">
+            {/* Social Media Card - Added class: js-contact-info-card */}
+            <Card className="js-contact-info-card bg-linear-to-br from-red-700 via-red-800 to-red-900 text-white border-0 shadow-2xl overflow-hidden">
               <div className="absolute inset-0 opacity-10">
                 <div className="absolute inset-0" style={{
                   backgroundImage: `radial-gradient(circle at 2px 2px, white 1px, transparent 0)`,

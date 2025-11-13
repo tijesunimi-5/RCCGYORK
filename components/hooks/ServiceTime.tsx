@@ -93,38 +93,44 @@ export function ServiceTimes() {
   ];
 
   useEffect(() => {
-    // Hide all animated elements initially
-    gsap.set('.service-header, .service-card, .service-cta', { opacity: 0, y: 50 });
+    // Collect all elements we want to animate
+    const elementsToAnimate = gsap.utils.toArray('.js-st-animate') as gsap.DOMTarget[];
 
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: '#service-times', // Trigger the animation when the section starts to enter the viewport
-        start: 'top 80%', // Start when the top of the section is 80% down the viewport
-        toggleActions: 'play none none none', // Only play the animation once
-        once: true,
-      }
+    elementsToAnimate.forEach((element, i) => {
+      const target = element as gsap.DOMTarget;
+
+      // Initial state: shifted down and invisible
+      gsap.set(target, { opacity: 0, y: 80 });
+
+      // Animate to final state, scrubbing with the scroll
+      gsap.to(target, {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        ease: 'none', // Use 'none' for pure scrub linking
+        scrollTrigger: {
+          trigger: target,
+          start: 'top 95%', // Start early, when element is near the bottom
+          end: 'center 70%', // End earlier, so the animation is complete sooner
+          scrub: 1, // Smoothly link the animation to the scroll
+        }
+      });
     });
 
-    tl.to('.service-header', {
+    // We can handle the header separately for a slight delay if needed
+    gsap.set('.service-header', { opacity: 0, y: 50 });
+    gsap.to('.service-header', {
       opacity: 1,
       y: 0,
       duration: 1,
-      ease: 'power3.out',
-    })
-      .to('.service-card', {
-        opacity: 1,
-        y: 0,
-        stagger: 0.1, // Stagger the cards for a ripple effect
-        duration: 0.8,
-        ease: 'back.out(1.2)',
-      }, '-=0.5') // Start cards before the header animation finishes
-      .to('.service-cta', {
-        opacity: 1,
-        y: 0,
-        scale: 1,
-        duration: 1,
-        ease: 'power3.out'
-      }, '-=0.3'); // Start CTA block slightly before cards finish
+      ease: 'none',
+      scrollTrigger: {
+        trigger: '.service-header',
+        start: 'top 95%',
+        end: 'center 70%',
+        scrub: 1,
+      }
+    });
 
   }, []);
 
@@ -137,7 +143,7 @@ export function ServiceTimes() {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-        {/* === Header - Added class: service-header === */}
+        {/* === Header - class service-header for separate timing === */}
         <div className="text-center mb-16 service-header">
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-linear-to-r from-red-100 to-red-50 text-red-700 rounded-full mb-6">
             <FaCalendar className="w-4 h-4" />
@@ -154,10 +160,10 @@ export function ServiceTimes() {
         {/* === Service Cards Grid === */}
         <div className="grid md:grid-cols-2 gap-6 mb-12">
           {services.map((service, index) => (
-            // === Card - Added class: service-card ===
+            // === Card - Added class: js-st-animate for general scroll scrub ===
             <Card
               key={index}
-              className={`service-card group hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 border-0 overflow-hidden ${service.featured
+              className={`js-st-animate group hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 border-0 overflow-hidden ${service.featured
                 ? 'ring-2 ring-red-700 shadow-xl bg-linear-to-br from-white to-red-50'
                 : 'bg-white shadow-lg'
                 }`}
@@ -209,8 +215,8 @@ export function ServiceTimes() {
           ))}
         </div>
 
-        {/* === CTA Block - Added class: service-cta === */}
-        <div className="service-cta relative bg-linear-to-br from-red-700 via-red-800 to-red-900 rounded-3xl p-8 md:p-12 text-white overflow-hidden shadow-2xl">
+        {/* === CTA Block - Added class: js-st-animate === */}
+        <div className="js-st-animate relative bg-linear-to-br from-red-700 via-red-800 to-red-900 rounded-3xl p-8 md:p-12 text-white overflow-hidden shadow-2xl">
           {/* Decorative pattern */}
           <div className="absolute inset-0 opacity-10">
             <div className="absolute inset-0" style={{

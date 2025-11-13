@@ -1,9 +1,74 @@
 'use client'
-
+import React, { useEffect } from 'react';
 import { BsQuote } from "react-icons/bs";
 import { GiSparkles } from "react-icons/gi";
+// GSAP Imports
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+if (typeof window !== 'undefined') {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 export function PastorMessage() {
+
+  useEffect(() => {
+    // === TypeScript-safe GSAP implementation ===
+
+    // We target the main containers of the grid columns
+    const contentTarget: gsap.DOMTarget = '.js-pastor-content';
+    const imageTarget: gsap.DOMTarget = '.js-pastor-image-block';
+
+    // 1. Content Block (Slides from Left)
+    gsap.set(contentTarget, { opacity: 0, x: -100 });
+    gsap.to(contentTarget, {
+      opacity: 1,
+      x: 0,
+      duration: 1,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: contentTarget,
+        start: 'top 90%', // Start when the element is near the bottom
+        end: 'center 60%', // Animation completes quickly
+        scrub: 1,
+      }
+    });
+
+    // 2. Image Block (Slides from Right)
+    gsap.set(imageTarget, { opacity: 0, x: 100 });
+    gsap.to(imageTarget, {
+      opacity: 1,
+      x: 0,
+      duration: 1,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: imageTarget,
+        start: 'top 90%', // Use the same start for synchronization
+        end: 'center 60%',
+        scrub: 1,
+      }
+    });
+
+    // 3. Floating Badge (Subtle extra slide/pop effect)
+    const badgeTarget: gsap.DOMTarget = '.js-pastor-badge';
+    gsap.set(badgeTarget, { opacity: 0, scale: 0.8, y: 50 });
+    gsap.to(badgeTarget, {
+      opacity: 1,
+      scale: 1,
+      y: 0,
+      duration: 1,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: imageTarget, // Triggered by the image block's entry
+        start: 'top 80%',
+        end: 'center 70%',
+        scrub: 1,
+      }
+    });
+
+
+  }, []);
+
   return (
     <section className="py-24 bg-linear-to-br from-red-50 via-white to-gray-50 relative overflow-hidden">
       {/* Decorative Background Elements */}
@@ -14,8 +79,9 @@ export function PastorMessage() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          {/* Content */}
-          <div className="order-2 lg:order-1">
+
+          {/* Content - Added class: js-pastor-content */}
+          <div className="order-2 lg:order-1 js-pastor-content">
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-linear-to-r from-red-100 to-red-50 text-red-700 rounded-full mb-6">
               <GiSparkles className="w-4 h-4" />
               <span>From Our Pastor</span>
@@ -73,8 +139,8 @@ export function PastorMessage() {
             </div>
           </div>
 
-          {/* Pastor Image */}
-          <div className="order-1 lg:order-2">
+          {/* Pastor Image - Added class: js-pastor-image-block */}
+          <div className="order-1 lg:order-2 js-pastor-image-block">
             <div className="relative group">
               {/* Decorative Background */}
               <div className="absolute inset-0 bg-linear-to-br from-red-600 to-red-800 rounded-3xl transform rotate-3 group-hover:rotate-6 transition-transform duration-500 shadow-2xl" />
@@ -96,8 +162,8 @@ export function PastorMessage() {
                 </div>
               </div>
 
-              {/* Floating Badge */}
-              <div className="absolute -bottom-6 -left-6 bg-white rounded-2xl shadow-2xl p-6 transform hover:scale-110 transition-transform">
+              {/* Floating Badge - Added class: js-pastor-badge */}
+              <div className="absolute -bottom-6 -left-6 bg-white rounded-2xl shadow-2xl p-6 transform hover:scale-110 transition-transform js-pastor-badge">
                 <div className="flex items-center gap-3">
                   <div className="w-12 h-12 bg-linear-to-br from-red-100 to-red-200 rounded-full flex items-center justify-center">
                     <GiSparkles className="w-6 h-6 text-red-700" />
