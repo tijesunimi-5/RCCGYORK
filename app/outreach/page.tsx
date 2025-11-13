@@ -40,7 +40,7 @@ const page = () => {
   const streetEvang = [
     { id: 1, image: "/outreach/outreach.jpg", text: "first" },
     { id: 2, image: "/outreach/outreach2.jpg", text: "second" },
-    { id: 3, image: "/outreach/outreach3.jpg", text: "third" },
+    { id: 3, image: "/outreach/street.jpg", text: "third" },
   ];
 
   return (
@@ -50,7 +50,7 @@ const page = () => {
       {/* Header Image Section - Using Image for clarity */}
       <div className="pt-20 h-[80vh] overflow-hidden relative w-screen">
         <Image
-          src="/children/child.png"
+          src="/outreach/smain.jpg"
           alt="Children Church"
           fill
           className="top-0 w-full h-full object-cover z-20"

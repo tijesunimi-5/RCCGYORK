@@ -20,7 +20,7 @@ const page = () => {
       <ImagePreview imageUrl={selectedImage} onClose={handleClosePreview} />
       <div className="pt-20 h-[80vh] overflow-hidden relative w-screen">
         <Image
-          src="/men/men.jpg"
+          src="/men/mmain.jpg"
           alt="Children Church"
           fill
           className="top-0 w-full h-full object-cover z-20"
