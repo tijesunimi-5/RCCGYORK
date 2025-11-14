@@ -1,20 +1,45 @@
-import mongoose from "mongoose";
+import { MongoClient, ServerApiVersion } from "mongodb";
 
-const MONGODB_URI = process.env.MONGODB_URI as string;
+// Ensure your URI is in a .env.local file
+const uri = process.env.MONGODB_URI;
 
-if (!MONGODB_URI) {
-  throw new Error("Please define the MONGODB_URI environment variable");
+if (!uri) {
+  throw new Error(
+    "Please define the MONGODB_URI environment variable inside .env.local"
+  );
 }
 
-let cached = (global as any).mongoose || { conn: null, promise: null };
+let client: MongoClient;
+let clientPromise: Promise<MongoClient>;
 
-export async function connectDB() {
-  if (cached.conn) return cached.conn;
+if (process.env.NODE_ENV === "development") {
+  // In development mode, use a global variable so the client is preserved across module reloads
+  let globalWithMongo = global as typeof globalThis & {
+    _mongoClientPromise?: Promise<MongoClient>;
+  };
 
-  if (!cached.promise) {
-    cached.promise = mongoose.connect(MONGODB_URI).then((m) => m);
+  if (!globalWithMongo._mongoClientPromise) {
+    client = new MongoClient(uri, {
+      serverApi: {
+        version: ServerApiVersion.v1,
+        strict: true,
+        deprecationErrors: true,
+      },
+    });
+    globalWithMongo._mongoClientPromise = client.connect();
   }
-
-  cached.conn = await cached.promise;
-  return cached.conn;
+  clientPromise = globalWithMongo._mongoClientPromise;
+} else {
+  // In production mode, connect normally
+  client = new MongoClient(uri, {
+    serverApi: {
+      version: ServerApiVersion.v1,
+      strict: true,
+      deprecationErrors: true,
+    },
+  });
+  clientPromise = client.connect();
 }
+
+// Export a MongoClient promise. You can use it in your API routes.
+export default clientPromise;

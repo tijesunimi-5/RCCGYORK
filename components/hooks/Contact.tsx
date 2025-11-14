@@ -24,21 +24,44 @@ const Contact = () => {
     phone: '',
     message: '',
   });
+  const [isSubmitting, setIsSubmitting] = useState(false); // New state for loading/button control
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => { // Added 'async'
     e.preventDefault();
-    // Handle form submission
-    console.log('Form submitted:', formData);
-    alert('Thank you for your message! We will get back to you soon.');
-    setFormData({
-      firstName: '',
-      lastName: '',
-      email: '',
-      phone: '',
-      message: '',
-    });
-  };
 
+    if (isSubmitting) return; // Prevent double submission
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch('/api/messages', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        alert('Thank you for your message! We will get back to you soon.');
+        setFormData({
+          firstName: '',
+          lastName: '',
+          email: '',
+          phone: '',
+          message: '',
+        });
+      } else {
+        // Handle API errors (e.g., failed validation, server error)
+        const errorData = await response.json();
+        alert(`Failed to send message: ${errorData.message || response.statusText}`);
+      }
+    } catch (error) {
+      console.error('Submission Error:', error);
+      alert('An unexpected error occurred. Please try again later.');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
   const contactInfo = [
     {
       icon: FaMapPin,
@@ -210,8 +233,9 @@ const Contact = () => {
                     type="submit"
                     className="w-full bg-linear-to-r from-red-700 to-red-800 hover:from-red-800 hover:to-red-900 shadow-lg hover:shadow-xl transition-all group"
                     size="lg"
+                    disabled={isSubmitting} // Disable button while submitting
                   >
-                    Send Message
+                    {isSubmitting ? 'Sending...' : 'Send Message'}
                     <BiSend className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
                   </Button>
                 </form>

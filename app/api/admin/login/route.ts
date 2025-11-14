@@ -1,81 +1,75 @@
-// import { NextResponse } from "next/server";
-// import bcrypt from "bcryptjs";
-// import jwt from "jsonwebtoken";
-// import {connectDB} from "@/lib/mongodb";
-// import Admin from "../../../../lib/models/Admin";
-
-// const SECRET = process.env.JWT_SECRET!;
-
-// export async function POST(req: Request) {
-//   try {
-//     await connectDB();
-//     const { email, password } = await req.json();
-
-//     const admin = await Admin.findOne({ email });
-//     if (!admin) {
-//       return NextResponse.json(
-//         { message: "Invalid email or password" },
-//         { status: 401 }
-//       );
-//     }
-
-//     const validPassword = await bcrypt.compare(password, admin.password);
-//     if (!validPassword) {
-//       return NextResponse.json(
-//         { message: "Invalid email or password" },
-//         { status: 401 }
-//       );
-//     }
-
-//     // Create JWT token with 10 minutes expiry
-//     const token = jwt.sign(
-//       { email: admin.email },
-//       SECRET,
-//       { expiresIn: "10m" } // <--- 10 minutes
-//     );
-
-//     const response = NextResponse.json({ message: "Login successful" });
-
-//     // Set cookie for session tracking
-//     response.cookies.set("admin_token", token, {
-//       httpOnly: true,
-//       secure: process.env.NODE_ENV === "production",
-//       sameSite: "strict",
-//       path: "/",
-//       maxAge: 600, // 10 minutes
-//     });
-
-//     return response;
-//   } catch (error) {
-//     console.error(error);
-//     return NextResponse.json({ message: "Server error" }, { status: 500 });
-//   }
-// }
-
-// /app/api/admin/login/route.ts
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
-import { connectDB } from "@/lib/mongodb";
-import Admin from "@/lib/models/Admin";
+import pool from "@/lib/pg"; // Import PG pool
 
-export async function POST(req: Request) {
+// 1 hour in seconds
+const TOKEN_MAX_AGE = 3600;
+
+export async function POST(req: NextRequest) {
   try {
-    await connectDB();
-    const { email, password } = await req.json();
+    const { username, password } = await req.json();
 
-    const admin = await Admin.findOne({ email });
-    if (!admin) return NextResponse.json({ error: "Invalid credentials" }, { status: 400 });
+    if (!username || !password) {
+      return NextResponse.json(
+        { message: "Missing username or password" },
+        { status: 400 }
+      );
+    }
 
-    const valid = await bcrypt.compare(password, admin.password);
-    if (!valid) return NextResponse.json({ error: "Invalid credentials" }, { status: 400 });
+    // 1. Fetch Admin User from PostgreSQL
+    const userQuery =
+      "SELECT id, username, hashed_password, role FROM admin_users WHERE username = $1";
+    const result = await pool.query(userQuery, [username]);
 
-    // Generate JWT (expires in 10 minutes)
-    const token = jwt.sign({ email }, process.env.JWT_SECRET!, { expiresIn: "10m" });
+    const admin = result.rows[0];
 
-    return NextResponse.json({ message: "Login successful", token }, { status: 200 });
-  } catch (err) {
-    console.error(err);
-    return NextResponse.json({ error: "Server error" }, { status: 500 });
+    if (!admin) {
+      return NextResponse.json(
+        { message: "Invalid username or password" },
+        { status: 401 }
+      );
+    }
+
+    // 2. Compare Password Hash
+    const validPassword = await bcrypt.compare(password, admin.hashed_password);
+    if (!validPassword) {
+      return NextResponse.json(
+        { message: "Invalid username or password" },
+        { status: 401 }
+      );
+    }
+
+    // 3. Generate JWT Token (1 hour expiry)
+    const token = jwt.sign(
+      { id: admin.id, username: admin.username, role: admin.role },
+      process.env.JWT_SECRET!,
+      { expiresIn: TOKEN_MAX_AGE }
+    );
+
+    // 4. Create Response and Set Secure Cookie
+    const response = NextResponse.json(
+      {
+        message: "Login successful",
+        token: token, // Sending token back for client-side use (EditableText)
+      },
+      { status: 200 }
+    );
+
+    response.cookies.set("admin_token", token, {
+      httpOnly: true, // Prevents client-side JavaScript access (security)
+      secure: process.env.NODE_ENV === "production", // Only send over HTTPS in production
+      sameSite: "strict", // Protects against CSRF
+      path: "/",
+      maxAge: TOKEN_MAX_AGE, // 1 hour session
+    });
+
+    return response;
+  } catch (error) {
+    console.error("Login error:", error);
+    return NextResponse.json(
+      { message: "Server error during login" },
+      { status: 500 }
+    );
   }
 }
