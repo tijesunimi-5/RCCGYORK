@@ -4,6 +4,13 @@ import pool from "@/lib/pg"; // Import your PostgreSQL pool
 
 const SECRET = process.env.JWT_SECRET!;
 
+// Define the specific interface for the context object
+interface RouteContext {
+  params: {
+    slug: string;
+  };
+}
+
 // --- 1. ADMIN AUTHENTICATION HELPER ---
 // Checks if the request contains a valid, unexpired admin cookie.
 async function checkAdminAuth(req: Request): Promise<boolean> {
@@ -31,10 +38,8 @@ async function checkAdminAuth(req: Request): Promise<boolean> {
 // ------------------------------------------------------------------
 
 // --- 2. GET: FETCH CONTENT SNIPPET ---
-export async function GET(
-  request: Request, // Use 'request' instead of '_'
-  { params }: { params: { slug: string } }
-) {
+export async function GET(request: Request, context: RouteContext) {
+  const { params } = context;
   try {
     const result = await pool.query(
       "SELECT content FROM content_snippets WHERE key_slug = $1",
@@ -56,17 +61,15 @@ export async function GET(
 }
 
 // --- 3. PUT: UPDATE/CREATE CONTENT SNIPPET ---
-export async function PUT(
-  request: Request, // Use 'request' instead of 'req' for standard pattern
-  { params }: { params: { slug: string } }
-) {
+export async function PUT(request: Request, context: RouteContext) {
+  const { params } = context;
   // CRITICAL FIX: Authenticate the admin user before saving
   if (!(await checkAdminAuth(request))) {
     // If auth fails, return 401 Unauthorized immediately.
     return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
   }
   try {
-    const { content } = await req.json();
+    const { content } = await request.json();
     const contentToSave = String(content || "");
 
     // FIX: Explicitly include 'content_type' and its value 'text' in the INSERT statement.
