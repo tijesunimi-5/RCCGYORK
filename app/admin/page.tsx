@@ -150,7 +150,7 @@ export default function AdminDashboard() {
             <FaInbox className="text-red-700 w-6 h-6 sm:w-8 sm:h-8 shrink-0" />
             Admin Inbox
             {unreadCount > 0 && (
-              <span className="text-xs sm:text-base font-semibold bg-red-700 text-white rounded-full px-2 sm:px-3 py-0.5 ml-1 animate-pulse flex-shrink-0">
+              <span className="text-xs sm:text-base font-semibold bg-red-700 text-white rounded-full px-2 sm:px-3 py-0.5 ml-1 animate-pulse shrink-0">
                 {unreadCount} New
               </span>
             )}

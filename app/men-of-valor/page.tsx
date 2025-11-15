@@ -7,7 +7,7 @@ const page = () => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   const menHead = [
-    { id: 1, image: "/ushers/dol.jpg", name: "Jean Dol" }
+    { id: 1, image: "/ushers/dol.jpg", name: "Jean Dol", post: "President, RCCG YORK Men of Valor" }
   ]
 
   const handleImageClick = (imageUrl: string) => {
@@ -21,7 +21,7 @@ const page = () => {
   const menPic = [
     { id: 1, image: "/men/men2.jpg", text: "first image" },
     { id: 2, image: "/men/men3.jpg", text: "second image" },
-    { id: 3, image: "/men/men.jpg", text: "third image"}
+    { id: 3, image: "/men/men.jpg", text: "third image" }
   ];
 
   return (
@@ -63,7 +63,10 @@ const page = () => {
             </div>
             <div className="content px-4 pb-4 bg-white bg-opacity-50 text-start">
               <h1 className='font-semibold text-xl'>{men.name}</h1>
-
+              <p className="mt-3">
+                <b>Post: </b>
+                {men.post}
+              </p>
             </div>
           </div>
         ))}

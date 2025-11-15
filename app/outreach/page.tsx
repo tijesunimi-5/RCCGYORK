@@ -51,7 +51,6 @@ const page = () => {
       <div className="pt-20 h-[80vh] overflow-hidden relative w-screen">
         <Image
           src="/outreach/smain.jpg"
-
           alt="Children Church"
           fill
           className="top-0 w-full h-full object-cover z-20"
@@ -75,6 +74,12 @@ const page = () => {
           Mission Trip To Kenya
         </h2>
 
+        <p className="text-gray-700 max-w-3xl mx-auto leading-relaxed text-balance mt-5 text-start mb-4">
+          We give joyfull and sacrificially, stewarding God's blessings to
+          advance His Kingdom. Our generosity mirrors His boundless grace,
+          transforming lives and communities.
+        </p>
+
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative">
           {kenyaTrip.map((kenya) => (
             <div
@@ -93,11 +98,7 @@ const page = () => {
           ))}
         </div>
 
-        <p className="text-gray-700 max-w-3xl mx-auto leading-relaxed text-balance mt-9 text-start ">
-          We give joyfull and sacrificially, stewarding God's blessings to
-          advance His Kingdom. Our generosity mirrors His boundless grace,
-          transforming lives and communities.
-        </p>
+        
       </div>
 
       <div className="text-center mt-9 w-full relative px-4">
@@ -105,25 +106,7 @@ const page = () => {
           Street Evangelism
         </h1>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative">
-          {streetEvang.map((street) => (
-            <div
-              key={street.id}
-              className="bg-card text-card-foreground flex flex-col rounded-xl overflow-hidden bg-gray-100 shadow-lg hover:shadow-2xl hover:translate-y-2 transition-all border-0 aspect-square relative"
-              onClick={() => handleImageClick(street.image)}
-            >
-              <Image
-                src={street.image}
-                alt={street.text}
-                fill
-                className="object-cover"
-                sizes="(max-width: 768px) 50vw, 25vw"
-              />
-            </div>
-          ))}
-        </div>
-
-        <p className="text-gray-700 max-w-3xl mx-auto leading-relaxed text-balance mt-9 text-start ">
+        <p className="text-gray-700 max-w-3xl mx-auto leading-relaxed text-balance mt-5 text-start mb-4">
           We serve selflessly, following Christ's example of humility. Through
           our gifts, time, and compassion, we meet needs and uplift others,
           glorifying God in every act of love. <br /> We are privileged to host
@@ -132,12 +115,6 @@ const page = () => {
           only give back, but to give glory to God and make sure Jesus is
           revealed through acts of service.
         </p>
-      </div>
-
-      <div className="text-center mt-9 w-full relative px-4">
-        <h1 className="text-4xl md:text-6xl mb-6 bg-linear-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent text-center mt-10">
-          Food pantry
-        </h1>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative">
           {streetEvang.map((street) => (
@@ -157,7 +134,15 @@ const page = () => {
           ))}
         </div>
 
-        <p className="text-gray-700 max-w-3xl mx-auto leading-relaxed text-balance mt-9 text-start ">
+        
+      </div>
+
+      <div className="text-center mt-9 w-full relative px-4">
+        <h1 className="text-4xl md:text-6xl mb-6 bg-linear-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent text-center mt-5">
+          Food pantry
+        </h1>
+
+        <p className="text-gray-700 max-w-3xl mx-auto leading-relaxed text-balance mt-5 text-start mb-4">
           Every summer, we host our annual church picnic at a local park in
           York, Pennsylvania. Itis a day filled with prayers, songs of praise,
           fun games, nutritious food, music and dance. We take one day out of
@@ -166,11 +151,7 @@ const page = () => {
           will be an honor to have you join us at our next church picnic!
         </p>
 
-        <h1 className="text-4xl md:text-6xl mb-6 bg-linear-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent text-center mt-10">
-          Church Picnic
-        </h1>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative mt-7">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative">
           {streetEvang.map((street) => (
             <div
               key={street.id}
@@ -187,6 +168,12 @@ const page = () => {
             </div>
           ))}
         </div>
+
+        
+
+        <h1 className="text-4xl md:text-6xl mb-6 bg-linear-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent text-center mt-10">
+          Church Picnic
+        </h1>
 
         <p className="text-gray-700 max-w-3xl mx-auto leading-relaxed text-balance mt-9 text-start ">
           Every year, RCCG York also hosts a marriage seminar for married
@@ -207,6 +194,26 @@ const page = () => {
           victories and navigate challenges together, while raising families
           grounded in faith, love and godly values.
         </p>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative mt-7">
+          {streetEvang.map((street) => (
+            <div
+              key={street.id}
+              className="bg-card text-card-foreground flex flex-col rounded-xl overflow-hidden bg-gray-100 shadow-lg hover:shadow-2xl hover:translate-y-2 transition-all border-0 aspect-square relative"
+              onClick={() => handleImageClick(street.image)}
+            >
+              <Image
+                src={street.image}
+                alt={street.text}
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 50vw, 25vw"
+              />
+            </div>
+          ))}
+        </div>
+
+        
       </div>
     </div>
   );
