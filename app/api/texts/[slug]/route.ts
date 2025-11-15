@@ -1,20 +1,10 @@
-import { NextResponse } from "next/server";
+import { NextResponse, NextRequest } from "next/server";
 import jwt from "jsonwebtoken";
-import pool from "@/lib/pg"; 
-import { NextRequest } from "next/server";
-
+import pool from "@/lib/pg";
 
 const SECRET = process.env.JWT_SECRET!;
 
-// Define the specific interface for the context object
-interface RouteContext {
-  params: {
-    slug: string;
-  };
-}
-
-// --- 1. ADMIN AUTHENTICATION HELPER ---
-// Checks if the request contains a valid, unexpired admin cookie.
+// --- AUTH CHECK ---
 async function checkAdminAuth(req: Request): Promise<boolean> {
   const cookieHeader = req.headers.get("cookie");
   if (!cookieHeader) return false;
@@ -29,25 +19,23 @@ async function checkAdminAuth(req: Request): Promise<boolean> {
   try {
     const decoded: any = jwt.verify(token, SECRET);
     const now = Date.now() / 1000;
-    // Check for token expiry
-    if (decoded.exp < now) return false;
-
-    return true;
-  } catch (error) {
+    return decoded.exp >= now;
+  } catch {
     return false;
   }
 }
-// ------------------------------------------------------------------
 
-// --- 2. GET: FETCH CONTENT SNIPPET ---
+// --- GET ---
 export async function GET(
   request: NextRequest,
-  { params }: { params: { slug: string } }
+  context: { params: Promise<{ slug: string }> }
 ) {
+  const { slug } = await context.params;
+
   try {
     const result = await pool.query(
       "SELECT content FROM content_snippets WHERE key_slug = $1",
-      [params.slug]
+      [slug]
     );
 
     if (result.rowCount === 0) {
@@ -64,36 +52,36 @@ export async function GET(
   }
 }
 
-// --- 3. PUT: UPDATE/CREATE CONTENT SNIPPET ---
+// --- PUT ---
 export async function PUT(
   request: NextRequest,
-  { params }: { params: { slug: string } }
+  context: { params: Promise<{ slug: string }> }
 ) {
-  // CRITICAL FIX: Authenticate the admin user before saving
+  const { slug } = await context.params;
+
   if (!(await checkAdminAuth(request))) {
-    // If auth fails, return 401 Unauthorized immediately.
     return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
   }
+
   try {
     const { content } = await request.json();
     const contentToSave = String(content || "");
 
-    // FIX: Explicitly include 'content_type' and its value 'text' in the INSERT statement.
     await pool.query(
       `
-    INSERT INTO content_snippets (key_slug, content, content_type)
-    VALUES ($1, $2, $3)
-    ON CONFLICT (key_slug)
-    DO UPDATE SET 
-      content = $2,
-      updated_at = CURRENT_TIMESTAMP
-    `,
-      [params.slug, contentToSave, "text"] // Pass 'text' as the third parameter ($3)
+      INSERT INTO content_snippets (key_slug, content, content_type)
+      VALUES ($1, $2, $3)
+      ON CONFLICT (key_slug)
+      DO UPDATE SET 
+        content = $2,
+        updated_at = CURRENT_TIMESTAMP
+      `,
+      [slug, contentToSave, "text"]
     );
 
     return NextResponse.json({ success: true });
   } catch (err) {
-    console.error("CONTENT UPDATE FATAL ERROR (500):", err);
+    console.error("CONTENT UPDATE FATAL ERROR:", err);
     return NextResponse.json(
       { error: "Failed to update snippet" },
       { status: 500 }
