@@ -1,6 +1,8 @@
 import { NextResponse } from "next/server";
 import jwt from "jsonwebtoken";
-import pool from "@/lib/pg"; // Import your PostgreSQL pool
+import pool from "@/lib/pg"; 
+import { NextRequest } from "next/server";
+
 
 const SECRET = process.env.JWT_SECRET!;
 
@@ -38,8 +40,10 @@ async function checkAdminAuth(req: Request): Promise<boolean> {
 // ------------------------------------------------------------------
 
 // --- 2. GET: FETCH CONTENT SNIPPET ---
-export async function GET(request: Request, context: RouteContext) {
-  const { params } = context;
+export async function GET(
+  request: NextRequest,
+  { params }: { params: { slug: string } }
+) {
   try {
     const result = await pool.query(
       "SELECT content FROM content_snippets WHERE key_slug = $1",
@@ -61,8 +65,10 @@ export async function GET(request: Request, context: RouteContext) {
 }
 
 // --- 3. PUT: UPDATE/CREATE CONTENT SNIPPET ---
-export async function PUT(request: Request, context: RouteContext) {
-  const { params } = context;
+export async function PUT(
+  request: NextRequest,
+  { params }: { params: { slug: string } }
+) {
   // CRITICAL FIX: Authenticate the admin user before saving
   if (!(await checkAdminAuth(request))) {
     // If auth fails, return 401 Unauthorized immediately.
