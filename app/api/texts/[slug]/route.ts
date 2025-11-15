@@ -32,7 +32,7 @@ async function checkAdminAuth(req: Request): Promise<boolean> {
 
 // --- 2. GET: FETCH CONTENT SNIPPET ---
 export async function GET(
-  _: Request,
+  request: Request, // Use 'request' instead of '_'
   { params }: { params: { slug: string } }
 ) {
   try {
@@ -57,11 +57,11 @@ export async function GET(
 
 // --- 3. PUT: UPDATE/CREATE CONTENT SNIPPET ---
 export async function PUT(
-  req: Request,
+  request: Request, // Use 'request' instead of 'req' for standard pattern
   { params }: { params: { slug: string } }
 ) {
   // CRITICAL FIX: Authenticate the admin user before saving
-  if (!(await checkAdminAuth(req))) {
+  if (!(await checkAdminAuth(request))) {
     // If auth fails, return 401 Unauthorized immediately.
     return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
   }
