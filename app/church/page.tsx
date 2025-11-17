@@ -1,168 +1,96 @@
-// page.tsx
-'use client'
-import React, { useState, useEffect } from 'react'
-import Image from 'next/image'
-import ImagePreview from '@/components/hooks/ImagePreview'
-import EditableText from '@/components/hooks/EditableText'
+// app/church/page.tsx
+'use client';
 
-interface Media {
-  id: number;
-  image: string;
-}
+import React, { useState } from 'react';
+import ImagePreview from '@/components/hooks/ImagePreview';
+import EditableText from '@/components/hooks/EditableText';
+import EditableImage from '@/components/hooks/EditableImage';
+import EditableImageList from '@/components/hooks/EditableImageList';
 
-const Page: React.FC = () => {
-  const [selectedImage, setSelectedImage] = useState<string | null>(null);
-  const [isAdmin, setIsAdmin] = useState(false);
-
-  // Check if admin is logged in
-  useEffect(() => {
-    fetch("/api/admin/session")
-      .then(res => res.json())
-      .then(data => {setIsAdmin(data.authenticated); console.log("admin is active")})
-      .catch(() => setIsAdmin(false));
-  }, []);
-
-  const medias: Media[] = [
-    { id: 1, image: "/youth/yimg4.jpg" },
-    { id: 2, image: "/youth/yimg5.jpg" },
-    { id: 3, image: "/youth/yimg6.jpg" },
-    { id: 4, image: "/youth/yimg7.jpg" },
-  ];
-
-  const president = {
-    name: "Mr Charles Kennedy",
-    post: "YASM President",
-    image: "/mCharles.jpg"
-  };
-
-  const handleImageClick = (imageUrl: string) => {
-    setSelectedImage(imageUrl);
-  };
-
-  const handleClosePreview = () => {
-    setSelectedImage(null);
-  };
+export default function YasmPage() {
+  const [selected, setSelected] = useState<string | null>(null);
+  const click = (url: string) => setSelected(url);
+  const close = () => setSelected(null);
 
   return (
-    <div className='w-full flex flex-col items-center justify-center mb-20'>
+    <div className="w-full flex flex-col items-center justify-center mb-20">
 
-      <ImagePreview
-        imageUrl={selectedImage}
-        onClose={handleClosePreview}
-      />
+      <ImagePreview imageUrl={selected} onClose={close} />
 
-      {/* Header Banner */}
-      <div className='pt-20 h-[80vh] overflow-hidden relative w-screen'>
-        <Image
-          src="/youth/yasm.png"
-          alt="Youth Adults & Single Ministry"
-          fill
-          className='top-0 w-full h-full object-cover z-20'
+      {/* BANNER */}
+      <div className="pt-20 h-[80vh] overflow-hidden relative w-screen">
+        <EditableImage
+          slug="yasm_banner"
+          defaultUrl="/youth/yasm.png"
+          defaultAlt="YASM Banner"
+          onClick={click}
+          priority
         />
       </div>
 
-      {/* Background Effects */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-red-100 rounded-full opacity-20 blur-3xl" />
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-100 rounded-full opacity-20 blur-3xl" />
-      </div>
-
-      {/* Title + Intro */}
-      <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative w-full'>
-        <h1 className='text-4xl md:text-6xl mb-6 bg-linear-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent text-center mt-10'>
-          <EditableText
-            slug="yasm_title"
-            defaultText="Welcome to Young Adults & Singles Ministry"
-          />
+      {/* TITLE / INTRO */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h1 className="text-4xl md:text-6xl mb-6 bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent text-center mt-10">
+          <EditableText slug="yasm_title" defaultText="Welcome to Young Adults & Singles Ministry" />
         </h1>
-
-        <p className='text-gray-700 max-w-3xl mx-auto leading-relaxed text-balance text-center'>
-          <EditableText
-            slug="yasm_intro"
-            defaultText="The Young Adults and Singles Ministry at Living Spring, York is a place where young adults (ages 19 to 40), professionals, and university students unite to ignite their faith and shine as beacons of light in a generation hungry for Jesus Christ's glory! We are a vibrant, Christ-centered community passionate about making God's kingdom a reality in our lives and our world."
-          />
+        <p className="text-gray-700 max-w-3xl mx-auto leading-relaxed text-center">
+          <EditableText slug="yasm_intro" defaultText="The Young Adults and Singles Ministry..." />
         </p>
       </div>
 
-      {/* President Section */}
-      <div className='flex justify-center items-center flex-col my-12 px-4 w-full'>
-        <h2 className='text-3xl text-gray-600 max-w-3xl mx-auto leading-relaxed mb-6'>
-          <EditableText
-            slug="yasm_president_heading"
-            defaultText="Our President"
-          />
+      {/* PRESIDENT */}
+      <div className="flex justify-center items-center flex-col my-12 px-4 w-full">
+        <h2 className="text-3xl text-gray-600 max-w-3xl mx-auto leading-relaxed mb-6">
+          <EditableText slug="yasm_president_heading" defaultText="Our President" />
         </h2>
 
-        <div className='bg-card text-card-foreground flex flex-col rounded-xl overflow-hidden bg-gray-100 shadow-lg hover:shadow-2xl hover:translate-y-2 transition-all border-0 w-full max-w-xs sm:max-w-sm md:max-w-md'>
-          <div
-            className='w-full h-[500px] cursor-pointer relative'
-            onClick={() => handleImageClick(president.image)}
-          >
-            <Image
-              src={president.image}
-              alt={president.name}
-              fill
-              className='object-cover'
+        <div className="bg-gray-100 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all max-w-md">
+          <div className="w-full h-[500px] relative">
+            <EditableImage
+              slug="yasm_president"
+              defaultUrl="/mCharles.jpg"
+              defaultAlt="Mr Charles Kennedy"
+              onClick={click}
+              priority
             />
           </div>
 
-          <div className="content px-4 pb-4 bg-white bg-opacity-50 text-start">
-            <h1 className='font-semibold text-xl'>
-              <EditableText
-                slug="yasm_president_name"
-                defaultText={president.name}
-              />
+          <div className="p-4 bg-white/50">
+            <h1 className="font-semibold text-xl">
+              <EditableText slug="yasm_president_name" defaultText="Mr Charles Kennedy" />
             </h1>
-
-            <p className="mt-3">
+            <p className="mt-2">
               <b>Post: </b>
-              <EditableText
-                slug="yasm_president_post"
-                defaultText={president.post}
-              />
+              <EditableText slug="yasm_president_post" defaultText="YASM President" />
             </p>
           </div>
         </div>
       </div>
 
-      {/* Continuation Text */}
-      <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative my-8 w-full'>
-        <p className='text-gray-700 max-w-3xl mx-auto leading-relaxed text-center'>
-          <EditableText
-            slug="yasm_continuation"
-            defaultText="We are privileged to hold YASM services one Sunday per month, where we officiate every aspect of church as we pass vital kingdom messages! Whether you're seeking fellowship, purpose, or meaningful connections, YASM empowers you to live boldly for Christ while building lifelong friendships with like-minded believers."
-          />
+      {/* CONTINUATION */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 my-8">
+        <p className="text-gray-700 max-w-3xl mx-auto leading-relaxed text-center">
+          <EditableText slug="yasm_continuation" defaultText="We are privileged to hold YASM services..." />
         </p>
       </div>
 
-      {/* Media Section */}
-      <div className='w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 my-8'>
-        <h2 className='text-3xl text-gray-600 max-w-3xl mx-auto leading-relaxed text-center mb-6'>
-          <EditableText
-            slug="yasm_media_header"
-            defaultText="Medias"
-          />
+      {/* GALLERY */}
+      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 my-8">
+        <h2 className="text-3xl text-gray-600 max-w-3xl mx-auto leading-relaxed text-center mb-6">
+          <EditableText slug="yasm_media_header" defaultText="Medias" />
         </h2>
 
-        <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6'>
-          {medias.map((media) => (
-            <div
-              key={media.id}
-              className='bg-card text-card-foreground flex flex-col rounded-xl overflow-hidden bg-gray-100 shadow-lg hover:shadow-2xl hover:translate-y-2 transition-all border-0 aspect-square relative'
-              onClick={() => handleImageClick(media.image)}
-            >
-              <Image
-                src={media.image}
-                alt={`Media ${media.id}`}
-                fill
-                className='object-cover cursor-pointer'
-              />
-            </div>
-          ))}
-        </div>
+        <EditableImageList
+          slug="yasm_medias"
+          defaultImages={[
+            { url: "/youth/yimg4.jpg", alt: "Youth Image 4" },
+            { url: "/youth/yimg5.jpg", alt: "Youth Image 5" },
+            { url: "/youth/yimg6.jpg", alt: "Youth Image 6" },
+            { url: "/youth/yimg7.jpg", alt: "Youth Image 7" },
+          ]}
+          onImageClick={click}
+        />
       </div>
     </div>
   );
-};
-
-export default Page;
+}

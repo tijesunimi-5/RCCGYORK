@@ -46,58 +46,58 @@ const About = () => {
     },
   ];
 
-  useEffect(() => {
-    // Collect all elements we want to animate with scrub
-    const elementsToAnimate = gsap.utils.toArray('.js-about-animate') as gsap.DOMTarget[];
+  // useEffect(() => {
+  //   // Collect all elements we want to animate with scrub
+  //   const elementsToAnimate = gsap.utils.toArray('.js-about-animate') as gsap.DOMTarget[];
 
-    elementsToAnimate.forEach((element, i) => {
-      // Set initial state: shifted down and invisible
-      gsap.set(element, { opacity: 0, y: 80 });
+  //   elementsToAnimate.forEach((element, i) => {
+  //     // Set initial state: shifted down and invisible
+  //     gsap.set(element, { opacity: 0, y: 80 });
 
-      // Animate to final state (opacity 1, y 0), scrubbing with the scroll
-      gsap.to(element, {
-        opacity: 1,
-        y: 0,
-        duration: 1,
-        ease: 'none', // Use 'none' for pure scrub linking
-        scrollTrigger: {
-          trigger: element as gsap.DOMTarget,
-          start: 'top 95%', // Start early, when element is near the bottom
-          end: 'center 70%', // End earlier, so the animation is complete sooner
-          scrub: 1, // Smoothly link the animation to the scroll
-        }
-      });
-    });
+  //     // Animate to final state (opacity 1, y 0), scrubbing with the scroll
+  //     gsap.to(element, {
+  //       opacity: 1,
+  //       y: 0,
+  //       duration: 1,
+  //       ease: 'none', // Use 'none' for pure scrub linking
+  //       scrollTrigger: {
+  //         trigger: element as gsap.DOMTarget,
+  //         start: 'top 95%', // Start early, when element is near the bottom
+  //         end: 'center 70%', // End earlier, so the animation is complete sooner
+  //         scrub: 1, // Smoothly link the animation to the scroll
+  //       }
+  //     });
+  //   });
 
-    // Special animation for the image/text split block
-    // We want the image and text to slide horizontally, but still scrubbed.
-    gsap.set('.js-story-image', { x: -100, opacity: 0 });
-    gsap.to('.js-story-image', {
-      x: 0,
-      opacity: 1,
-      ease: 'none',
-      scrollTrigger: {
-        trigger: '.js-story-block',
-        start: 'top 90%',
-        end: 'center 50%',
-        scrub: 1,
-      }
-    });
+  //   // Special animation for the image/text split block
+  //   // We want the image and text to slide horizontally, but still scrubbed.
+  //   gsap.set('.js-story-image', { x: -100, opacity: 0 });
+  //   gsap.to('.js-story-image', {
+  //     x: 0,
+  //     opacity: 1,
+  //     ease: 'none',
+  //     scrollTrigger: {
+  //       trigger: '.js-story-block',
+  //       start: 'top 90%',
+  //       end: 'center 50%',
+  //       scrub: 1,
+  //     }
+  //   });
 
-    gsap.set('.js-story-content', { x: 100, opacity: 0 });
-    gsap.to('.js-story-content', {
-      x: 0,
-      opacity: 1,
-      ease: 'none',
-      scrollTrigger: {
-        trigger: '.js-story-block',
-        start: 'top 90%',
-        end: 'center 50%',
-        scrub: 1,
-      }
-    });
+  //   gsap.set('.js-story-content', { x: 100, opacity: 0 });
+  //   gsap.to('.js-story-content', {
+  //     x: 0,
+  //     opacity: 1,
+  //     ease: 'none',
+  //     scrollTrigger: {
+  //       trigger: '.js-story-block',
+  //       start: 'top 90%',
+  //       end: 'center 50%',
+  //       scrub: 1,
+  //     }
+  //   });
 
-  }, []);
+  // }, []);
 
 
   return (

@@ -43,6 +43,22 @@ const page = () => {
     { id: 3, image: "/outreach/street.jpg", text: "third" },
   ];
 
+  const picnic = [
+    { id: 1, image: "/outreach/picnic/picnic.jpg", text: "first" },
+    { id: 2, image: "/outreach/picnic/picnic2.jpg", text: "second" },
+    { id: 3, image: "/outreach/picnic/picnic3.jpg", text: "third" },
+    { id: 4, image: "/outreach/picnic/picnic4.jpg", text: "fourth" },
+  ];
+
+  const hallenight = [
+    { id: 1, image: "/outreach/hallenight/halle.jpg", text: "first" },
+    { id: 2, image: "/outreach/hallenight/halle2.jpg", text: "second" },
+    { id: 3, image: "/outreach/hallenight/halle3.jpg", text: "third" },
+    { id: 4, image: "/outreach/hallenight/halle4.jpg", text: "fourth" },
+    { id: 5, image: "/outreach/hallenight/halle5.jpg", text: "fifth" },
+    { id: 6, image: "/outreach/hallenight/halle6.jpg", text: "sixth" },
+  ]
+
   return (
     <div className="w-full flex flex-col items-center justify-center mb-20">
       <ImagePreview imageUrl={selectedImage} onClose={handleClosePreview} />
@@ -59,25 +75,13 @@ const page = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <h1 className="text-4xl md:text-6xl mb-6 bg-linear-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent text-center mt-10">
-          Outreach
+          Mission Trip to Kenya
         </h1>
         <p className="text-gray-700 max-w-3xl mx-auto leading-relaxed text-balance">
           We are a Christ-centered, love-driven church, shining God's light
           through acts of compassion and shared responsibilty - within our
           church family, and across local and global communities. (Galatians
           6:10)
-        </p>
-      </div>
-
-      <div className="text-center mt-9 w-full relative px-4">
-        <h2 className="text-3xl md:text-6xl mb-6 bg-linear-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">
-          Mission Trip To Kenya
-        </h2>
-
-        <p className="text-gray-700 max-w-3xl mx-auto leading-relaxed text-balance mt-5 text-start mb-4">
-          We give joyfull and sacrificially, stewarding God's blessings to
-          advance His Kingdom. Our generosity mirrors His boundless grace,
-          transforming lives and communities.
         </p>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative">
@@ -97,25 +101,20 @@ const page = () => {
             </div>
           ))}
         </div>
-
-        
       </div>
 
       <div className="text-center mt-9 w-full relative px-4">
-        <h1 className="text-4xl md:text-6xl mb-6 bg-linear-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent text-center mt-10">
+        <h2 className="text-3xl md:text-6xl mb-6 bg-linear-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">
           Street Evangelism
-        </h1>
+        </h2>
 
         <p className="text-gray-700 max-w-3xl mx-auto leading-relaxed text-balance mt-5 text-start mb-4">
-          We serve selflessly, following Christ's example of humility. Through
-          our gifts, time, and compassion, we meet needs and uplift others,
-          glorifying God in every act of love. <br /> We are privileged to host
-          a food pantry on the first Saturday of each month and Hallelujah Night
-          for all children on the last day of October every year as a way to not
-          only give back, but to give glory to God and make sure Jesus is
-          revealed through acts of service.
+          We give joyfull and sacrificially, stewarding God's blessings to
+          advance His Kingdom. Our generosity mirrors His boundless grace,
+          transforming lives and communities.
         </p>
 
+        
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative">
           {streetEvang.map((street) => (
             <div
@@ -133,13 +132,12 @@ const page = () => {
             </div>
           ))}
         </div>
-
         
       </div>
 
       <div className="text-center mt-9 w-full relative px-4">
-        <h1 className="text-4xl md:text-6xl mb-6 bg-linear-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent text-center mt-5">
-          Food pantry
+        <h1 className="text-4xl md:text-6xl mb-6 bg-linear-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent text-center mt-10">
+          Church Pinic
         </h1>
 
         <p className="text-gray-700 max-w-3xl mx-auto leading-relaxed text-balance mt-5 text-start mb-4">
@@ -151,16 +149,17 @@ const page = () => {
           will be an honor to have you join us at our next church picnic!
         </p>
 
+        
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative">
-          {streetEvang.map((street) => (
+          {picnic.map((pic) => (
             <div
-              key={street.id}
+              key={pic.id}
               className="bg-card text-card-foreground flex flex-col rounded-xl overflow-hidden bg-gray-100 shadow-lg hover:shadow-2xl hover:translate-y-2 transition-all border-0 aspect-square relative"
-              onClick={() => handleImageClick(street.image)}
+              onClick={() => handleImageClick(pic.image)}
             >
               <Image
-                src={street.image}
-                alt={street.text}
+                src={pic.image}
+                alt={pic.text}
                 fill
                 className="object-cover"
                 sizes="(max-width: 768px) 50vw, 25vw"
@@ -168,43 +167,48 @@ const page = () => {
             </div>
           ))}
         </div>
-
         
+      </div>
 
-        <h1 className="text-4xl md:text-6xl mb-6 bg-linear-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent text-center mt-10">
-          Church Picnic
+      <div className="text-center mt-9 w-full relative px-4">
+        <h1 className="text-4xl md:text-6xl mb-6 bg-linear-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent text-center mt-5">
+          Food pantry
         </h1>
 
-        <p className="text-gray-700 max-w-3xl mx-auto leading-relaxed text-balance mt-9 text-start ">
-          Every year, RCCG York also hosts a marriage seminar for married
-          couples, newly weds, and single adults who are hoping to get married.
-          At this seminar, we equip you with
-        </p>
-        <ul className="text-start text-gray-700 max-w-3xl mx-auto leading-relaxed text-balance">
-          <li className="ml-1">
-            - Tools to align your marriage with Scripture's timeless truths.
-          </li>
-          <li className="ml-1">
-            - Workshops on finances, intimacy, and parenting from a faith
-            perspective.
-          </li>
-        </ul>
-        <p className="text-gray-700 max-w-3xl mx-auto leading-relaxed text-balance text-start mt-1">
-          It is also a great opportunity to connect with couples who celebrate
-          victories and navigate challenges together, while raising families
-          grounded in faith, love and godly values.
+        <p className="text-gray-700 max-w-3xl mx-auto leading-relaxed text-balance mt-5 text-start mb-4">
+          We serve selflessly, following Christ's example of humility. Through
+          our gifts, time, and compassion, we meet needs and uplift others,
+          glorifying God in every act of love. <br /> We are privileged to host
+          a food pantry on the first Saturday of each month and Hallelujah Night
+          for all children on the last day of October every year as a way to not
+          only give back, but to give glory to God and make sure Jesus is
+          revealed through acts of service.
+        </p>        
+
+        <div className="flex justify-center items-center mx-5 relative">
+          <img src={"/outreach/pantry.jpg"} alt="food pantry" className="w-[500px] rounded-md shadow-lg" />
+        </div>        
+      </div>
+
+      <div className="text-center mt-9 w-full relative px-4">
+        <h1 className="text-4xl md:text-6xl mb-6 bg-linear-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent text-center mt-5">
+          Hallelujah Night
+        </h1>
+
+        <p className="text-gray-700 max-w-3xl mx-auto leading-relaxed text-balance mt-5 text-start mb-4">
+          RCCG York hosts Hallelujah Night for all children on the last day of October every year as a way to not only give back, but to give glory to God and make sure Jesus is revealed through fun games, activities and Bible knowledge. The goal is for children to get accustomed to spending the last day of the month of Octobe in the presence of God, rather than the secular alternative.
         </p>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative mt-7">
-          {streetEvang.map((street) => (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative">
+          {hallenight.map((halle) => (
             <div
-              key={street.id}
+              key={halle.id}
               className="bg-card text-card-foreground flex flex-col rounded-xl overflow-hidden bg-gray-100 shadow-lg hover:shadow-2xl hover:translate-y-2 transition-all border-0 aspect-square relative"
-              onClick={() => handleImageClick(street.image)}
+              onClick={() => handleImageClick(halle.image)}
             >
               <Image
-                src={street.image}
-                alt={street.text}
+                src={halle.image}
+                alt={halle.text}
                 fill
                 className="object-cover"
                 sizes="(max-width: 768px) 50vw, 25vw"
@@ -212,8 +216,27 @@ const page = () => {
             </div>
           ))}
         </div>
+      </div>
 
-        
+      <div className="text-center mt-9 w-full relative px-4">
+        <h1 className="text-4xl md:text-6xl mb-6 bg-linear-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent text-center mt-5">
+          Marriage Seminar
+        </h1>
+
+        <p className="text-gray-700 max-w-3xl mx-auto leading-relaxed text-balance mt-5 text-start ">
+          Every year, RCCG York also hosts a marriage seminar for married couples, newly weds, and single adults who are hoping to get married. At this seminar, we equip you with
+        </p>
+        <ul className="text-start list-disc ml-4 mb-1 text-gray-700">
+          <li>Tools to align your marriage with Scripture's timeless truths.</li>
+          <li>Workshops on finances, intimacy, and parenting from a faith perspective.</li>
+        </ul>
+        <p className="text-gray-700 max-w-3xl mx-auto leading-relaxed text-balance mt-1 text-start mb-8">
+          It is also a great opportunity to connect with couples who celebrate victories and navigate challenges together, while raising families grounded in faith, love and godly values.
+        </p>
+
+        <div className="flex justify-center items-center mx-5 relative">
+          <img src={"/outreach/marriage.jpg"} alt="food pantry" className="w-[500px] rounded-md shadow-lg" />
+        </div>  
       </div>
     </div>
   );
