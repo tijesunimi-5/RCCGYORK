@@ -3,6 +3,7 @@ import jwt from "jsonwebtoken";
 import pool from "@/lib/pg";
 import path from "path";
 import { writeFile, unlink, mkdir } from "fs/promises"; // For saving/deleting files
+import { cookies } from "next/headers";
 // import fs from "fs";
 
 const SECRET = process.env.JWT_SECRET!;
@@ -16,18 +17,31 @@ async function ensureDir(dir: string) {
 }
 
 // Auth check (copy from your texts route)
-async function checkAdminAuth(req: NextRequest): Promise<boolean> {
+// async function checkAdminAuth(req: NextRequest): Promise<boolean> {
+//   try {
+//     const authHeader = req.headers.get("authorization") || req.headers.get("Authorization");
+//     if (!authHeader) return false;
+//     const token = authHeader.startsWith("Bearer ") ? authHeader.slice(7) : authHeader;
+//     const decoded = jwt.verify(token, SECRET) as any;
+//     // Accept if token present and indicates admin (flexible keys)
+//     return !!(decoded && (decoded.role === "admin" || decoded.isAdmin || decoded.admin));
+//   } catch {
+//     return false;
+//   }
+// }
+
+async function checkAdminAuth() {
   try {
-    const authHeader = req.headers.get("authorization") || req.headers.get("Authorization");
-    if (!authHeader) return false;
-    const token = authHeader.startsWith("Bearer ") ? authHeader.slice(7) : authHeader;
-    const decoded = jwt.verify(token, SECRET) as any;
-    // Accept if token present and indicates admin (flexible keys)
-    return !!(decoded && (decoded.role === "admin" || decoded.isAdmin || decoded.admin));
+    const token = (await cookies()).get("admin_token")?.value;
+    if (!token) return false;
+
+    jwt.verify(token, SECRET);
+    return true;
   } catch {
     return false;
   }
 }
+
 
 // --- GET: Fetch images for slug (array even for singles) ---
 export async function GET(
@@ -58,7 +72,7 @@ export async function POST(
 ) {
   const { slug } = await context.params;
 
-  if (!(await checkAdminAuth(request))) {
+  if (!(await checkAdminAuth())) {
     return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
   }
 
@@ -115,7 +129,7 @@ export async function PUT(
 ) {
   const { slug } = await context.params;
 
-  if (!(await checkAdminAuth(request))) {
+  if (!(await checkAdminAuth())) {
     return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
   }
 
@@ -179,7 +193,7 @@ export async function DELETE(
 ) {
   const { slug } = await context.params;
 
-  if (!(await checkAdminAuth(request))) {
+  if (!(await checkAdminAuth())) {
     return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
   }
 

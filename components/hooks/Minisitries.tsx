@@ -36,7 +36,7 @@ export function Ministries() {
     },
     {
       icon: FaBaby,
-      title: "Children's Church",
+      title: "KidZone",
       description:
         "Age-appropriate teaching and activities that make learning about Jesus fun and engaging.",
       color: "from-pink-100 to-pink-200",
@@ -54,7 +54,7 @@ export function Ministries() {
     },
     {
       icon: FaUserCheck,
-      title: "Ushering & Protocol",
+      title: "PRotocol & Media",
       description:
         "First impressions team welcoming guests and ensuring orderly services.",
       color: "from-green-100 to-green-200",

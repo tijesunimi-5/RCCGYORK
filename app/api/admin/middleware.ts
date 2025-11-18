@@ -11,7 +11,7 @@ export function middleware(req: NextRequest) {
   if (req.nextUrl.pathname.startsWith("/admin")) {
     if (!token) {
       // If no token, redirect to login page
-      return NextResponse.redirect(new URL("/login", req.url));
+      return NextResponse.redirect(new URL("/admin/login", req.url));
     }
 
     try {
@@ -21,7 +21,7 @@ export function middleware(req: NextRequest) {
       return NextResponse.next();
     } catch {
       // If token is expired or invalid, redirect to login
-      return NextResponse.redirect(new URL("/login", req.url));
+      return NextResponse.redirect(new URL("/admin/login", req.url));
     }
   }
 
@@ -31,5 +31,5 @@ export function middleware(req: NextRequest) {
 
 export const config = {
   // Apply middleware to all paths starting with /admin
-  matcher: ["/admin/:path*"],
+  matcher: ["/admin/:path*", "/api/content/media/:path*"],
 };

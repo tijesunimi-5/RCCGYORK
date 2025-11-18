@@ -30,7 +30,7 @@ export default function YasmPage() {
 
       {/* TITLE / INTRO */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h1 className="text-4xl md:text-6xl mb-6 bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent text-center mt-10">
+        <h1 className="text-4xl md:text-6xl mb-6 bg-linear-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent text-center mt-10">
           <EditableText slug="yasm_title" defaultText="Welcome to Young Adults & Singles Ministry" />
         </h1>
         <p className="text-gray-700 max-w-3xl mx-auto leading-relaxed text-center">
@@ -44,8 +44,8 @@ export default function YasmPage() {
           <EditableText slug="yasm_president_heading" defaultText="Our President" />
         </h2>
 
-        <div className="bg-gray-100 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all max-w-md">
-          <div className="w-full h-[500px] relative">
+        <div className="bg-gray-100 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all max-w-md mx-5">
+          <div className="w-full h-[500px] relative mx-5">
             <EditableImage
               slug="yasm_president"
               defaultUrl="/mCharles.jpg"
@@ -75,7 +75,7 @@ export default function YasmPage() {
       </div>
 
       {/* GALLERY */}
-      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 my-8">
+      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 my-8 relative">
         <h2 className="text-3xl text-gray-600 max-w-3xl mx-auto leading-relaxed text-center mb-6">
           <EditableText slug="yasm_media_header" defaultText="Medias" />
         </h2>

@@ -135,7 +135,7 @@ export default function EditableImage({
   return (
     <div className="relative w-full h-full">
       <div
-        className="cursor-pointer w-full h-full"
+        className="cursor-pointer w-full h-full relative"
         onClick={() => onClick?.(img.url)}
         onContextMenu={canEdit ? openCtx : undefined}
       >

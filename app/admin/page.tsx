@@ -50,7 +50,7 @@ export default function AdminDashboard() {
     const token = localStorage.getItem('adminToken');
     if (!token) {
       setError('Not authenticated. Redirecting to login...');
-      setTimeout(() => router.push('/login'), 1500);
+      setTimeout(() => router.push('/admin/login'), 1500);
       setIsLoading(false);
       return;
     }
@@ -83,7 +83,7 @@ export default function AdminDashboard() {
       if (err.message.includes('expired') || err.message.includes('unauthorized')) {
         // Clear token and redirect if authentication fails
         localStorage.removeItem('adminToken');
-        setTimeout(() => router.push('/login'), 2000);
+        setTimeout(() => router.push('/admin/login'), 2000);
       }
     } finally {
       setIsLoading(false);
