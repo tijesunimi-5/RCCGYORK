@@ -114,7 +114,7 @@ const page = () => {
           transforming lives and communities.
         </p>
 
-        
+
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative">
           {streetEvang.map((street) => (
             <div
@@ -132,7 +132,7 @@ const page = () => {
             </div>
           ))}
         </div>
-        
+
       </div>
 
       <div className="text-center mt-9 w-full relative px-4">
@@ -142,14 +142,14 @@ const page = () => {
 
         <p className="text-gray-700 max-w-3xl mx-auto leading-relaxed text-balance mt-5 text-start mb-4">
           Every summer, we host our annual church picnic at a local park in
-          York, Pennsylvania. Itis a day filled with prayers, songs of praise,
+          York, Pennsylvania. It is a day filled with prayers, songs of praise,
           fun games, nutritious food, music and dance. We take one day out of
           the year to unwind and spend quality time with our church family as we
           anticipate what is expected towards the second hallf of the year. It
           will be an honor to have you join us at our next church picnic!
         </p>
 
-        
+
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative">
           {picnic.map((pic) => (
             <div
@@ -167,7 +167,7 @@ const page = () => {
             </div>
           ))}
         </div>
-        
+
       </div>
 
       <div className="text-center mt-9 w-full relative px-4">
@@ -179,15 +179,12 @@ const page = () => {
           We serve selflessly, following Christ's example of humility. Through
           our gifts, time, and compassion, we meet needs and uplift others,
           glorifying God in every act of love. <br /> We are privileged to host
-          a food pantry on the first Saturday of each month and Hallelujah Night
-          for all children on the last day of October every year as a way to not
-          only give back, but to give glory to God and make sure Jesus is
-          revealed through acts of service.
-        </p>        
+          a food pantry on the last Saturday of each month. Stop by and pick up your grocery needs as we cater to you and others in need.
+        </p>
 
         <div className="flex justify-center items-center mx-5 relative">
           <img src={"/outreach/pantry.jpg"} alt="food pantry" className="w-[500px] rounded-md shadow-lg" />
-        </div>        
+        </div>
       </div>
 
       <div className="text-center mt-9 w-full relative px-4">
@@ -236,7 +233,7 @@ const page = () => {
 
         <div className="flex justify-center items-center mx-5 relative">
           <img src={"/outreach/marriage.jpg"} alt="food pantry" className="w-[500px] rounded-md shadow-lg" />
-        </div>  
+        </div>
       </div>
     </div>
   );
