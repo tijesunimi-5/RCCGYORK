@@ -54,7 +54,7 @@ export function Ministries() {
     },
     {
       icon: FaUserCheck,
-      title: "PRotocol & Media",
+      title: "Protocol & Media",
       description:
         "First impressions team welcoming guests and ensuring orderly services.",
       color: "from-green-100 to-green-200",
