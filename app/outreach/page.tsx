@@ -38,12 +38,12 @@ const page = () => {
   ];
 
   const defaultHallenight = [
-    { url: "/outreach/hallenight/halle.jpg", alt: "Hallelujah Night photo 1" },
-    { url: "/outreach/hallenight/halle2.jpg", alt: "Hallelujah Night photo 2" },
-    { url: "/outreach/hallenight/halle3.jpg", alt: "Hallelujah Night photo 3" },
-    { url: "/outreach/hallenight/halle4.jpg", alt: "Hallelujah Night photo 4" },
-    { url: "/outreach/hallenight/halle5.jpg", alt: "Hallelujah Night photo 5" },
-    { url: "/outreach/hallenight/halle6.jpg", alt: "Hallelujah Night photo 6" },
+    { url: "/outreach/Hallenight/halle.jpg", alt: "Hallelujah Night photo 1" },
+    { url: "/outreach/Hallenight/halle2.jpg", alt: "Hallelujah Night photo 2" },
+    { url: "/outreach/Hallenight/halle3.jpg", alt: "Hallelujah Night photo 3" },
+    { url: "/outreach/Hallenight/halle4.jpg", alt: "Hallelujah Night photo 4" },
+    { url: "/outreach/Hallenight/halle5.jpg", alt: "Hallelujah Night photo 5" },
+    { url: "/outreach/Hallenight/halle6.jpg", alt: "Hallelujah Night photo 6" },
   ]
   // Removed unused 'Teacher', 'Media', 'outreaches' arrays to clean up
 
