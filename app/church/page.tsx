@@ -1,4 +1,3 @@
-// app/church/page.tsx
 'use client';
 
 import React, { useState } from 'react';
@@ -70,7 +69,7 @@ export default function YasmPage() {
       {/* CONTINUATION */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 my-8">
         <p className="text-gray-700 max-w-3xl mx-auto leading-relaxed text-center">
-          <EditableText slug="yasm_continuation" defaultText="We are privileged to hold YASM services..." />
+          <EditableText slug="yasm_continuation" defaultText="We are privileged to hold YASM services one Sunday per month..." />
         </p>
       </div>
 
