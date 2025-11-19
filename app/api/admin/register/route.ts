@@ -1,6 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 import bcrypt from "bcryptjs";
-import pool from "@/lib/pg"; // Import the PostgreSQL pool
+import jwt from "jsonwebtoken";
+import pool from "@/lib/pg";
+
+const SECRET = process.env.JWT_SECRET!;
 
 export async function POST(req: NextRequest) {
   try {
@@ -13,7 +16,7 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // 1. Check if admin already exists (using username as the unique key)
+    // 1. Check if admin already exists
     const existingQuery = "SELECT id FROM admin_users WHERE username = $1";
     const existingResult = await pool.query(existingQuery, [username]);
 
@@ -27,21 +30,36 @@ export async function POST(req: NextRequest) {
     // 2. Hash password securely
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    // 3. Create admin user in PostgreSQL
+    // 3. Create admin user
     const insertQuery = `
-        INSERT INTO admin_users (username, hashed_password, role)
-        VALUES ($1, $2, 'admin')
-        RETURNING id, username
+      INSERT INTO admin_users (username, hashed_password, role)
+      VALUES ($1, $2, 'admin')
+      RETURNING id, username
     `;
     const insertResult = await pool.query(insertQuery, [
       username,
       hashedPassword,
     ]);
 
+    const admin = insertResult.rows[0];
+
+    // 4. Generate JWT token
+    const token = jwt.sign(
+      {
+        id: admin.id,
+        username: admin.username,
+        role: "admin",
+      },
+      SECRET,
+      { expiresIn: "7d" }
+    );
+
+    // 5. Return token so frontend can log in immediately
     return NextResponse.json(
       {
         message: "Admin created successfully",
-        adminId: insertResult.rows[0].id,
+        token,
+        adminId: admin.id,
       },
       { status: 201 }
     );
