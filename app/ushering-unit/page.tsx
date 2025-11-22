@@ -69,10 +69,10 @@ const Page: React.FC = () => {
                   <EditableText slug={`protocol_usher_${index}_name`} defaultText={usher.name} />
                 </h2>
                 {/* Editable Post */}
-                {/* <p className="mt-3">
+                <p className="mt-3">
                   <b>Post: </b>
                   <EditableText slug={`protocol_usher_${index}_post`} defaultText={usher.post} />
-                </p> */}
+                </p>
               </div>
             </div>
           ))}
@@ -105,9 +105,9 @@ const Page: React.FC = () => {
                   <EditableText slug={`protocol_media_${index}_name`} defaultText={media.name} />
                 </h2>
                 {/* Editable Post */}
-                {/* <p className="mt-3">
+                <p className="mt-3">
                   <b>Post: </b> <EditableText slug={`protocol_media_${index}_post`} defaultText={media.post} />
-                </p> */}
+                </p>
               </div>
             </div>
           ))}

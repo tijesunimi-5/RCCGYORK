@@ -26,6 +26,8 @@ const page = () => {
     { url: "/wov/wov2.jpg", alt: "Women of Virtue event photo 2" },
     { url: "/wov/wov3.jpg", alt: "Women of Virtue event photo 3" },
   ];
+  const defaultWomenHead = { id: 1, url: "/wpres.jpg", alt: "Women of Virtue president", name: "Mrs. Modupeola Adeniji" }
+
 
   return (
     <div className="w-full flex flex-col items-center justify-center mb-20">
@@ -60,6 +62,31 @@ const page = () => {
             defaultText="The Women's Ministry at RCCG Living Spring York is a place where women of all ages and walks of life unite to glorify God through prayer, worship, and transformative Scripture study. We are vibrant sisterhood dedicated to deepening your realtionship with Jesus Christ, empowering you to fulfill His unique purpose for your life, family, church, and community. Whether you're seeking spiritual growth, authentic fellowship, or tools to thrive in your God-given roles, Women of Virtue equips you to walk in grace, strength, and divine wisdom."
           />
         </p>
+
+        <div key={defaultWomenHead.id} className='bg-card text-card-foreground flex flex-col rounded-xl overflow-hidden bg-gray-100 shadow-lg hover:shadow-2xl hover:translate-y-2 transition-all border-0 w-full max-w-xs sm:max-w-sm md:max-w-md my-10 '>
+          <div
+            className='w-full h-[500px] cursor-pointer relative'
+          // We wrap EditableImage in its own container to maintain layout
+          >
+            <EditableImage
+              slug="women_president_image" // UNIQUE SLUG
+              defaultUrl={defaultWomenHead.url}
+              defaultAlt={defaultWomenHead.alt}
+              onClick={handleImageClick}
+            />
+          </div>
+          <div className="content px-4 pb-4 bg-white bg-opacity-50 text-start">
+            {/* Name - NOW EDITABLE */}
+            <h1 className='font-semibold text-xl'>
+              <EditableText slug="women_president_name" defaultText={defaultWomenHead.name} />
+            </h1>
+            {/* Post - NOW EDITABLE */}
+            <p className="mt-3">
+              <b>Post: </b>
+              <EditableText slug="women_president_post" defaultText={defaultWomenHead.alt} />
+            </p>
+          </div>
+        </div>
 
         {/* Title 2 - NOW EDITABLE */}
         <h1 className="text-4xl md:text-6xl mb-6 bg-linear-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent text-center mt-10">
