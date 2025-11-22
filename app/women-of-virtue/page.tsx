@@ -36,8 +36,8 @@ const page = () => {
       {/* Header Image Section - NOW EDITABLE */}
       <div className="pt-20 h-[80vh] overflow-hidden relative w-screen">
         <EditableImage
-          slug="wov_banner" // UNIQUE SLUG
-          defaultUrl="/youth/yasm.png" // Using yasm image as default based on original code
+          slug="wov_banner" 
+          defaultUrl="/wov/women-main.jpg" 
           defaultAlt="Women of Virtue Banner"
           priority
         />

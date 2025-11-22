@@ -24,6 +24,15 @@ const Page: React.FC = () => {
   // Default data for the media gallery
   const defaultMedia = [
     { url: "/children/child2.jpg", alt: "Children playing" },
+    { url: "/children/child3.jpg", alt: "Children playing" },
+    { url: "/children/child4.jpg", alt: "Children playing" },
+    { url: "/children/child5.jpg", alt: "Children playing" },
+    { url: "/children/child6.jpg", alt: "Children playing" },
+    { url: "/children/child7.jpg", alt: "Children playing" },
+    { url: "/children/child8.jpg", alt: "Children playing" },
+    { url: "/children/child9.jpg", alt: "Children playing" },
+    { url: "/children/child10.jpg", alt: "Children playing" },
+    { url: "/children/child11.jpg", alt: "Children playing" },
     // ... rest of media
   ];
 
