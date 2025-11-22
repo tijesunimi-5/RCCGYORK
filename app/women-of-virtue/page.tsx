@@ -49,7 +49,7 @@ const page = () => {
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-100 rounded-full opacity-20 blur-3xl" />
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative w-full">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative w-full flex flex-col items-center">
         {/* Title 1 - NOW EDITABLE */}
         <h1 className="text-4xl md:text-6xl mb-6 bg-linear-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent text-center mt-10">
           <EditableText slug="wov_title_welcome" defaultText="Welcome to Women of Virtue" />
