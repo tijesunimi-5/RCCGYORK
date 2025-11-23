@@ -16,14 +16,14 @@ const Header = () => {
   }, []);
 
   const navItems = [
-    { name: 'Home', href: '#home' },
-    { name: 'Services', href: '#service-times' },
-    { name: 'About', href: '#about' },
+    { name: 'Home', href: '/#home' },
+    { name: 'Services', href: '/#service-times' },
+    { name: 'About', href: '/#about' },
     // {name: "Ministers", href: "#ministers"},
-    { name: 'Ministries', href: '#ministers' },
+    { name: 'Ministries', href: '/#ministers' },
     // { name: 'Events', href: '#events' },
     // { name: 'Give', href: '#give' },
-    { name: 'Contact', href: '#contact' },
+    { name: 'Contact', href: '/#contact' },
     {name: "Donation", href: "/online-giving"},
     {name: "Devotions", href: "/devotions"}
   ];

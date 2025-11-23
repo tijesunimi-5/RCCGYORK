@@ -1,20 +1,21 @@
 "use client";
 
-import { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef } from "react";
 
 interface EditableTextProps {
   slug: string;
   defaultText: string;
+  className?: string;
 }
 
-export default function EditableText({ slug, defaultText }: EditableTextProps) {
+export default function EditableText({ slug, defaultText, className }: EditableTextProps) {
   const [text, setText] = useState(defaultText);
   const [isEditing, setIsEditing] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
 
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
-  // Define the threshold for switching to a textarea
+  // Define the threshold for switching to a textarea (simplified check since we now feed it plain text)
   const IS_MULTI_LINE = text.length > 80 || text.includes('\n');
 
   // --- Auto-Resize Logic (Only runs for textarea) ---
@@ -25,15 +26,18 @@ export default function EditableText({ slug, defaultText }: EditableTextProps) {
     }
   }, [isEditing, text, IS_MULTI_LINE]);
 
-  // --- API Functions (Same as before) ---
-  // ... (loadContent, checkAdminStatus, save functions) ...
+  // --- API Functions ---
   async function save() {
     if (!isAdmin) return;
+    // CRITICAL FIX: Ensure only the plain text is sent to the database. 
+    // This prevents HTML tags from being stored, which was causing the display issue.
+    const plainTextContent = text.replace(/<[^>]*>?/gm, '').trim();
+
     try {
       const res = await fetch(`/api/texts/${slug}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ content: text }),
+        body: JSON.stringify({ content: plainTextContent }),
       });
       if (!res.ok) console.error(`Failed to save. Status: ${res.status}`);
     } catch (error) {
@@ -41,18 +45,26 @@ export default function EditableText({ slug, defaultText }: EditableTextProps) {
     }
   }
 
-  useEffect(() => { /* ... loadContent useEffect ... */
+  useEffect(() => {
     async function loadContent() {
-      const res = await fetch(`/api/texts/${slug}`);
-      const data = await res.json();
-      if (data.content !== null && data.content !== defaultText) {
-        setText(data.content);
+      try {
+        const res = await fetch(`/api/texts/${slug}`);
+        if (res.ok) {
+          const data = await res.json();
+          if (data.content !== null && data.content !== defaultText) {
+            // If the loaded data still contains old HTML tags from previous saves, strip them here.
+            const cleanLoadedText = data.content.replace(/<[^>]*>?/gm, '').trim();
+            setText(cleanLoadedText);
+          }
+        }
+      } catch (error) {
+        console.error("Error loading content:", error);
       }
     }
     loadContent();
   }, [slug, defaultText]);
 
-  useEffect(() => { /* ... checkAdminStatus useEffect ... */
+  useEffect(() => {
     async function checkAdminStatus() {
       try {
         const res = await fetch("/api/admin/session");
@@ -72,8 +84,7 @@ export default function EditableText({ slug, defaultText }: EditableTextProps) {
     save();
   }
 
-  // Re-added for single-line input fields
-  function handleEnter(e: any) {
+  function handleEnter(e: React.KeyboardEvent<HTMLInputElement>) {
     if (e.key === "Enter") {
       e.preventDefault();
       setIsEditing(false);
@@ -81,18 +92,28 @@ export default function EditableText({ slug, defaultText }: EditableTextProps) {
     }
   }
 
-  // Final check: if NOT admin, return the read-only span
+  // Read-only content rendering is now pure plain text
+  const renderReadOnlyContent = () => {
+    return (
+      <span className={`inline-block w-full whitespace-pre-wrap ${className}`}>
+        {text}
+      </span>
+    );
+  };
+
+
+  // Final check: if NOT admin, return the read-only content
   if (!isAdmin) {
-    return <span className="inline-block w-full whitespace-pre-wrap">{text}</span>;
+    return renderReadOnlyContent();
   }
 
   // If we reach here, isAdmin is true
   return isEditing ? (
-    // Conditional Editor Rendering (explicit branches so refs match element types)
+    // Conditional Editor Rendering 
     IS_MULTI_LINE ? (
       <textarea
         ref={textareaRef}
-        className={`border border-blue-500 bg-white p-2 w-full resize-none overflow-hidden text-gray-900`}
+        className={`border border-blue-500 bg-white p-2 w-full resize-none overflow-hidden text-gray-900 ${className}`}
         autoFocus
         value={text}
         onChange={(e) => setText(e.target.value)}
@@ -102,7 +123,7 @@ export default function EditableText({ slug, defaultText }: EditableTextProps) {
       />
     ) : (
       <input
-        className={`border border-blue-500 bg-white p-2 w-full text-gray-900`}
+        className={`border border-blue-500 bg-white p-2 w-full text-gray-900 ${className}`}
         autoFocus
         value={text}
         onChange={(e) => setText(e.target.value)}
@@ -112,15 +133,14 @@ export default function EditableText({ slug, defaultText }: EditableTextProps) {
       />
     )
   ) : (
-    <span
-      className="cursor-text inline-block w-full whitespace-pre-wrap"
+    // Read-only mode for admin: Wrap read-only content in a clickable div
+    <div
+      className={`cursor-text inline-block w-full ${className}`}
       onDoubleClick={() => {
-        // Log the value before switching to help debug the current state
-        console.log(`Editing started for slug: ${slug}. Value: "${text}"`);
         setIsEditing(true);
       }}
     >
-      {text}
-    </span>
+      {renderReadOnlyContent()}
+    </div>
   );
 }
