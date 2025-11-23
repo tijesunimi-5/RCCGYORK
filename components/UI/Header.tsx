@@ -24,20 +24,47 @@ const Header = () => {
     // { name: 'Events', href: '#events' },
     // { name: 'Give', href: '#give' },
     { name: 'Contact', href: '#contact' },
+    {name: "Donation", href: "/online-giving"},
+    {name: "Devotions", href: "/devotions"}
   ];
 
+  // const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+  //   e.preventDefault();
+  //   setIsOpen(false);
+  //   const element = document.querySelector(href);
+  //   if (element) {
+  //     const offset = 80;
+  //     const elementPosition = element.getBoundingClientRect().top;
+  //     const offsetPosition = elementPosition + window.pageYOffset - offset;
+  //     window.scrollTo({
+  //       top: offsetPosition,
+  //       behavior: 'smooth'
+  //     });
+  //   }
+  // };
+
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    e.preventDefault();
-    setIsOpen(false);
-    const element = document.querySelector(href);
-    if (element) {
-      const offset = 80;
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - offset;
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
+    // 1. Check if the href is a section ID (starts with #)
+    if (href.startsWith('#')) {
+      e.preventDefault(); // Only prevent default behavior for smooth scrolling links
+      setIsOpen(false);
+
+      const element = document.querySelector(href);
+
+      if (element) {
+        const offset = 80;
+        const elementPosition = element.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+      }
+    } else {
+      // 2. If it's not a hash, it's a regular page link.
+      // We close the mobile menu and allow the default browser behavior (navigation).
+      setIsOpen(false);
     }
   };
 
