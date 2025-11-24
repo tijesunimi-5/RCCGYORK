@@ -73,8 +73,8 @@ export function ServiceTimes() {
     },
     {
       title: 'Solution Hour Prayers',
-      day: 'Every Saturday',
-      time: '12:30 PM - 2:00 PM',
+      day: 'Every Friday',
+      time: '6:30 PM - 8:00 PM',
       location: 'Main Sanctuary',
       description: 'An evening of fervent prayer, praise, and prophetic ministry.',
       live: true,

@@ -30,7 +30,7 @@ const DonationPage: React.FC = () => {
         {/* Header Section */}
         <div className="text-center pt-8 pb-12">
           <FaHeart className="w-12 h-12 mx-auto text-red-700 mb-4 animate-pulse" />
-          <h1 className="text-4xl sm:text-5xl font-extrabold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-700">
+          <h1 className="text-4xl sm:text-5xl font-extrabold mb-4 bg-clip-text text-transparent bg-linear-to-r from-gray-900 to-gray-700">
             <EditableText slug='donation_head' defaultText='Give to support our mission' />
           </h1>
 
