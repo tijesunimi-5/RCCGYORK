@@ -134,13 +134,13 @@ export default function EditableText({ slug, defaultText, className }: EditableT
     )
   ) : (
     // Read-only mode for admin: Wrap read-only content in a clickable div
-    <div
+    <span
       className={`cursor-text inline-block w-full ${className}`}
       onDoubleClick={() => {
         setIsEditing(true);
       }}
     >
       {renderReadOnlyContent()}
-    </div>
+    </span>
   );
 }
