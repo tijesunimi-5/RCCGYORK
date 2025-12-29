@@ -31,6 +31,15 @@ export function ServiceTimes() {
       featured: true,
     },
     {
+      title: "Crossover Service",
+      day: "31st of December",
+      time: "10:00 PM",
+      description: 'Join us for powerful worship, inspiring messages, and fellowship.',
+      location: "Main Sanctuary ",
+      live: false,
+
+    },
+    {
       title: "Sunday School",
       day: "Every Sunday",
       time: "9:50 AM",
