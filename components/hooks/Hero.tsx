@@ -148,7 +148,7 @@ export function Hero() {
             </div>
 
             <p className="text-sm uppercase tracking-wide mb-2 text-red-200">Crossover Night</p>
-            <p className="text-2xl">10:00 AM</p>
+            <p className="text-2xl">December 31st, 10:00 PM</p>
             <p className="text-sm text-gray-300 mt-2">Main Sanctuary</p>
           </div>
 
