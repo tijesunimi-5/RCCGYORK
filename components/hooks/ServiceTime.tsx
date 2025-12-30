@@ -37,7 +37,7 @@ export function ServiceTimes() {
       description: 'Join us for powerful worship, inspiring messages, and fellowship.',
       location: "Main Sanctuary ",
       live: false,
-
+      
     },
     {
       title: "Sunday School",

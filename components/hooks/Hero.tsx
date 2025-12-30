@@ -147,6 +147,19 @@ export function Hero() {
               </div>
             </div>
 
+            <p className="text-sm uppercase tracking-wide mb-2 text-red-200">Crossover Night</p>
+            <p className="text-2xl">10:00 AM</p>
+            <p className="text-sm text-gray-300 mt-2">Main Sanctuary</p>
+          </div>
+
+          <div className="hero-card group bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-6 hover:bg-white/20 transition-all hover:scale-105 cursor-pointer">
+            <div className="flex items-center justify-center mb-3">
+
+              <div className="p-3 bg-red-600/80 rounded-xl group-hover:bg-red-700 transition-colors">
+                <FaCalendar className="h-6 w-6" />
+              </div>
+            </div>
+
             <p className="text-sm uppercase tracking-wide mb-2 text-red-200">Sunday Worship</p>
             <p className="text-2xl">10:30 AM</p>
             <p className="text-sm text-gray-300 mt-2">Main Sanctuary</p>
