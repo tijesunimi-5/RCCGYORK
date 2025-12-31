@@ -2,6 +2,7 @@
 import React, { useEffect } from 'react';
 import { FaArrowRight, FaCalendar, FaClock, FaMapPin, FaVideo } from "react-icons/fa";
 import { Button } from "../UI/Button";
+import EditableText from '@/components/hooks/EditableText'; // Import the EditableText component
 // GSAP Imports - ScrollTrigger is still imported but not used in the logic
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -98,20 +99,22 @@ export function Hero() {
                 <span className="animate-ping absolute inline-flex h-3 w-3 rounded-full bg-red-400 opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-3 w-3 bg-red-500"></span>
               </div>
-              <span className="text-sm">Welcome to Living Spring</span>
+              <span className="text-sm">
+                <EditableText slug="hero_badge" defaultText="Welcome to Living Spring" />
+              </span>
             </div>
           </div>
           <h1 className="text-5xl md:text-7xl lg:text-8xl mb-6 leading-tight">
-            RCCG<br />
+            <EditableText slug="hero_title_line1" defaultText="RCCG" /><br />
 
             <span className="bg-linear-to-r from-red-300 via-red-200 to-white bg-clip-text text-transparent">
-              Living Spring
+              <EditableText slug="hero_title_line2" defaultText="Living Spring" />
             </span>
           </h1>
         </div>
 
         <p className="text-2xl md:text-3xl mb-12 text-gray-200 max-w-3xl mx-auto leading-relaxed">
-          Church on a mission. People with a purpose
+          <EditableText slug="hero_subtitle" defaultText="Church on a mission. People with a purpose" />
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
@@ -121,7 +124,7 @@ export function Hero() {
             className="bg-red-700 hover:bg-red-800 text-white shadow-2xl hover:shadow-xl transition-all hover:scale-105 group text-lg px-8 py-6"
             onClick={() => handleNavClick('#service-times')}
           >
-            Join Us This Sunday
+            <EditableText slug="hero_cta_primary" defaultText="Join Us This Sunday" />
             <FaArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
           </Button>
           <Button
@@ -132,7 +135,7 @@ export function Hero() {
             onClick={() => window.open('https://youtube.com/@rccglivingspringyork9998?si=0Dgjg1NPHD5i49fa', '_blank')}
           >
             <FaVideo className="mr-2 h-5 w-5" />
-            Watch Live
+            <EditableText slug="hero_cta_secondary" defaultText="Watch Live" />
           </Button>
         </div>
 
@@ -147,9 +150,15 @@ export function Hero() {
               </div>
             </div>
 
-            <p className="text-sm uppercase tracking-wide mb-2 text-red-200">Crossover Night</p>
-            <p className="text-2xl">December 31st, 10:00 PM</p>
-            <p className="text-sm text-gray-300 mt-2">Main Sanctuary</p>
+            <p className="text-sm uppercase tracking-wide mb-2 text-red-200">
+              <EditableText slug="hero_service_1_title" defaultText="Crossover Night" />
+            </p>
+            <p className="text-2xl">
+              <EditableText slug="hero_service_1_time" defaultText="December 31st, 10:00 PM" />
+            </p>
+            <p className="text-sm text-gray-300 mt-2">
+              <EditableText slug="hero_service_1_loc" defaultText="Main Sanctuary" />
+            </p>
           </div>
 
           <div className="hero-card group bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-6 hover:bg-white/20 transition-all hover:scale-105 cursor-pointer">
@@ -160,9 +169,15 @@ export function Hero() {
               </div>
             </div>
 
-            <p className="text-sm uppercase tracking-wide mb-2 text-red-200">Sunday Worship</p>
-            <p className="text-2xl">10:30 AM</p>
-            <p className="text-sm text-gray-300 mt-2">Main Sanctuary</p>
+            <p className="text-sm uppercase tracking-wide mb-2 text-red-200">
+              <EditableText slug="hero_service_2_title" defaultText="Sunday Worship" />
+            </p>
+            <p className="text-2xl">
+              <EditableText slug="hero_service_2_time" defaultText="10:30 AM" />
+            </p>
+            <p className="text-sm text-gray-300 mt-2">
+              <EditableText slug="hero_service_2_loc" defaultText="Main Sanctuary" />
+            </p>
           </div>
 
           {/* Card 2 */}
@@ -174,9 +189,15 @@ export function Hero() {
               </div>
             </div>
 
-            <p className="text-sm uppercase tracking-wide mb-2 text-red-200">Bible Study</p>
-            <p className="text-2xl">Tuesday 8:30 PM</p>
-            <p className="text-sm text-gray-300 mt-2">Mobile - 717-251-1272</p>
+            <p className="text-sm uppercase tracking-wide mb-2 text-red-200">
+              <EditableText slug="hero_service_3_title" defaultText="Bible Study" />
+            </p>
+            <p className="text-2xl">
+              <EditableText slug="hero_service_3_time" defaultText="Tuesday 8:30 PM" />
+            </p>
+            <p className="text-sm text-gray-300 mt-2">
+              <EditableText slug="hero_service_3_loc" defaultText="Mobile - 717-251-1272" />
+            </p>
           </div>
 
           {/* Card 3 */}
@@ -188,9 +209,15 @@ export function Hero() {
               </div>
             </div>
 
-            <p className="text-sm uppercase tracking-wide mb-2 text-red-200">Location</p>
-            <p className="text-2xl">1550 Eleventh Avenue York, PA 17402</p>
-            <p className="text-sm text-gray-300 mt-2">See full address</p>
+            <p className="text-sm uppercase tracking-wide mb-2 text-red-200">
+              <EditableText slug="hero_service_4_title" defaultText="Location" />
+            </p>
+            <p className="text-2xl">
+              <EditableText slug="hero_service_4_time" defaultText="1550 Eleventh Avenue York, PA 17402" />
+            </p>
+            <p className="text-sm text-gray-300 mt-2">
+              <EditableText slug="hero_service_4_loc" defaultText="See full address" />
+            </p>
           </div>
         </div>
       </div>

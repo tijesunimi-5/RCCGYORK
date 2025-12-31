@@ -8,6 +8,7 @@ import { Input } from '../UI/Input';
 import { Textarea } from '../UI/Textarea';
 import { Button } from '../UI/Button';
 import { BiSend } from 'react-icons/bi';
+import EditableText from '@/components/hooks/EditableText';
 // GSAP Imports
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -24,12 +25,12 @@ const Contact = () => {
     phone: '',
     message: '',
   });
-  const [isSubmitting, setIsSubmitting] = useState(false); // New state for loading/button control
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = async (e: React.FormEvent) => { // Added 'async'
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (isSubmitting) return; // Prevent double submission
+    if (isSubmitting) return;
     setIsSubmitting(true);
 
     try {
@@ -51,7 +52,6 @@ const Contact = () => {
           message: '',
         });
       } else {
-        // Handle API errors (e.g., failed validation, server error)
         const errorData = await response.json();
         alert(`Failed to send message: ${errorData.message || response.statusText}`);
       }
@@ -62,29 +62,34 @@ const Contact = () => {
       setIsSubmitting(false);
     }
   };
+
   const contactInfo = [
     {
       icon: FaMapPin,
       title: 'Address',
       content: '1550 Eleventh Ave, York, PA 17402',
       link: 'https://maps.google.com/maps/dir/?api=1&destination=1550+Eleventh+Ave,+York+PA+17402',
+      slug: 'contact_info_address'
     },
     {
       icon: FaPhone,
       title: 'Phone',
       content: '717-525-4148',
-      link: 'tel:+44XXXXXXXXXX',
+      link: 'tel:+7175254148',
+      slug: 'contact_info_phone'
     },
     {
       icon: CgMail,
       title: 'Email',
       content: 'livingspringyork@gmail.com',
       link: 'mailto:livingspringyork@gmail.com',
+      slug: 'contact_info_email'
     },
     {
       icon: FaClock,
       title: 'Office Hours',
       content: 'Sun: 3:00 PM - 7:00 PM',
+      slug: 'contact_info_hours'
     },
   ];
 
@@ -94,7 +99,6 @@ const Contact = () => {
   ];
 
   useEffect(() => {
-    // 1. Animate Header (smooth slide up scrub)
     const headerTarget: gsap.DOMTarget = '.js-contact-header';
     gsap.set(headerTarget, { opacity: 0, y: 30 });
     gsap.to(headerTarget, {
@@ -109,9 +113,8 @@ const Contact = () => {
       }
     });
 
-    // 2. Animate Form (Smooth Slide from Left Scrub)
     const formTarget: gsap.DOMTarget = '.js-contact-form';
-    gsap.set(formTarget, { opacity: 0, x: -50 }); // Smaller horizontal shift
+    gsap.set(formTarget, { opacity: 0, x: -50 });
     gsap.to(formTarget, {
       opacity: 1,
       x: 0,
@@ -124,11 +127,10 @@ const Contact = () => {
       }
     });
 
-    // 3. Animate Right Side Cards (Individual Slide Up Scrub)
     const cardTargets: gsap.DOMTarget[] = gsap.utils.toArray('.js-contact-info-card');
 
     cardTargets.forEach((card) => {
-      gsap.set(card, { opacity: 0, y: 50 }); // Slide up from less distance
+      gsap.set(card, { opacity: 0, y: 50 });
       gsap.to(card, {
         opacity: 1,
         y: 0,
@@ -154,29 +156,31 @@ const Contact = () => {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-        {/* === Header - Added class: js-contact-header === */}
+        {/* === Header === */}
         <div className="text-center mb-16 js-contact-header">
-
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-linear-to-r from-red-100 to-red-50 text-red-700 rounded-full mb-6">
             <CgMail className="w-4 h-4" />
-            <span>Connect With Us</span>
+            <span><EditableText slug="contact_badge" defaultText="Connect With Us" /></span>
           </div>
           <h2 className="text-5xl md:text-6xl mb-6 bg-linear-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">
-            Get In Touch
+            <EditableText slug="contact_main_title" defaultText="Get In Touch" />
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            We'd love to hear from you. Reach out with questions or to plan your visit.
+            <EditableText slug="contact_main_subtitle" defaultText="We'd love to hear from you. Reach out with questions or to plan your visit." />
           </p>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12">
-          {/* Contact Form - Added class: js-contact-form */}
+          {/* Contact Form */}
           <div className='relative z-10 js-contact-form'>
-
             <Card className="border-0 shadow-2xl bg-white z-10">
               <CardHeader>
-                <CardTitle className="text-3xl">Send Us a Message</CardTitle>
-                <p className="text-gray-600">Fill out the form below and we'll get back to you as soon as possible.</p>
+                <CardTitle className="text-3xl">
+                  <EditableText slug="contact_form_title" defaultText="Send Us a Message" />
+                </CardTitle>
+                <p className="text-gray-600">
+                  <EditableText slug="contact_form_subtitle" defaultText="Fill out the form below and we'll get back to you as soon as possible." />
+                </p>
               </CardHeader>
               <CardContent>
                 <form onSubmit={handleSubmit} className="space-y-6 z-10">
@@ -233,7 +237,7 @@ const Contact = () => {
                     type="submit"
                     className="w-full bg-linear-to-r from-red-700 to-red-800 hover:from-red-800 hover:to-red-900 shadow-lg hover:shadow-xl transition-all group"
                     size="lg"
-                    disabled={isSubmitting} // Disable button while submitting
+                    disabled={isSubmitting}
                   >
                     {isSubmitting ? 'Sending...' : 'Send Message'}
                     <BiSend className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
@@ -243,19 +247,15 @@ const Contact = () => {
             </Card>
           </div>
 
-          {/* Contact Information (Right Column) */}
-          {/* === Wrapper for Stagger - Added class: js-contact-info-grid === */}
+          {/* Contact Information */}
           <div className="space-y-6 js-contact-info-grid">
-
             <div className="grid sm:grid-cols-2 gap-6">
               {contactInfo.map((info) => {
                 const Icon = info.icon;
                 return (
-                  // === Info Cards - Added class: js-contact-info-card ===
                   <Card
                     key={info.title}
                     className="js-contact-info-card border-0 shadow-lg hover:shadow-xl transition-all hover:-translate-y-1 bg-white"
-
                   >
                     <CardContent className="pt-6">
                       <div className="flex items-start gap-4">
@@ -265,16 +265,13 @@ const Contact = () => {
                         <div className="flex-1">
                           <h3 className="mb-2">{info.title}</h3>
                           {info.link ? (
-                            <a
-                              href={info.link}
-                              className="text-gray-600 hover:text-red-700 transition-colors"
-                              target={info.link.startsWith('http') ? '_blank' : undefined}
-                              rel={info.link.startsWith('http') ? 'noopener noreferrer' : undefined}
-                            >
-                              {info.content}
-                            </a>
+                            <div className="text-gray-600 hover:text-red-700 transition-colors">
+                              <EditableText slug={info.slug} defaultText={info.content} />
+                            </div>
                           ) : (
-                            <p className="text-gray-600">{info.content}</p>
+                            <div className="text-gray-600">
+                              <EditableText slug={info.slug} defaultText={info.content} />
+                            </div>
                           )}
                         </div>
                       </div>
@@ -284,9 +281,8 @@ const Contact = () => {
               })}
             </div>
 
-            {/* Map Card - Added class: js-contact-info-card */}
+            {/* Map Card */}
             <Card className="js-contact-info-card border-0 shadow-xl overflow-hidden bg-white">
-
               <div className="h-64 bg-linear-to-br from-red-100 to-red-200 flex items-center justify-center relative overflow-hidden">
                 <div className="absolute inset-0 opacity-20">
                   <div className="absolute inset-0" style={{
@@ -296,22 +292,21 @@ const Contact = () => {
                 </div>
                 <div className="text-center text-red-700 z-10">
                   <FaMapPin className="h-16 w-16 mx-auto mb-4" />
-                  <p className="text-lg">RCCG York</p>
-                  <p className="text-sm">Living Spring</p>
+                  <p className="text-lg"><EditableText slug="contact_map_label_1" defaultText="RCCG York" /></p>
+                  <p className="text-sm"><EditableText slug="contact_map_label_2" defaultText="Living Spring" /></p>
                   <Button
                     variant="outline"
                     className="mt-4 border-red-700 text-red-700 hover:bg-red-700 hover:text-white"
                     onClick={() => window.open('https://maps.google.com/maps/dir/?api=1&destination=1550+Eleventh+Ave,+York+PA+17402', '_blank')}
                   >
-                    Get Directions
+                    <EditableText slug="contact_map_button" defaultText="Get Directions" />
                   </Button>
                 </div>
               </div>
             </Card>
 
-            {/* Social Media Card - Added class: js-contact-info-card */}
+            {/* Social Media Card */}
             <Card className="js-contact-info-card bg-linear-to-br from-red-700 via-red-800 to-red-900 text-white border-0 shadow-2xl overflow-hidden">
-
               <div className="absolute inset-0 opacity-10">
                 <div className="absolute inset-0" style={{
                   backgroundImage: `radial-gradient(circle at 2px 2px, white 1px, transparent 0)`,
@@ -319,9 +314,11 @@ const Contact = () => {
                 }} />
               </div>
               <CardContent className="pt-8 pb-8 relative z-10">
-                <h3 className="text-2xl mb-4">Connect on Social Media</h3>
+                <h3 className="text-2xl mb-4">
+                  <EditableText slug="contact_social_title" defaultText="Connect on Social Media" />
+                </h3>
                 <p className="text-red-100 mb-6">
-                  Follow us for daily inspiration, live streams, and community updates.
+                  <EditableText slug="contact_social_subtitle" defaultText="Follow us for daily inspiration, live streams, and community updates." />
                 </p>
                 <div className="flex gap-4">
                   {socialLinks.map((social) => {
@@ -349,5 +346,4 @@ const Contact = () => {
   );
 }
 
-export default Contact
-
+export default Contact;

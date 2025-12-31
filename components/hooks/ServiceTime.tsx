@@ -6,6 +6,7 @@ import { Button } from "../UI/Button";
 import { Card, CardContent, CardHeader } from "../UI/Card";
 import { Badge } from "../UI/Badge";
 import { useRouter } from "next/navigation";
+import EditableText from '@/components/hooks/EditableText';
 // GSAP Imports
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -19,8 +20,6 @@ export function ServiceTimes() {
   const router = useRouter()
 
   const services = [
-    // ... (services data remains the same)
-
     {
       title: 'Sunday Worship Service',
       day: 'Every Sunday',
@@ -37,7 +36,7 @@ export function ServiceTimes() {
       description: 'Join us for powerful worship, inspiring messages, and fellowship.',
       location: "Main Sanctuary ",
       live: false,
-      
+
     },
     {
       title: "Sunday School",
@@ -158,25 +157,24 @@ export function ServiceTimes() {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-        {/* === Header - class service-header for separate timing === */}
+        {/* === Header === */}
         <div className="text-center mb-16 service-header">
 
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-linear-to-r from-red-100 to-red-50 text-red-700 rounded-full mb-6">
             <FaCalendar className="w-4 h-4" />
-            <span>Join Us</span>
+            <span><EditableText slug="services_badge" defaultText="Join Us" /></span>
           </div>
           <h2 className="text-5xl md:text-6xl mb-6 bg-linear-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">
-            Service Times
+            <EditableText slug="services_main_title" defaultText="Service Times" />
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Experience God's presence with us. All services are open to everyone!
+            <EditableText slug="services_main_subtitle" defaultText="Experience God's presence with us. All services are open to everyone!" />
           </p>
         </div>
 
         {/* === Service Cards Grid === */}
         <div className="grid md:grid-cols-2 gap-6 mb-12">
           {services.map((service, index) => (
-            // === Card - Added class: js-st-animate for general scroll scrub ===
             <Card
               key={index}
               className={`js-st-animate group hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 border-0 overflow-hidden ${service.featured
@@ -189,9 +187,9 @@ export function ServiceTimes() {
               )}
               <CardHeader className="pb-4">
                 <div className="flex justify-between items-start gap-4 mb-3">
-                  <CardHeader className="text-2xl group-hover:text-red-700 transition-colors">
-                    {service.title}
-                  </CardHeader>
+                  <div className="text-2xl font-semibold group-hover:text-red-700 transition-colors p-6">
+                    <EditableText slug={`service_${index}_title`} defaultText={service.title} />
+                  </div>
                   {service.live && (
                     <Badge className="bg-red-700 hover:bg-red-800 shadow-lg flex items-center gap-1.5 px-3 py-1">
                       <span className="relative flex h-2 w-2">
@@ -203,7 +201,9 @@ export function ServiceTimes() {
                     </Badge>
                   )}
                 </div>
-                <p className="text-gray-600 leading-relaxed">{service.description}</p>
+                <p className="text-gray-600 leading-relaxed">
+                  <EditableText slug={`service_${index}_description`} defaultText={service.description} />
+                </p>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="space-y-3">
@@ -211,19 +211,25 @@ export function ServiceTimes() {
                     <div className="p-2 rounded-lg bg-white shadow-sm">
                       <FaCalendar className="h-4 w-4 text-red-700" />
                     </div>
-                    <span className="text-gray-700">{service.day}</span>
+                    <span className="text-gray-700">
+                      <EditableText slug={`service_${index}_day`} defaultText={service.day} />
+                    </span>
                   </div>
                   <div className="flex items-center gap-3 p-3 rounded-lg bg-gray-50 group-hover:bg-red-50 transition-colors">
                     <div className="p-2 rounded-lg bg-white shadow-sm">
                       <FaClock className="h-4 w-4 text-red-700" />
                     </div>
-                    <span className="text-gray-700">{service.time}</span>
+                    <span className="text-gray-700">
+                      <EditableText slug={`service_${index}_time`} defaultText={service.time} />
+                    </span>
                   </div>
                   <div className="flex items-center gap-3 p-3 rounded-lg bg-gray-50 group-hover:bg-red-50 transition-colors">
                     <div className="p-2 rounded-lg bg-white shadow-sm">
                       <FaMapPin className="h-4 w-4 text-red-700" />
                     </div>
-                    <span className="text-gray-700">{service.location}</span>
+                    <span className="text-gray-700">
+                      <EditableText slug={`service_${index}_location`} defaultText={service.location} />
+                    </span>
                   </div>
                 </div>
               </CardContent>
@@ -231,7 +237,7 @@ export function ServiceTimes() {
           ))}
         </div>
 
-        {/* === CTA Block - Added class: js-st-animate === */}
+        {/* === CTA Block === */}
         <div className="js-st-animate relative bg-linear-to-br from-red-700 via-red-800 to-red-900 rounded-3xl p-8 md:p-12 text-white overflow-hidden shadow-2xl">
 
           {/* Decorative pattern */}
@@ -246,9 +252,11 @@ export function ServiceTimes() {
             <div className="inline-flex items-center justify-center w-16 h-16 bg-white/20 backdrop-blur-sm rounded-full mb-6">
               <FaVideo className="w-8 h-8" />
             </div>
-            <h3 className="text-3xl md:text-4xl mb-4">Can't Make It In Person?</h3>
+            <h3 className="text-3xl md:text-4xl mb-4">
+              <EditableText slug="services_cta_title" defaultText="Can't Make It In Person?" />
+            </h3>
             <p className="text-xl mb-8 text-red-100 max-w-2xl mx-auto leading-relaxed">
-              Join us online! All our services are streamed live on YouTube and Facebook.
+              <EditableText slug="services_cta_subtitle" defaultText="Join us online! All our services are streamed live on YouTube and Facebook." />
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button
@@ -256,7 +264,7 @@ export function ServiceTimes() {
                 className="bg-white text-red-700 hover:bg-gray-100 shadow-xl hover:shadow-2xl transition-all hover:scale-105 group"
                 onClick={() => router.push("https://youtube.com/@rccglivingspringyork9998?si=0Dgjg1NPHD5i49fa")}
               >
-                Watch on YouTube
+                <EditableText slug="services_cta_yt" defaultText="Watch on YouTube" />
                 <FaArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </Button>
               <Button
@@ -265,7 +273,7 @@ export function ServiceTimes() {
                 className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-red-700 shadow-xl hover:shadow-2xl transition-all hover:scale-105 group"
                 onClick={() => router.push('https://facebook.com/share/19MTnpMvoe')}
               >
-                Watch on Facebook
+                <EditableText slug="services_cta_fb" defaultText="Watch on Facebook" />
                 <FaArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </Button>
             </div>

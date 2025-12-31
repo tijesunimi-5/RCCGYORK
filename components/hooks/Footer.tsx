@@ -2,6 +2,7 @@
 
 import { CgMail } from "react-icons/cg";
 import { FaArrowUp, FaChurch, FaFacebook, FaMapPin, FaPhone, FaYoutube } from "react-icons/fa";
+import EditableText from '@/components/hooks/EditableText';
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -14,16 +15,14 @@ export function Footer() {
   ];
 
   const resources = [
-    // { name: 'Events', href: '#events' },
-    // { name: 'Give', href: '#give' },
     { name: 'Contact', href: '#contact' },
     { name: 'Prayer Requests', href: '#contact' },
   ];
 
   const departments = [
-    {name: "Youth Church", href: "/Youth"},
-    {name: "Children Unit", href: "/children-unit"},
-    {name: "Ushering Unit", href: "/ushering-unit"}
+    { name: "Youth Church", href: "/Youth" },
+    { name: "Children Unit", href: "/children-unit" },
+    { name: "Ushering Unit", href: "/ushering-unit" }
   ]
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
@@ -63,17 +62,23 @@ export function Footer() {
           <div className="lg:col-span-2">
             <div className="flex items-center gap-3 mb-6">
               <div className="p-1 bg-linear-to-br from-white to-gray-500 rounded-xl shadow-lg">
-                <img src="/logo.png" className='w-10 h-10' />
+                <img src="/logo.png" className='w-10 h-10' alt="RCCG Logo" />
               </div>
               <div className="flex flex-col">
-                <span className="text-2xl text-white">RCCG York</span>
-                <span className="text-sm text-red-400">Living Spring</span>
+                <span className="text-2xl text-white">
+                  <EditableText slug="footer_brand_name" defaultText="RCCG York" />
+                </span>
+                <span className="text-sm text-red-400">
+                  <EditableText slug="footer_brand_sub" defaultText="Living Spring" />
+                </span>
               </div>
             </div>
-            <p className="text-gray-400 mb-6 max-w-md leading-relaxed">
-              Raising champions who will dominate their generation for Christ.
-              Part of the Redeemed Christian Church of God worldwide.
-            </p>
+            <div className="text-gray-400 mb-6 max-w-md leading-relaxed">
+              <EditableText
+                slug="footer_mission_text"
+                defaultText="Raising champions who will dominate their generation for Christ. Part of the Redeemed Christian Church of God worldwide."
+              />
+            </div>
 
             {/* Contact Info */}
             <div className="space-y-3">
@@ -81,29 +86,27 @@ export function Footer() {
                 <div className="p-2 bg-gray-800 rounded-lg group-hover:bg-red-900/30 transition-colors">
                   <CgMail className="h-4 w-4" />
                 </div>
-                <span>livingspringyork@gmail.com</span>
+                <span><EditableText slug="contact_info_email" defaultText="livingspringyork@gmail.com" /></span>
               </a>
               <a href="tel:717-525-4148" className="flex items-center gap-3 text-gray-400 hover:text-red-400 transition-colors group">
                 <div className="p-2 bg-gray-800 rounded-lg group-hover:bg-red-900/30 transition-colors">
                   <FaPhone className="h-4 w-4" />
                 </div>
-                <span>717-525-4148</span>
+                <span><EditableText slug="contact_info_phone" defaultText="717-525-4148" /></span>
               </a>
               <a href="https://maps.google.com/maps/dir/?api=1&destination=1550+Eleventh+Ave,+York+PA+17402" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-gray-400 hover:text-red-400 transition-colors group">
                 <div className="p-2 bg-gray-800 rounded-lg group-hover:bg-red-900/30 transition-colors">
                   <FaMapPin className="h-4 w-4" />
                 </div>
-                <span>1550 Eleventh Avenue York, PA 17402</span>
+                <span><EditableText slug="contact_info_address" defaultText="1550 Eleventh Avenue York, PA 17402" /></span>
               </a>
             </div>
 
             {/* Social Media */}
             <div className="flex gap-3 mt-6">
               {[
-                { icon: FaFacebook, href: 'https://facebook.com', label: 'Facebook' },
-                // { icon: Instagram, href: 'https://instagram.com', label: 'Instagram' },
-                { icon: FaYoutube, href: 'https://youtube.com', label: 'YouTube' },
-                // { icon: Twitter, href: 'https://twitter.com', label: 'Twitter' },
+                { icon: FaFacebook, href: 'https://facebook.com/share/19MTnpMvoe', label: 'Facebook' },
+                { icon: FaYoutube, href: 'https://youtube.com/@rccglivingspringyork9998?si=0Dgjg1NPHD5i49fa', label: 'YouTube' },
               ].map((social) => {
                 const Icon = social.icon;
                 return (
@@ -164,9 +167,9 @@ export function Footer() {
         {/* Bottom Bar */}
         <div className="border-t border-gray-800 pt-8 mt-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-gray-400 text-sm text-center md:text-left">
-              &copy; {currentYear} RCCG York - Champions' Chapel. All rights reserved.
-            </p>
+            <div className="text-gray-400 text-sm text-center md:text-left">
+              © {currentYear} <EditableText slug="footer_copyright_text" defaultText="RCCG York - Champions' Chapel. All rights reserved." />
+            </div>
             <div className="flex items-center gap-6 text-sm text-gray-400">
               <a href="#" className="hover:text-red-400 transition-colors">Privacy Policy</a>
               <span className="text-gray-700">|</span>

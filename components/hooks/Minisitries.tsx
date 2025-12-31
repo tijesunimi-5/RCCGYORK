@@ -5,6 +5,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../UI
 import { FaArrowUpRightFromSquare, FaPeopleGroup } from "react-icons/fa6";
 import { GiSparkles } from "react-icons/gi";
 import { useRouter } from "next/navigation";
+import EditableText from '@/components/hooks/EditableText';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -85,16 +86,16 @@ export function Ministries() {
   useEffect(() => {
     // 1. Animate Header (smooth slide up scrub)
     const headerTarget: gsap.DOMTarget = '.js-ministry-header';
-    gsap.set(headerTarget, { opacity: 0, y: 30 }); // Lower starting point
+    gsap.set(headerTarget, { opacity: 0, y: 30 });
     gsap.to(headerTarget, {
       opacity: 1,
       y: 0,
-      ease: 'none', // Critical for smooth scrub
+      ease: 'none',
       scrollTrigger: {
         trigger: headerTarget,
         start: 'top 90%',
         end: 'center 70%',
-        scrub: 1, // Smoothly tied to scroll
+        scrub: 1,
       }
     });
 
@@ -102,13 +103,13 @@ export function Ministries() {
     const cardTargets: gsap.DOMTarget[] = gsap.utils.toArray('.js-ministry-card');
 
     cardTargets.forEach((card) => {
-      gsap.set(card, { opacity: 0, y: 50 }); // Lower starting point
+      gsap.set(card, { opacity: 0, y: 50 });
       gsap.to(card, {
         opacity: 1,
         y: 0,
-        ease: 'none', // Critical for smooth scrub
+        ease: 'none',
         scrollTrigger: {
-          trigger: card, // Use the individual card as the trigger
+          trigger: card,
           start: 'top 95%',
           end: 'center 80%',
           scrub: 1,
@@ -128,27 +129,24 @@ export function Ministries() {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-        {/* === Header - Added class: js-ministry-header === */}
+        {/* === Header === */}
         <div className="text-center mb-16 js-ministry-header">
-
           <h2 className="text-5xl md:text-6xl mb-6 bg-linear-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">
-            Our Ministries
+            <EditableText slug="ministries_main_title" defaultText="Our Ministries" />
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Find your place to grow, serve, and make an impact in the kingdom of God
+            <EditableText slug="ministries_main_subtitle" defaultText="Find your place to grow, serve, and make an impact in the kingdom of God" />
           </p>
         </div>
 
-        {/* === Card Grid - Added class: js-ministry-grid for context === */}
+        {/* === Card Grid === */}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 js-ministry-grid">
-          {ministries.map((ministry) => {
+          {ministries.map((ministry, index) => {
             const Icon = ministry.icon;
             return (
-              // === Card Item - Added class: js-ministry-card ===
               <Card
-                key={ministry.title}
+                key={index}
                 className="js-ministry-card group overflow-hidden border-0 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 bg-white relative"
-
               >
                 <CardHeader className="pb-4">
                   <div className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-linear-to-br ${ministry.color} mb-4 shadow-lg group-hover:scale-110 transition-transform`}>
@@ -160,12 +158,12 @@ export function Ministries() {
                     )
                   }
                   <CardTitle className="text-xl group-hover:text-red-700 transition-colors">
-                    {ministry.title}
+                    <EditableText slug={`ministry_${index}_title`} defaultText={ministry.title} />
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <CardDescription className="text-gray-600 leading-relaxed">
-                    {ministry.description}
+                    <EditableText slug={`ministry_${index}_desc`} defaultText={ministry.description} />
                   </CardDescription>
                 </CardContent>
               </Card>
@@ -176,4 +174,3 @@ export function Ministries() {
     </section>
   );
 }
-
