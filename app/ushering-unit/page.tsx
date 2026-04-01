@@ -20,6 +20,7 @@ const Page: React.FC = () => {
     { url: "/ushers/usher4.jpg", name: "Mr. Idahosa Prince", post: "Usher" },
     { url: "/ushers/utom.jpg", name: "Mrs. Oluwatomiwa Adewumi", post: "Usher" },
     { url: "/ushers/dol.jpg", name: "Mr. Jean Dol", post: "Usher" },
+    { url: "/ushers/Mr-ugo.jpg", name: "Mr. Ugo Nwoji", post: "Usher" },
   ];
 
   const defaultMedias = [

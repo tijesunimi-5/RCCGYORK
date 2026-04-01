@@ -30,7 +30,7 @@ const Ministers: React.FC = () => {
     {
       id: 2,
       name: "Pastor Kayode Adewumi",
-      image: "/pkayode.jpg",
+      image: "/pst-Kay2.jpg",
       post: "Resident Pastor"
     },
     {
@@ -121,7 +121,7 @@ const Ministers: React.FC = () => {
             key={minister.id}
             className='js-minister-card bg-card text-card-foreground flex flex-col gap-6 rounded-xl overflow-hidden bg-gray-100 shadow-lg hover:shadow-2xl hover:translate-y-2 transition-all border-0'
           >
-            <div className='w-full h-[400px] relative'>
+            <div className='w-full h-[430px] relative'>
               <Image
                 src={minister.image}
                 alt={minister.name}
