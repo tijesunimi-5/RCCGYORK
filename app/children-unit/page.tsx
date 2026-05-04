@@ -33,6 +33,8 @@ const Page: React.FC = () => {
     { url: "/children/child9.jpg", alt: "Children playing" },
     { url: "/children/child10.jpg", alt: "Children playing" },
     { url: "/children/child11.jpg", alt: "Children playing" },
+    { url: "/children/children-york.jpg", alt: "Children playing" },
+    { url: "/children/york-kids.jpg", alt: "Children playing" },
     // ... rest of media
   ];
 

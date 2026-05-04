@@ -142,7 +142,7 @@ export function Hero() {
         {/* Service Times Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-4xl mx-auto">
           {/* Card 1 */}
-          <div className="hero-card group bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-6 hover:bg-white/20 transition-all hover:scale-105 cursor-pointer">
+          {/* <div className="hero-card group bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-6 hover:bg-white/20 transition-all hover:scale-105 cursor-pointer">
             <div className="flex items-center justify-center mb-3">
 
               <div className="p-3 bg-red-600/80 rounded-xl group-hover:bg-red-700 transition-colors">
@@ -159,7 +159,7 @@ export function Hero() {
             <p className="text-sm text-gray-300 mt-2">
               <EditableText slug="hero_service_1_loc" defaultText="Main Sanctuary" />
             </p>
-          </div>
+          </div> */}
 
           <div className="hero-card group bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-6 hover:bg-white/20 transition-all hover:scale-105 cursor-pointer">
             <div className="flex items-center justify-center mb-3">

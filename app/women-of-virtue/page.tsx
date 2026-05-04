@@ -25,6 +25,7 @@ const page = () => {
     { url: "/wov/wov.jpg", alt: "Women of Virtue event photo 1" },
     { url: "/wov/wov2.jpg", alt: "Women of Virtue event photo 2" },
     { url: "/wov/wov3.jpg", alt: "Women of Virtue event photo 3" },
+    { url: "/wov/york-women.jpg", alt: "Women of Virtue event photo 4" },
   ];
   const defaultWomenHead = { id: 1, url: "/wpres.jpg", alt: "Women of Virtue president", name: "Mrs. Modupeola Adeniji" }
 
